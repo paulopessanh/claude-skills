@@ -1,0 +1,8 @@
+{
+  "attribution": {
+    "derived_from": "https://github.com/cloudflare/security-audit-skill",
+    "original_author": "Cloudflare, Inc.",
+    "original_license": "MIT",
+    "derivation_note": "Verbatim copy of skills/security-audit at commit c1c8a8c1471069fb0e188eeaff69b8e8db6564a8. No content changes. Only the plugin wrapper (plugin.json, this file, README.md) is new."
+  }
+}

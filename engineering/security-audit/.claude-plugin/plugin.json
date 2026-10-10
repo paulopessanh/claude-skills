@@ -1,0 +1,15 @@
+{
+  "name": "security-audit",
+  "description": "Security auditor skill for codebases, APIs, services, CLI tools, libraries, and daemons. Runs a six-phase workflow with isolated agents: reconnaissance, coverage-led hunting, adversarial candidate validation, structured findings, independent record verification, and target-neutral reporting. Guidance mode by default, full audit mode only on an explicit audit or pen-test request. Verbatim vendor of cloudflare/security-audit-skill (MIT). Use when the user asks for a security audit, vulnerability review, pen test of source code, or security guidance.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Alireza Rezvani",
+    "url": "https://alirezarezvani.com"
+  },
+  "homepage": "https://github.com/alirezarezvani/claude-skills/tree/main/engineering/security-audit",
+  "repository": "https://github.com/alirezarezvani/claude-skills",
+  "license": "MIT",
+  "skills": [
+    "./skills/security-audit"
+  ]
+}

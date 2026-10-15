@@ -13,8 +13,9 @@ import html
 import re
 import sys
 
-from _ecolib import contrast, hex_rgb, cmyk_approx, ridge_points
+from _ecolib import contrast, hex_rgb, cmyk_approx, ridge_points, file_stem
 import _ecoassets as A
+import _ecoedit as E
 
 esc = html.escape
 
@@ -50,6 +51,7 @@ def css(b, flat, c):
 --display:{f['headline']};--body:{f['body']};--mono:{f['mono']};}}
 @media (prefers-color-scheme: dark){{:root:not([data-theme="light"]){{--bg:{t('Cume_70')};--surface:{t('Cume_60')};--fg:{t('Cume_10')};--muted:{t('Cume_30')};--line:{t('Cume_50')};--link:{t('Vale_30')};--soft:{t('Cume_60')};color-scheme:dark}}}}
 :root[data-theme="dark"]{{--bg:{t('Cume_70')};--surface:{t('Cume_60')};--fg:{t('Cume_10')};--muted:{t('Cume_30')};--line:{t('Cume_50')};--link:{t('Vale_30')};--soft:{t('Cume_60')};color-scheme:dark}}
+@media print{{.top,.toc,.skip,.btn,.copy{{display:none!important}} body{{font-size:12pt}} .shell{{display:block}} .ch{{break-before:page}} .hero{{break-after:page;-webkit-print-color-adjust:exact;print-color-adjust:exact}} *{{animation:none!important}} .ln{{stroke-dashoffset:0!important}}}}
 *{{box-sizing:border-box}}
 body{{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:18px;line-height:1.6;padding-block:0}}
 a{{color:var(--link)}} a:focus-visible,button:focus-visible,summary:focus-visible{{outline:3px solid var(--accent);outline-offset:3px}}
@@ -124,6 +126,7 @@ document.addEventListener('click',function(e){var b=e.target.closest&&e.target.c
 var links=[].slice.call(document.querySelectorAll('nav.toc a'));
 if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){links.forEach(function(a){a.removeAttribute('aria-current')});var a=document.querySelector('nav.toc a[href="#'+en.target.id+'"]');if(a)a.setAttribute('aria-current','true')}})},{rootMargin:'-20% 0px -70% 0px'});
  [].forEach.call(document.querySelectorAll('section.ch'),function(s){io.observe(s)});}
+window.addEventListener('beforeprint',function(){[].forEach.call(document.querySelectorAll('details'),function(d){d.open=true})});
 var rp=document.getElementById('replay'), dm=document.getElementById('demo');
 if(rp&&dm){rp.addEventListener('click',function(){dm.classList.remove('replay');void dm.getBoundingClientRect();dm.classList.add('replay')});}
 })();
@@ -305,11 +308,12 @@ def build(b, flat, fams, c, svgs, files, standalone=True):
     fonts = "&family=".join(f["google_family"] for f in b["typography"]["fonts"])
     link = f'<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={fonts}&display=swap">'
     title = f"{name} Manual da Marca"
-    style = "<style>" + css(b, flat, c) + "</style>"
+    style = '<style id="bk-css">' + css(b, flat, c) + "</style>"
+    root = f'<div id="bk-root">{page}</div>'
     if standalone:
         return (f'<!doctype html><html lang="{esc(ident["language"])}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">'
-                f"<title>{esc(title)}</title>{link}{style}</head><body>{page}<script>{JS}</script></body></html>")
-    return (f'<title>{esc(title)}</title><meta name="claude:viewport-fit-sides" content="cover">{link}{style}{page}<script>{JS}</script>')
+                f'<title>{esc(title)}</title>{link}{style}</head><body>{root}<script id="bk-js">{JS}</script></body></html>')
+    return (f'<title>{esc(title)}</title><meta name="claude:viewport-fit-sides" content="cover">{link}{style}{root}<script id="bk-js">{JS}</script><style id="ed-css" data-edit-ui>{E.edit_css()}</style><script id="ed-js" data-edit-ui>{E.edit_js(file_stem(b, "Manual-Cliente") + ".html")}</script>')
 
 
 def _misuse_figs(c, misuse):

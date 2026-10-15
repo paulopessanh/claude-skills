@@ -45,7 +45,11 @@ python3 scripts/ecosystem_auditor.py --dir ./pkg
    Exit 0 clean, 2 caveats, 4 blocked. It checks palette closure, vetoed hues, font closure, text contrast, anchors,
    accessibility, external resources and that the manual repeats the source numbers.
 
-4. **Record and hand over.** Submit step 9 in `brand_state.py` with the audit exit code as evidence. A person approves.
+4. **Edit and share.** The Artifact version of the brandbook lets writers edit narrative text (history, purpose, concept,
+   personality, name, photography, voice, FAQ, governance), save it to `content.json`, and download a clean HTML for the
+   client. Colour, type, symbol, tokens and the locked decisions stay read only, so the manual keeps matching the logo.
+
+5. **Record and hand over.** Submit step 9 in `brand_state.py` with the audit exit code as evidence. A person approves.
 
 ## Rules
 

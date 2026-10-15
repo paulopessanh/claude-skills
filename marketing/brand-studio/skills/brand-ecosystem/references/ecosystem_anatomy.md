@@ -26,6 +26,13 @@ Two documents that repeat a number will diverge the first time one is edited. A 
 all derived from one file cannot disagree, and an auditor can recompute any number from that file. 🟢 This is the single
 source of truth principle applied to identity.
 
+## What may be edited after the build
+
+Narrative text can change without touching a number, so the Artifact manual lets writers edit it. Each edit stores a hash of
+the sentence it replaced and is reported as left out if the source sentence changes later. Numbers, colours, the symbol and
+the pétreos are read only in the manual: changing them there would make the manual disagree with the files. 🟡 This is a
+design choice of this package, not an industry standard.
+
 ## What the audit can and cannot prove
 
 It proves internal consistency: colours used exist in the palette, no vetoed hue appears, text meets the declared contrast,

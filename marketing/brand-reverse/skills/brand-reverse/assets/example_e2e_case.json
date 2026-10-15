@@ -1,0 +1,278 @@
+{
+ "reference": {
+  "name": "Casa Jabuti",
+  "sector": "craft chocolate",
+  "palette": [
+   {
+    "hex": "#4A2C1D",
+    "share": 0.45
+   },
+   {
+    "hex": "#F3EAD8",
+    "share": 0.3
+   },
+   {
+    "hex": "#2F6B4F",
+    "share": 0.15
+   },
+   {
+    "hex": "#D9A441",
+    "share": 0.07
+   },
+   {
+    "hex": "#111111",
+    "share": 0.03
+   }
+  ],
+  "typefaces": [
+   {
+    "name": "Example Slab",
+    "class": "display",
+    "role": "headline"
+   },
+   {
+    "name": "Example Humanist",
+    "class": "sans",
+    "role": "body"
+   }
+  ],
+  "distinctive_assets": [
+   "jabuti shell hexagon pattern",
+   "single line turtle mark",
+   "banana leaf green wrapper"
+  ]
+ },
+ "artifacts": [
+  {
+   "id": "A1",
+   "kind": "logo",
+   "source_type": "primary",
+   "source": "wordmark and mark on bar wrapper (photo)",
+   "note": "Slab wordmark in uppercase. A turtle drawn in one continuous line sits above it."
+  },
+  {
+   "id": "A2",
+   "kind": "packaging",
+   "source_type": "primary",
+   "source": "70 g bar, front and back (photo)",
+   "note": "Dark brown wrapper covers about 45 percent of the front. Green only on the origin band. Gold foil on the mark."
+  },
+  {
+   "id": "A3",
+   "kind": "social",
+   "source_type": "primary",
+   "source": "last 12 posts, grid view",
+   "note": "Close-ups of cacao pods and hands, warm light, no faces, no text on images."
+  },
+  {
+   "id": "A4",
+   "kind": "case_study",
+   "source_type": "self_report",
+   "source": "studio portfolio page",
+   "note": "Studio says the identity 'honours the slow patience of the cacao farmer'."
+  },
+  {
+   "id": "A5",
+   "kind": "website",
+   "source_type": "primary",
+   "source": "home and shop pages, desktop and mobile",
+   "note": "Cream ground, brown headings, one product per row, wide margins, green only on origin tags."
+  },
+  {
+   "id": "A6",
+   "kind": "packaging",
+   "source_type": "primary",
+   "source": "gift box and shipping carton (photo)",
+   "note": "Kraft carton with the turtle mark stamped in one colour. Inner tissue in banana-leaf green."
+  },
+  {
+   "id": "A7",
+   "kind": "guidelines",
+   "source_type": "primary",
+   "source": "published one-page guidelines excerpt",
+   "note": "States an 8 px spacing grid, clear space equal to the turtle's shell height, and a ban on placing the mark over photography."
+  },
+  {
+   "id": "A8",
+   "kind": "naming",
+   "source_type": "secondary",
+   "source": "about page text",
+   "note": "Name given as the founders' family house in Ilheus; jabuti is the Brazilian tortoise."
+  }
+ ],
+ "claims": [
+  {
+   "id": "C1",
+   "stage": "visual_direction",
+   "decision": "logo_concept",
+   "statement": "A single-line turtle gives the mark a hand-drawn, patient feel that matches the product story.",
+   "class": "inferred",
+   "evidence": [
+    "A1",
+    "A4"
+   ],
+   "alternatives": [
+    "The line style is a stock illustration trend, not a story choice"
+   ],
+   "confidence": "medium",
+   "pattern": "Draw the mark as one continuous line to signal craft and patience.",
+   "implies": [
+    {
+     "stage": "strategy",
+     "requirement": "Patience and craft were the brand's core personality traits."
+    }
+   ]
+  },
+  {
+   "id": "C2",
+   "stage": "visual_direction",
+   "decision": "color_logic",
+   "statement": "A deep warm field dominates, with one green origin accent and gold reserved for foil.",
+   "class": "observed",
+   "evidence": [
+    "A2",
+    "A5"
+   ],
+   "confidence": "high",
+   "pattern": "Give one deep warm tone nearly half the surface, one cool accent to mark provenance, one metallic for the mark only.",
+   "implies": [
+    {
+     "stage": "strategy",
+     "requirement": "Provenance had to be signalled at a glance on shelf."
+    }
+   ]
+  },
+  {
+   "id": "C3",
+   "stage": "strategy",
+   "decision": "positioning",
+   "statement": "Positioned as slow and farmer-centred against industrial chocolate.",
+   "class": "inferred",
+   "evidence": [
+    "A2",
+    "A3",
+    "A4"
+   ],
+   "alternatives": [
+    "Positioned on premium price rather than on process"
+   ],
+   "confidence": "medium"
+  },
+  {
+   "id": "C4",
+   "stage": "concept",
+   "decision": "big_idea",
+   "statement": "The idea is the patience of making chocolate slowly.",
+   "class": "inferred",
+   "evidence": [
+    "A3",
+    "A4"
+   ],
+   "alternatives": [
+    "The idea is simply origin, and patience is the studio's after-the-fact framing"
+   ],
+   "confidence": "medium",
+   "pattern": "State the idea as a human virtue the process embodies."
+  },
+  {
+   "id": "C5",
+   "stage": "concept",
+   "decision": "naming_logic",
+   "statement": "The name joins a family house with the tortoise as a symbol of patience.",
+   "class": "inferred",
+   "evidence": [
+    "A1",
+    "A8"
+   ],
+   "alternatives": [
+    "The tortoise was chosen after the name for visual convenience"
+   ],
+   "confidence": "medium",
+   "pattern": "Pair a personal place name with an animal that carries the virtue."
+  },
+  {
+   "id": "C6",
+   "stage": "system",
+   "decision": "tokens",
+   "statement": "An 8 px spacing grid governs layout.",
+   "class": "observed",
+   "evidence": [
+    "A7"
+   ],
+   "confidence": "high",
+   "pattern": "Fix a base spacing unit and derive every margin from it."
+  },
+  {
+   "id": "C7",
+   "stage": "system",
+   "decision": "lockups",
+   "statement": "Clear space equals the shell height and the mark never sits over photography.",
+   "class": "observed",
+   "evidence": [
+    "A7"
+   ],
+   "confidence": "high",
+   "pattern": "Define clear space from a part of the mark itself and ban the mark over busy imagery."
+  },
+  {
+   "id": "C8",
+   "stage": "applications",
+   "decision": "packaging_signage",
+   "statement": "The mark is stamped in a single colour on kraft and wrapped with leaf-green tissue.",
+   "class": "observed",
+   "evidence": [
+    "A6"
+   ],
+   "confidence": "high",
+   "pattern": "Carry one brand colour inside the pack so unboxing repeats the shelf colour logic."
+  },
+  {
+   "id": "C9",
+   "stage": "applications",
+   "decision": "digital",
+   "statement": "The site repeats the pack: cream ground, brown type, green only on origin tags.",
+   "class": "observed",
+   "evidence": [
+    "A5",
+    "A2"
+   ],
+   "confidence": "high"
+  },
+  {
+   "id": "C10",
+   "stage": "guidelines",
+   "decision": "clear_space_misuse",
+   "statement": "The guidelines name clear space and a misuse rule.",
+   "class": "observed",
+   "evidence": [
+    "A7"
+   ],
+   "confidence": "high"
+  },
+  {
+   "id": "C11",
+   "stage": "briefing",
+   "decision": "constraints",
+   "statement": "A cost limit on print colours may have shaped the single-colour stamp on kraft.",
+   "class": "inferred",
+   "evidence": [
+    "A2",
+    "A6"
+   ],
+   "confidence": "low",
+   "alternatives": [
+    "The single-colour stamp is a purely aesthetic, rustic choice with no cost driver"
+   ]
+  },
+  {
+   "id": "C12",
+   "stage": "research",
+   "decision": "audience_insight",
+   "statement": "Research probably found buyers distrust industrial chocolate claims.",
+   "class": "hypothesis",
+   "evidence": [],
+   "confidence": "low"
+  }
+ ],
+ "_note": "FICTIONAL brand Casa Jabuti, end-to-end test case: 12 artifacts/claims gated by the ledger, reconstructed to exit 0."
+}

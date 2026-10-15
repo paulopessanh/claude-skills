@@ -136,7 +136,8 @@ def render(stages, plan_rows, plan_mode):
     lines = []
     if not plan_mode:
         for r in stages:
-            lines.append(f"{r['stage']:<17} {r['status']:<16} decisions {len(r['decisions_covered'])}/{len(r['decisions_covered']) + len(r['decisions_open'])}")
+            lines.append(f"{r['stage']:<17} {r['status']:<16} decisions {len(r['decisions_covered'])}/{len(r['decisions_covered']) + len(r['decisions_open'])}"
+                         + (f"   open: {', '.join(r['decisions_open'])}" if r["decisions_open"] else ""))
             for b in r["back_propagated"]:
                 lines.append(f"    implied upstream ({b['derived_from']}, hypothesis): {b['requirement']}")
             if "ask_someone_who_was_there" in r:
@@ -174,11 +175,17 @@ def main():
               "Three or more are needed before a process can be claimed. Collect more artifacts.")
         sys.exit(3)
     holes = [r["stage"] for r in stages if r["output_stage"] and r["status"] == "LOST"]
+    summary = {k: sum(1 for r in stages if r["status"] == k) for k in RANK}
+    summary["decisions_covered"] = sum(len(r["decisions_covered"]) for r in stages)
+    summary["decisions_total"] = sum(len(DECISIONS[r["stage"]]) for r in stages)
     plan_rows = plan(case, stages) if args.plan else None
     if args.output == "json":
-        print(json.dumps({"stages": stages, "plan": plan_rows, "output_holes": holes}, indent=2))
+        print(json.dumps({"summary": summary, "stages": stages, "plan": plan_rows, "output_holes": holes}, indent=2))
     else:
         print(render(stages, plan_rows, args.plan))
+        if not args.plan:
+            print(f"\nSummary: {summary['RECOVERED']} recovered, {summary['INFERRED']} inferred, {summary['HYPOTHESIS_ONLY']} hypothesis only, "
+                  f"{summary['LOST']} lost. Decisions covered {summary['decisions_covered']}/{summary['decisions_total']}.")
         if holes:
             print(f"\nHOLES in output stages: {', '.join(holes)}. These are observable; collect more artifacts.")
     sys.exit(2 if holes else 0)

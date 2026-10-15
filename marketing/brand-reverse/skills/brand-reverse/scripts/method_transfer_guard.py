@@ -9,7 +9,8 @@ This guard sits between the reconstruction and your new brand and checks two thi
    pattern containing a hex code, the reference name, one of its typefaces or one of its
    distinctive assets is a leak.                                          VALUE_LEAK  BLOCK
 2. The new brief keeps its distance from the reference.
-   NAME_CLOSE        BLOCK  name or candidate is a near-match (similarity >= 0.80 or containment)
+   NAME_CLOSE        BLOCK  near-match name (similarity >= 0.80, containment, or the same distinctive word;
+                            generic words like casa, cafe, studio, sul are ignored)
    NAME_NEAR         WARN   similarity 0.65-0.80
    PALETTE_CLONE     BLOCK  two or more new colours within CIE76 delta-E < 10 of reference colours
    COLOUR_NEAR       WARN   one new colour within delta-E < 10 (a single colour is often category convention)
@@ -32,13 +33,25 @@ import json
 import os
 import re
 import sys
+import unicodedata
 
+GENERIC = {"casa", "cafe", "studio", "estudio", "atelier", "atelie", "house", "brand", "co", "company", "labs", "lab",
+           "the", "de", "da", "do", "dos", "das", "and", "e", "sul", "norte", "leste", "oeste", "north", "south",
+           "east", "west", "new", "nova", "novo", "original", "artesanal", "craft", "premium"}
 STOP = {"the", "a", "an", "of", "on", "in", "and", "with", "for", "to", "de", "da", "do", "com", "uma", "um", "e", "o", "a"}
 HEXRE = re.compile(r"#[0-9a-fA-F]{3,8}\b")
 
 
+def ascii_lower(s):
+    return unicodedata.normalize("NFKD", str(s)).encode("ascii", "ignore").decode().lower()
+
+
 def norm(s):
-    return re.sub(r"[^a-z0-9]", "", str(s).lower())
+    return re.sub(r"[^a-z0-9]", "", ascii_lower(s))
+
+
+def distinctive(s):
+    return [w for w in re.findall(r"[a-z0-9]+", ascii_lower(s)) if w not in GENERIC and len(w) >= 4]
 
 
 def tokens(s):
@@ -105,8 +118,13 @@ def distance(ref, new):
             continue
         ratio = difflib.SequenceMatcher(None, a, b).ratio()
         contained = min(len(a), len(b)) >= 4 and (a in b or b in a)
+        shared = [(w, r) for w in distinctive(n) for r in distinctive(refname)
+                  if difflib.SequenceMatcher(None, w, r).ratio() >= 0.80]
         if ratio >= 0.80 or contained:
             out.append(("BLOCK", "NAME_CLOSE", f"'{n}' vs '{refname}' (similarity {ratio:.2f})"))
+        elif shared:
+            out.append(("BLOCK", "NAME_CLOSE", f"'{n}' reuses the distinctive word '{shared[0][0]}' of '{refname}' "
+                        f"(matches '{shared[0][1]}')"))
         elif ratio >= 0.65:
             out.append(("WARN", "NAME_NEAR", f"'{n}' vs '{refname}' (similarity {ratio:.2f})"))
     near = []
@@ -165,7 +183,7 @@ def main():
         print("error: the new brief needs a name", file=sys.stderr)
         sys.exit(1)
     ref = case.get("reference", {})
-    findings = leaks(ref, case.get("claims", [])) + distance(ref, new)
+    findings = list(dict.fromkeys(leaks(ref, case.get("claims", [])) + distance(ref, new)))
     blocks = [f for f in findings if f[0] == "BLOCK"]
     verdict, code = ("TOO_CLOSE", 4) if blocks else (("NEAR", 2) if any(f[0] == "WARN" and f[1] != "SAME_SECTOR" for f in findings) else ("DISTANT", 0))
     res = {"verdict": verdict, "findings": [{"level": a, "code": b, "message": c} for a, b, c in findings]}

@@ -162,9 +162,14 @@ def analyse_type(faces):
 def readings(pal, typ):
     sector = "sector convention (check three or more category competitors before crediting intent)"
     out = []
-    if pal["hue_relation"] not in ("achromatic", "single-hue"):
-        out.append({"observation": f"Hue relation is {pal['hue_relation']}.",
-                    "inference": f"The palette was built on a {pal['hue_relation']} scheme on purpose.",
+    rel = pal["hue_relation"]
+    if rel == "irregular":
+        out.append({"observation": "Hue relation is irregular: no standard colour scheme fits.",
+                    "inference": "Hues were taken from the product and its story (ingredients, materials, place), not from colour theory.",
+                    "rival": "A deliberate custom scheme whose logic is not visible in the hues alone", "class": "inferred"})
+    elif rel not in ("achromatic", "single-hue"):
+        out.append({"observation": f"Hue relation is {rel}.",
+                    "inference": f"The palette follows a {rel} scheme on purpose.",
                     "rival": sector, "class": "inferred"})
     out += [
         {"observation": f"Surface shares run {pal['proportion_pattern']} ({pal['proportion_class']}).",

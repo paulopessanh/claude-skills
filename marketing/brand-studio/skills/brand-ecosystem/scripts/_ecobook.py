@@ -33,6 +33,16 @@ def p_(t, cls=""):
     return f'<p{f" class={chr(34)}{cls}{chr(34)}" if cls else ""}>{esc(t)}</p>'
 
 
+LK_L = {"symbol": "Símbolo", "horizontal": "Horizontal", "vertical": "Vertical"}
+POL_L = {"positive": "positiva", "negative": "negativa", "mono": "uma cor"}
+ST_L = {"preferred": "Preferida", "allowed": "Permitida", "forbidden": "Proibida"}
+
+
+def kv_table(rows, head=("Item", "Regra")):
+    return ('<div class="tw"><table><thead><tr>' + "".join(f"<th>{esc(h)}</th>" for h in head) + "</tr></thead><tbody>"
+            + "".join("<tr>" + "".join(f"<td>{esc(x)}</td>" for x in r) + "</tr>" for r in rows) + "</tbody></table></div>")
+
+
 def chapter(n, cid, title, body, lead=""):
     return (f'<section id="{cid}" class="ch"><header><p class="eyebrow">Capítulo {n}</p><h2>{esc(title)}</h2>'
             f'{f"<p class={chr(34)}lead{chr(34)}>{esc(lead)}</p>" if lead else ""}</header>{body}</section>')
@@ -52,7 +62,7 @@ def css(b, flat, c):
 @media (prefers-color-scheme: dark){{:root:not([data-theme="light"]){{--bg:{t('Cume_70')};--surface:{t('Cume_60')};--fg:{t('Cume_10')};--muted:{t('Cume_30')};--line:{t('Cume_50')};--link:{t('Vale_30')};--soft:{t('Cume_60')};color-scheme:dark}}}}
 :root[data-theme="dark"]{{--bg:{t('Cume_70')};--surface:{t('Cume_60')};--fg:{t('Cume_10')};--muted:{t('Cume_30')};--line:{t('Cume_50')};--link:{t('Vale_30')};--soft:{t('Cume_60')};color-scheme:dark}}
 @media print{{.top,.toc,.skip,.btn,.copy{{display:none!important}} body{{font-size:12pt}} .shell{{display:block}} .ch{{break-before:page}} .hero{{break-after:page;-webkit-print-color-adjust:exact;print-color-adjust:exact}} *{{animation:none!important}} .ln{{stroke-dashoffset:0!important}}}}
-*{{box-sizing:border-box}}
+table.mx th,table.mx td{{padding:6px 8px;text-align:center;font-size:13px}} table.mx th[scope=row]{{text-align:left;white-space:nowrap}} .mxc svg{{display:block;margin:0 auto 4px;max-width:64px}} .mxs{{display:block;color:var(--muted)}} .st-preferred .mxs{{color:var(--accent);font-weight:600}} .st-forbidden{{opacity:.55}}\n*{{box-sizing:border-box}}
 body{{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:18px;line-height:1.6;padding-block:0}}
 a{{color:var(--link)}} a:focus-visible,button:focus-visible,summary:focus-visible{{outline:3px solid var(--accent);outline-offset:3px}}
 .skip{{position:absolute;left:-999px}} .skip:focus{{left:16px;top:16px;background:var(--surface);padding:8px 12px;z-index:50}}
@@ -183,7 +193,8 @@ def build(b, flat, fams, c, svgs, files, standalone=True):
         f'<tr><td>Descritor</td><td>{esc(ids["descriptor"])}</td><td>Obrigatório. Diz o que a empresa faz.</td></tr>'
         f'<tr><td>Tagline</td><td>{esc(ids["tagline"])}</td><td>Obrigatória. Carrega a essência e o posicionamento.</td></tr>'
         f'<tr><td>Slogan</td><td>Fora desta versão</td><td>{esc(ids["slogan"]["reason"])}</td></tr>'
-        f'<tr><td>Hookline</td><td>Fora desta versão</td><td>{esc(ids["hookline"]["reason"])}</td></tr></tbody></table></div>')
+        f'<tr><td>Hookline</td><td>Fora desta versão</td><td>{esc(ids["hookline"]["reason"])}</td></tr></tbody></table></div>'
+        + _name_in_text(b))
 
     # --- símbolo (construção)
     sy = b["symbol"]
@@ -209,6 +220,15 @@ def build(b, flat, fams, c, svgs, files, standalone=True):
         + ", ".join(f"{v:g}" for v in sy["vertices"]) + ".</figcaption></div>"
         + f'<div class="card"><h3>Estudo geométrico</h3>{p_(sy["geometric_study_note"])}</div>', lead=sy["name"])
 
+    # --- logotipo e assinaturas
+    wm, lk = b["wordmark"], b["lockups"]
+    lock_cards = ""
+    for kind in ("horizontal", "vertical"):
+        lock_cards += (f'<div class="card"><h3>Assinatura {kind}</h3>{p_(lk[kind]["when"])}<div class="fig">{A.modulation_svg(c, kind)}'
+                       f'<figcaption>u é a altura do pico mais alto nesta assinatura. {esc(A.modulation_notes(c, kind))}</figcaption></div></div>')
+    add("logotipo", "Logotipo e assinaturas", p_(wm["lettering"]) + f'<div class="fig">{A.wordmark_construction_svg(c)}<figcaption>Construção do nome. {esc(wm["construction_note"])}</figcaption></div>'
+        + '<h3>Assinaturas</h3><div class="grid g2" style="align-items:start">' + lock_cards + "</div>")
+
     # --- versões
     ver = ""
     for kind, label in (("Symbol", "Símbolo"), ("Horizontal", "Horizontal"), ("Vertical", "Vertical"), ("Seal", "Selo"), ("Wordmark", "Nome")):
@@ -216,7 +236,37 @@ def build(b, flat, fams, c, svgs, files, standalone=True):
                         for pol, cls, pol_l in (("positive", "pos", "positiva"), ("negative", "neg", "negativa"), ("mono", "mono", "uma cor")))
         ver += f'<h3>{label}</h3><div class="grid g3">{cells}</div>'
     add("versoes", "Versões", p_("Cada assinatura existe em três polaridades. Use a positiva sobre fundo claro, a negativa sobre fundo escuro e a de uma cor quando só houver uma tinta.") + ver
-        + f'<h3>Ícone do site</h3><div class="stage s-pos" style="max-width:200px">{uniq(svgs["Favicon"], "fav")}</div>')
+        + f'<h3>Ícone do site</h3><div class="stage s-pos" style="max-width:200px">{uniq(svgs["Favicon"], "fav")}</div>'
+        + "<h3>Quando usar cada versão</h3>" + kv_table([(LK_L[r["lockup"]], POL_L[r["polarity"]], r["use_when"]) for r in b["versions"]["matrix"]], ("Assinatura", "Versão", "Quando usar")))
+
+    # --- aplicação sobre fundos
+    us = b["usage"]
+    bgs = []
+    for r in us["background_matrix"]:
+        if r["background"] not in bgs:
+            bgs.append(r["background"])
+    cell = {(r["version"], r["background"]): r for r in us["background_matrix"]}
+    head = "<tr><th>Versão</th>" + "".join(f"<th>{esc(x)}</th>" for x in bgs) + "</tr>"
+    body_rows = ""
+    for k in ("symbol", "horizontal", "vertical"):
+        for pol in ("positive", "negative", "mono"):
+            vkey = f"{k}.{pol}"
+            tds = ""
+            for bg in bgs:
+                r = cell.get((vkey, bg))
+                if r is None:
+                    tds += '<td class="mxc"><span class="mxs">Não indicada</span></td>'
+                    continue
+                st = r["status"]
+                if bg == "foto":
+                    tds += f'<td class="mxc st-{st}"><span class="mxs">{ST_L[st]}</span></td>'
+                else:
+                    tds += f'<td class="mxc st-{st}">{A.matrix_cell(c, pol, flat[sig + "_" + bg])}<span class="mxs">{ST_L[st]}</span></td>'
+            body_rows += f'<tr><th scope="row">{LK_L[k]}, {POL_L[pol]}</th>{tds}</tr>'
+    photo = "".join(f"<li>{esc(LK_L[r['version'].split('.')[0]])}, {esc(POL_L[r['version'].split('.')[1]])}: {esc(r['note'])}</li>" for r in us["background_matrix"] if r["background"] == "foto")
+    add("fundos", "Aplicação sobre fundos", p_("A matriz diz qual versão vai sobre cada fundo. Preferida é a escolha padrão. Permitida passa de 3 para 1 de contraste. Proibida não deve ser usada.")
+        + f'<div class="tw"><table class="mx"><thead>{head}</thead><tbody>{body_rows}</tbody></table></div>'
+        + f"<h3>Sobre foto</h3><ul>{photo}</ul><div class=\"card\"><h3>Fundo que atrapalha</h3>{p_(us['conflicting_background_rule'])}</div>")
 
     # --- uso
     mu = sy["misuse"]
@@ -227,6 +277,10 @@ def build(b, flat, fams, c, svgs, files, standalone=True):
     add("uso", "Uso", '<div class="grid g2"><div class="card"><h3>Área de proteção</h3>' + p_(sy["protection_rule"]) + "</div>"
         '<div class="card"><h3>Tamanho mínimo</h3>' + min_txt
         + '<div style="width:' + str(px) + 'px;max-width:100%">' + sym_small + "</div>" + p_("Tamanho real em tela.") + "</div></div>"
+        '<h3>Tamanho mínimo e proteção por versão</h3>'
+        + p_("O mínimo de cada assinatura é o mínimo do símbolo multiplicado pela razão entre a largura do arquivo e a do símbolo. Abaixo do limite, use a versão de uma cor.")
+        + kv_table([(LK_L[r["lockup"]], f"{r['print_mm']} mm", f"{r['screen_px']} px", f"{next(x['peak_heights'] for x in us['protection_by_version'] if x['lockup'] == r['lockup']):g} pico") for r in us["min_size_by_version"]],
+                   ("Assinatura", "Impressão", "Tela", "Proteção")) + f'<div class="card"><h3>Texto ao lado da marca</h3>{p_(us["text_alignment"])}</div>'
         '<h3>Usos proibidos</h3><div class="grid g3">' + ms_fig + "</div>")
 
     # --- cor
@@ -243,7 +297,8 @@ def build(b, flat, fams, c, svgs, files, standalone=True):
         pic += '<div class="pi card">' + uniq(svgs[key], "pc" + pc["id"]) + "<div><b>" + esc(pc["name"]) + "</b><br>" + esc(pc["use"]) + "</div></div>"
     add("elementos", "Elementos gráficos", p_(el["origin_rule"]) + f'<div class="grid g2"><figure class="fig">{uniq(svgs["Pattern-Light"], "pl")}<figcaption>Padrão de linhas de nível, claro.</figcaption></figure>'
         f'<figure class="fig">{uniq(svgs["Pattern-Dark"], "pd")}<figcaption>Padrão de linhas de nível, escuro.</figcaption></figure></div>'
-        f'<h3>Divisor</h3><div class="fig">{uniq(svgs["Divider"], "dv")}</div><h3>Pictogramas</h3><div class="grid g3">{pic}</div>')
+        f'<h3>Divisor</h3><div class="fig">{uniq(svgs["Divider"], "dv")}</div><h3>Pictogramas</h3><div class="grid g3">{pic}</div>'
+        + _support(b))
 
     # --- fotografia
     ph = b["photography"]
@@ -275,7 +330,9 @@ def build(b, flat, fams, c, svgs, files, standalone=True):
     for ap in b["applications"]:
         figs = "".join(f'<figure class="fig">{uniq(svgs[n], "ap" + n[-6:].replace("-", ""))}</figure>' for n, _ in A.APP_FILES[ap["id"]])
         apps += (f'<h3>{esc(ap["name"])}</h3><div class="grid g2" style="align-items:start"><div class="grid">{figs}</div><div class="card">{p_(ap["spec"])}<ul>'
-                 + "".join(f"<li>{esc(r)}</li>" for r in ap["rules"]) + "</ul></div></div>")
+                 + "".join(f"<li>{esc(r)}</li>" for r in ap["rules"]) + "</ul></div></div>"
+                 + kv_table([("Formato", ap["production"]["format"]), ("Cores", ap["production"]["colour_mode"]), ("Processo", ap["production"]["process"]),
+                             ("Material", ap["production"]["material"]), ("Acabamento", ap["production"]["finishing"]), ("Escala", ap["production"]["scale"])], ("Ficha técnica", "Valor")))
     add("aplicacoes", "Aplicações", p_("Cada aplicação mostra a regra aplicada. As imagens são ilustrativas e não substituem a prova de impressão.") + apps)
 
     # --- tokens e arquivos
@@ -286,10 +343,17 @@ def build(b, flat, fams, c, svgs, files, standalone=True):
         + p_(f"Nome dos arquivos: {sig}_Nome_V01_DDMMAA.extensão, com versão de dois dígitos e data em dia, mês e ano.")
         + f'<h3>Conteúdo do pacote</h3><div class="tw"><table><thead><tr><th>Arquivo</th><th>Função</th></tr></thead><tbody>{flist}</tbody></table></div>')
 
+    # --- entrega
+    dl = b["delivery"]
+    add("entrega", "Entrega e arquivos", p_("Reproduza a marca pelos arquivos do pacote e nunca a redesenhe a partir de uma impressão.")
+        + kv_table([("Formatos", ", ".join(dl["formats"])), ("Sistemas de cor", ", ".join(dl["colour_systems"])), ("Texto em curvas", dl["outlined_and_editable"]),
+                    ("Área de proteção", dl["protection_marker"])], ("Item", "Situação")))
+
     # --- governança, faq, histórico
     g = b["governance"]
     add("governanca", "Governança", f'<dl class="defs"><div class="card"><dt>Quem aprova</dt><dd>{esc(g["owner"])}</dd></div><div class="card"><dt>Fluxo</dt><dd>{esc(g["approval_flow"])}</dd></div>'
-        f'<div class="card"><dt>Revisão</dt><dd>{esc(g["review_cycle"])}</dd></div><div class="card"><dt>Contato</dt><dd>{esc(g["contact"])}</dd></div></dl>')
+        f'<div class="card"><dt>Revisão</dt><dd>{esc(g["review_cycle"])}</dd></div><div class="card"><dt>Contato</dt><dd>{esc(g["contact"])}</dd></div>'
+        f'<div class="card"><dt>Escopo</dt><dd>{esc(g["scope"])}</dd></div><div class="card"><dt>Propriedade</dt><dd>{esc(g["ip_notice"])}</dd></div></dl>')
     add("faq", "Perguntas frequentes", "".join(f"<details><summary>{esc(x['q'])}</summary>{p_(x['a'])}</details>" for x in b["faq"]))
     cl = "".join(f"<tr><td>{esc(x['version'])}</td><td>{esc(x['date'])}</td><td>{esc(x['change'])}</td><td>{esc(x['approved_by'])}</td></tr>" for x in b["changelog"])
     add("historico", "Histórico de versões", f'<div class="tw"><table><thead><tr><th>Versão</th><th>Data</th><th>Mudança</th><th>Aprovada por</th></tr></thead><tbody>{cl}</tbody></table></div>')
@@ -346,6 +410,19 @@ def _misuse_figs(c, misuse):
     return "".join(out)
 
 
+def _name_in_text(b):
+    nt = b["voice"]["name_in_text"]
+    return (f'<div class="card"><h3>Como escrever o nome em texto</h3>{p_("Classe: " + nt["class"] + ".")}{p_(nt["case"])}<ul class="dont">'
+            + "".join(f"<li>{esc(x)}</li>" for x in nt["never"]) + "</ul></div>")
+
+
+def _support(b):
+    sr, sg = b["elements"]["support_rules"], b["elements"]["symbol_as_graphic"]
+    return ("<h3>Regras de apoio gráfico</h3>" + kv_table([("Cores permitidas", ", ".join(sr["colours_allowed"])), ("Como máscara de foto", sr["as_mask"]),
+            ("Como gabarito de corte", sr["as_cut_template"]), ("Exceção à área de proteção", sr["protection_exception"])], ("Regra", "Valor"))
+            + "<h3>Símbolo como grafismo</h3>" + kv_table([("Posições", ", ".join(sg["positions"])), ("Cores", ", ".join(sg["colour_options"])), ("Onde", sg["where"])], ("Regra", "Valor")))
+
+
 def _colour(b, flat, fams, c):
     t = c.t
     col = b["colour"]
@@ -379,7 +456,8 @@ def _colour(b, flat, fams, c):
     gd = col["gradient"]
     out.append(f'<h3>Pares de contraste</h3><div class="tw"><table><thead><tr><th>Texto</th><th>Fundo</th><th>Razão</th><th>Nível declarado</th><th>Resultado</th></tr></thead><tbody>{rows}</tbody></table></div>'
                f'<h3>Gradiente</h3><div class="grad" role="img" aria-label="Gradiente de {gd["from"]} para {gd["to"]} a {gd["angle"]} graus" style="background:linear-gradient({gd["angle"]}deg,{flat[gd["from"]]},{flat[gd["to"]]})"></div>'
-               f'{p_(gd["rule"])}<div class="card"><h3>Impressão</h3>{p_(col["print_note"])}{p_("Tons de marrom, dourado e folha metálica ficam fora da marca.")}</div>')
+               f'{p_(gd["rule"])}<div class="card"><h3>Impressão</h3>{p_(col["print_note"])}{p_("Tons de marrom, dourado e folha metálica ficam fora da marca.")}{p_(col["large_area_rule"])}</div>'
+               + "<h3>Cor especial</h3>" + kv_table([(r["family"], r["system"], r["code"] if r["status"] == "matched" else "pendente de prova na gráfica") for r in col["spot_refs"]], ("Família", "Sistema", "Código")))
     return "".join(out)
 
 
@@ -400,7 +478,7 @@ def _type(b, c):
         sample = ty["specimen_text"] if s["size_px"] >= 28 else "Chocolate de altitude em lotes pequenos."
         rows += (f'<tr><td>{esc(label)}</td><td>{s["size_px"]} px, {s["line_height"]}, {s["weight"]}</td><td><div style="font:{s["weight"]} min({s["size_px"]}px,7vw)/{s["line_height"]} {esc(fam)};letter-spacing:{s["tracking"]}">{esc(sample)}</div></td></tr>')
     return (f'<div class="grid g3">{cards}</div><h3>Escala</h3><div class="tw"><table><thead><tr><th>Nível</th><th>Tamanho, entrelinha, peso</th><th>Amostra</th></tr></thead><tbody>{rows}</tbody></table></div>'
-            + p_(ty["note"]))
+            + p_(ty["note"]) + "<h3>Onde cada fonte não entra</h3>" + kv_table([(r["font_role"], r["rule"]) for r in ty["restrictions"]], ("Papel", "Restrição")))
 
 
 if __name__ == "__main__":

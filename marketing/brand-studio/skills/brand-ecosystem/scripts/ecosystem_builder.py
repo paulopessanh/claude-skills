@@ -95,8 +95,8 @@ def readme(b, files):
 def build(src_path, out, state=None, fragment=None):
     with open(src_path, encoding="utf-8") as fh:
         b = json.load(fh)
-    if b.get("schema") != "brand-source.v1":
-        print("error: schema must be brand-source.v1", file=sys.stderr)
+    if b.get("schema") not in ("brand-source.v1", "brand-source.v2"):
+        print("error: schema must be brand-source.v1 or brand-source.v2", file=sys.stderr)
         return 1
     findings, present = SC.check(b, state)
     blocks = [f for f in findings if f[0] == "BLOCK"]

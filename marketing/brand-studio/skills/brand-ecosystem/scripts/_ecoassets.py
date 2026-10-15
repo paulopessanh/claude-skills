@@ -17,6 +17,10 @@ from _ecolib import ridge_points, polyline, polyline_length
 
 POL = {"positive": ("Cume_50", "Vale_50", "Neblina"), "negative": ("Cume_10", "Vale_30", "Cume_70"), "mono": ("Tinta", "Tinta", "Branco")}
 K_WIDTH = {"headline": 0.47, "body": 0.54, "mono": 0.62}
+# Lockup geometry. One set of numbers shared by the drawing, the modulation diagrams and the audit, so the manual cannot
+# state a proportion the file does not have. Units are those of the symbol: the tallest peak is 100.
+LH = {"gap": 40, "name": 100, "desc": 24, "desc_ls": 3.2, "rule": 0.45}
+LV = {"scale": 1.3, "name": 90, "desc": 22, "desc_ls": 3.0, "rule": 0.45, "below": 22}
 
 
 def esc(s):
@@ -92,43 +96,135 @@ def wordmark_svg(c, pol):
 def lockup_h(c, pol):
     """Symbol, then the same line continues as a horizon: the name sits on it, the descriptor hangs under it."""
     ink, acc, bg = POL[pol]
-    p, gap, size = c.sw, 40, 100
+    p, gap, size = c.sw, LH["gap"], LH["name"]
     tl = c.est(c.name, size, "headline")
-    d_size = 24
-    d_tl = c.est(c.desc, d_size, "body", 3.2)
+    d_size = LH["desc"]
+    d_tl = c.est(c.desc, d_size, "body", LH["desc_ls"])
     ox, oy = p, p + 10
     base = oy + c.H                      # baseline of the ridge and of the horizon rule
     tx = ox + c.W + gap
     x_end = tx + max(tl, d_tl) + 4
     rule = (f'<line x1="{ox + c.W:.2f}" y1="{base:.2f}" x2="{x_end:.2f}" y2="{base:.2f}" stroke="{c.t(ink)}" '
-            f'stroke-width="{c.sw * 0.45:.2f}" stroke-linecap="round"/>')
+            f'stroke-width="{c.sw * LH["rule"]:.2f}" stroke-linecap="round"/>')
     body = (sym(c, c.t(ink), ox, oy) + rule + wordmark_g(c, pol, size, tx, base - 16)
-            + c.text(tx + 4, base + 38, c.desc, d_size, c.t(acc if pol != "mono" else ink), c.t(bg), "body", 600, ls=3.2, tl=d_tl, upper=True, logo=True))
+            + c.text(tx + 4, base + 38, c.desc, d_size, c.t(acc if pol != "mono" else ink), c.t(bg), "body", 600, ls=LH["desc_ls"], tl=d_tl, upper=True, logo=True))
     return body, x_end + p, base + 38 + 14
 
 
 def lockup_v(c, pol):
     ink, acc, bg = POL[pol]
-    p, size = c.sw, 90
+    p, size = c.sw, LV["name"]
     tl = c.est(c.name, size, "headline")
-    d_size = 22
-    d_tl = c.est(c.desc, d_size, "body", 3.0)
-    sc = 1.3
+    d_size = LV["desc"]
+    d_tl = c.est(c.desc, d_size, "body", LV["desc_ls"])
+    sc = LV["scale"]
     w = max(tl, c.W * sc) + 2 * p + 40
     cx = w / 2
     ox, oy = cx - c.W * sc / 2, p + 10
     base = oy + c.H * sc
     rule = (f'<line x1="{cx - tl / 2:.2f}" y1="{base:.2f}" x2="{cx + tl / 2:.2f}" y2="{base:.2f}" stroke="{c.t(ink)}" '
-            f'stroke-width="{c.sw * 0.45 * sc:.2f}" stroke-linecap="round"/>')
-    wy = base + 22 + size * 0.78
+            f'stroke-width="{c.sw * LV["rule"] * sc:.2f}" stroke-linecap="round"/>')
+    wy = base + LV["below"] + size * 0.78
     body = (rule + sym(c, c.t(ink), ox, oy, sc) + wordmark_g(c, pol, size, cx, wy, "middle")
-            + c.text(cx, wy + 44, c.desc, d_size, c.t(acc if pol != "mono" else ink), c.t(bg), "body", 600, "middle", ls=3.0, tl=d_tl, upper=True, logo=True))
+            + c.text(cx, wy + 44, c.desc, d_size, c.t(acc if pol != "mono" else ink), c.t(bg), "body", 600, "middle", ls=LV["desc_ls"], tl=d_tl, upper=True, logo=True))
     return body, w, wy + 44 + 14
 
 
 def lockup_svg(c, pol, kind):
     body, w, h = (lockup_h if kind == "horizontal" else lockup_v)(c, pol)
     return svg(round(w, 1), round(h, 1), body, f"{c.name}, assinatura {kind}, versão {pol}")
+
+
+def ink_of(c, pol):
+    """Token name (without the sigla) of the colour the mark is drawn in, for a polarity."""
+    return POL[pol][0]
+
+
+def lockup_dims(c, kind, pol="positive"):
+    """Width and height of the lockup file, in symbol units (tallest peak = 100 in the symbol file)."""
+    _, w, h = (lockup_h if kind == "horizontal" else lockup_v)(c, pol)
+    return w, h
+
+
+def symbol_dims(c):
+    _, _, w, h = sym_box(c)
+    return w, h
+
+
+def width_ratio(c, kind):
+    """How many times wider the lockup file is than the symbol file. Minimum sizes scale with it."""
+    if kind == "symbol":
+        return 1.0
+    return lockup_dims(c, kind)[0] / symbol_dims(c)[0]
+
+
+def modulation_svg(c, kind):
+    """The lockup with its measures: u is the tallest peak as drawn in that lockup. Protection area is 1u on every side."""
+    pol = "positive"
+    ink = c.t(POL[pol][0])
+    body, w, h = (lockup_h if kind == "horizontal" else lockup_v)(c, pol)
+    p = c.sw
+    if kind == "horizontal":
+        u = c.H
+        ox, oy = p, p + 10
+        x_sym_end = ox + c.W
+        tx = x_sym_end + LH["gap"]
+        marks = [("u", ox - 14, oy, ox - 14, oy + u)]
+        gap_mark = (f"{LH['gap'] / u:g}u", x_sym_end, tx, oy + u * 0.55)
+    else:
+        u = c.H * LV["scale"]
+        cx = w / 2
+        oy = p + 10
+        marks = [("u", cx - c.W * LV["scale"] / 2 - 14, oy, cx - c.W * LV["scale"] / 2 - 14, oy + u)]
+    lab = f'font-size="26" fill="var(--fg)" font-family="{esc(c.fam["mono"])}"'
+    g = ""
+    for t_, x1, y1, x2, y2 in marks:
+        g += (f'<line x1="{x1:.1f}" y1="{y1:.1f}" x2="{x2:.1f}" y2="{y2:.1f}" stroke="var(--fg)" stroke-width="1.2"/>'
+              f'<text x="{(x1 + x2) / 2 + (8 if x1 == x2 else 0):.1f}" y="{(y1 + y2) / 2 + (4 if x1 == x2 else -6):.1f}" {lab}>{esc(t_)}</text>')
+    if kind == "horizontal":
+        t_, gx1, gx2, gy = gap_mark
+        g += (f'<line x1="{gx1:.1f}" y1="{gy:.1f}" x2="{gx2:.1f}" y2="{gy:.1f}" stroke="var(--fg)" stroke-width="1.2"/>'
+              f'<text x="{gx1 - 62:.1f}" y="{gy - 8:.1f}" {lab}>{esc(t_)}</text>')
+    pad = u
+    vb = f"{-pad - 20:.0f} {-pad - 20:.0f} {w + 2 * pad + 40:.0f} {h + 2 * pad + 40:.0f}"
+    prot = (f'<rect x="{-pad:.1f}" y="{-pad:.1f}" width="{w + 2 * pad:.1f}" height="{h + 2 * pad:.1f}" fill="none" stroke="var(--muted)" stroke-width="1.4" stroke-dasharray="6 6"/>'
+            f'<rect x="0" y="0" width="{w:.1f}" height="{h:.1f}" fill="none" stroke="var(--line)" stroke-width="1"/>')
+    return (f'<svg viewBox="{vb}" role="img" aria-label="Modulação da assinatura {kind}: u é a altura do pico, a área de proteção é 1u em todos os lados">'
+            f'{prot}{body}{g}</svg>')
+
+
+def modulation_notes(c, kind):
+    """The measures of a lockup in fractions of u, as text for the caption."""
+    if kind == "horizontal":
+        u = c.H
+        return (f"Símbolo e nome a {LH['gap'] / u:g}u. Nome {LH['name'] / u:g}u, descritor {LH['desc'] / u:.2f}u, linha {c.sw * LH['rule'] / u:.2f}u. Proteção 1u em todos os lados.")
+    u = c.H * LV["scale"]
+    return (f"Nome {LV['name'] / u:.2f}u, descritor {LV['desc'] / u:.2f}u, linha {c.sw * LV['rule'] * LV['scale'] / u:.2f}u. Proteção 1u em todos os lados.")
+
+
+def wordmark_construction_svg(c):
+    """The name with baseline, x-height and cap-height guides from the ratios the source declares."""
+    wm = c.b["wordmark"]
+    size, base = 100, 150
+    w = c.est(c.name, size, "headline")
+    ink = c.t(POL["positive"][0])
+    cap, xh = wm["cap_height_ratio"], wm["x_height_ratio"]
+    lab = f'font-size="12" fill="var(--muted)" font-family="{esc(c.fam["mono"])}"'
+    guides = ""
+    for yv, name in ((base, "linha de base"), (base - xh * size, f"altura do x {xh:g}"), (base - cap * size, f"altura da caixa alta {cap:g}")):
+        guides += (f'<line x1="0" y1="{yv:.1f}" x2="{w + 30:.1f}" y2="{yv:.1f}" stroke="var(--muted)" stroke-width="1" stroke-dasharray="4 5"/>'
+                   f'<text x="{w + 34:.1f}" y="{yv + 4:.1f}" {lab}>{esc(name)}</text>')
+    txt = c.text(10, base, c.name, size, ink, c.t(POL["positive"][2]), "headline", 500, tl=w, logo=True)
+    return (f'<svg viewBox="0 0 {w + 230:.0f} {base + 40}" role="img" aria-label="Construção do nome {esc(c.name)}: linha de base, altura do x e altura da caixa alta">'
+            f'{guides}{txt}</svg>')
+
+
+def matrix_cell(c, pol, bg_hex, w=64, h=40):
+    """A small sample of the symbol in the ink of a polarity on a background."""
+    sc = (w - 20) / c.W
+    ink = c.t(POL[pol][0])
+    return (f'<svg viewBox="0 0 {w} {h}" width="{w}" height="{h}" role="img" aria-label="Amostra de símbolo {pol}">'
+            f'<rect width="{w}" height="{h}" rx="6" fill="{bg_hex}"/>' + sym(c, ink, 10, (h - c.H * sc) / 2, sc) + "</svg>")
 
 
 def seal_g(c, pol, uid="a", size=300):

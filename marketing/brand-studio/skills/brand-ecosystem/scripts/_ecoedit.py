@@ -52,7 +52,7 @@ var EDITABLE=['historia','proposito','conceito','personalidade','nome','fotograf
 var LOCKS={petreos:'Pétreos e vetados são decisões travadas com o cliente. Reabra a decisão no projeto, não aqui.',
  simbolo:'Este capítulo nasce da geometria da fonte. Para mudar o símbolo, mude a fonte e gere de novo.',versoes:'Gerado da fonte.',uso:'Gerado da fonte (medidas e erros de uso).',
  cor:'Cores, passos e contrastes vêm da fonte. Para mudar uma cor, mude a fonte e gere de novo, assim o logo e o manual continuam iguais.',
- tipografia:'Tipos e escala vêm da fonte.',elementos:'Gerado da fonte.',movimento:'Tempos e curvas vêm da fonte.',aplicacoes:'Gerado da fonte.',tokens:'Tokens e arquivos vêm da fonte.',historico:'Histórico gerado da fonte.'};
+ tipografia:'Tipos e escala vêm da fonte.',elementos:'Gerado da fonte.',movimento:'Tempos e curvas vêm da fonte.',aplicacoes:'Gerado da fonte.',tokens:'Tokens e arquivos vêm da fonte.',historico:'Histórico gerado da fonte.',logotipo:'Construção e medidas vêm da fonte e do arquivo da assinatura.',fundos:'A matriz vem da fonte e passa por checagem de contraste. Para mudar, mude a fonte e gere de novo.',entrega:'Formatos e sistemas de cor vêm da fonte e do pacote.'};
 var SEL='p,dd,h3,li,td,summary,.quote,.lead';
 var FNAME='__FNAME__';
 var S={edits:{},saved:{},orphans:0,editing:false,ns:null,dl:null,can:false,F:[],draftKey:'bk-draft:'+FNAME};

@@ -18,6 +18,14 @@ Refusals (BLOCK, exit 4):
   BAD_SYMBOL       the symbol vertices are not a closed alternating ridge (start and end at 0, alternate up and down)
   UNKNOWN_APP      an application id the builder cannot draw (bag, card, social, site, box, letterhead)
   TOO_FEW          fewer than the minimum items: 3 pétreos, 3 voice traits, 3 manifesto lines, 3 fonts roles, 4 applications, 6 misuse cases
+Schema v2 adds the sections an identity manual needs beyond the v1 layers, each with its own refusal (a v1 source is refused as SOURCE_V1):
+  MISSING_SECTION  scope and ip_notice (governance), wordmark, lockups, versions.matrix, usage (min sizes, protection, background matrix,
+                   conflicting-background rule), typography.restrictions, colour.spot_refs, voice.name_in_text, support_rules, delivery
+  MIN_SIZE_BELOW_GEOMETRY  a lockup's declared minimum is smaller than the symbol minimum scaled by the file's width ratio
+  BAD_MATRIX       a background matrix row names an unknown version, background or status, or marks a version preferred or allowed on a
+                   background where the mark's ink has less than 3:1 contrast, or a version has no preferred background
+  BAD_REFERENCE    (v2) a restriction names a font role that does not exist; a spot reference names a family that does not exist or is
+                   marked matched with no code
 Warnings (exit 2):
   NOT_LABELLED     the source is marked fictional but has no _note, or is real but carries a _note
   NO_PROOF         a messaging territory has no proof; a pétreo has no visual translation
@@ -64,6 +72,115 @@ def strings(o):
     elif isinstance(o, list):
         for v in o:
             yield from strings(v)
+
+
+LOCKUPS = ("symbol", "horizontal", "vertical")
+POLS = ("positive", "negative", "mono")
+STATUSES = ("preferred", "allowed", "forbidden")
+PROD_KEYS = ("format", "colour_mode", "process", "material", "finishing", "scale")
+
+
+def check_v2(b, add, tokens):
+    import math
+    from _ecolib import tokens as mk_tokens, contrast as ctr
+    import _ecoassets as A
+    ident = b.get("identity", {})
+    sig = ident.get("sigla", "")
+    g = b.get("governance", {})
+    for k in ("scope", "ip_notice"):
+        if not str(g.get(k, "")).strip():
+            add("BLOCK", "MISSING_SECTION", f"governance.{k}")
+    wm = b.get("wordmark", {})
+    cap, xh = wm.get("cap_height_ratio", 0), wm.get("x_height_ratio", 0)
+    if not str(wm.get("lettering", "")).strip() or not (0.5 <= cap <= 0.95 and 0.25 <= xh < cap):
+        add("BLOCK", "MISSING_SECTION", "wordmark needs lettering, cap_height_ratio (0.5 to 0.95) and x_height_ratio (0.25 up to the cap height)")
+    lk = b.get("lockups", {})
+    for k in ("horizontal", "vertical"):
+        if not str(lk.get(k, {}).get("when", "")).strip():
+            add("BLOCK", "MISSING_SECTION", f"lockups.{k}.when")
+    mx = b.get("versions", {}).get("matrix", [])
+    seen = set()
+    if len(mx) < 6:
+        add("BLOCK", "TOO_FEW", "versions.matrix needs 6 or more rows (lockup, polarity, use_when)")
+    for r in mx:
+        key = (r.get("lockup"), r.get("polarity"))
+        if r.get("lockup") not in LOCKUPS or r.get("polarity") not in POLS or not str(r.get("use_when", "")).strip() or key in seen:
+            add("BLOCK", "BAD_MATRIX", f"versions.matrix row {key}: unknown, repeated or without use_when")
+        seen.add(key)
+    us = b.get("usage", {})
+    try:
+        flat, fams = mk_tokens(b)
+        c = A.Ctx(b, flat, fams)
+    except (KeyError, ValueError, TypeError):
+        return
+    ms = b.get("symbol", {}).get("min_size", {})
+    rows = {r.get("lockup"): r for r in us.get("min_size_by_version", [])}
+    for k in LOCKUPS:
+        r = rows.get(k)
+        if not r or not r.get("print_mm") or not r.get("screen_px"):
+            add("BLOCK", "MISSING_SECTION", f"usage.min_size_by_version for {k}")
+            continue
+        ratio = A.width_ratio(c, k)
+        floor_mm, floor_px = math.ceil(ms.get("print_mm", 0) * ratio - 1e-9), math.ceil(ms.get("screen_px", 0) * ratio - 1e-9)
+        if r["print_mm"] < floor_mm or r["screen_px"] < floor_px:
+            add("BLOCK", "MIN_SIZE_BELOW_GEOMETRY", f"{k}: {r['print_mm']} mm and {r['screen_px']} px, but the symbol minimum scaled by the file width is {floor_mm} mm and {floor_px} px")
+    pr = {r.get("lockup"): r.get("peak_heights") for r in us.get("protection_by_version", [])}
+    if any(k not in pr or not isinstance(pr[k], (int, float)) or not 0.5 <= pr[k] <= 2 for k in LOCKUPS):
+        add("BLOCK", "MISSING_SECTION", "usage.protection_by_version: every lockup needs peak_heights between 0.5 and 2")
+    elif len(set(pr.values())) > 1:
+        add("WARN", "NO_PROOF", "protection area differs between versions: a single fraction for all versions is easier to police")
+    for k in ("conflicting_background_rule", "text_alignment"):
+        if not str(us.get(k, "")).strip():
+            add("BLOCK", "MISSING_SECTION", f"usage.{k}")
+    bgs = {r.get("background") for r in us.get("background_matrix", [])}
+    best = {f"{k}.{p}": 0 for k in LOCKUPS for p in POLS}
+    for r in us.get("background_matrix", []):
+        v, bg, st = r.get("version", ""), r.get("background"), r.get("status")
+        k, _, p = v.partition(".")
+        if v not in best or st not in STATUSES or not bg:
+            add("BLOCK", "BAD_MATRIX", f"row {v!r} on {bg!r}: unknown version or status")
+            continue
+        if bg == "foto":
+            if not r.get("note"):
+                add("BLOCK", "BAD_MATRIX", f"{v} on foto needs a note saying when it holds")
+            continue
+        if f"{sig}_{bg}" not in tokens:
+            add("BLOCK", "BAD_MATRIX", f"{v} on {bg}: not a token of the brand")
+            continue
+        if st != "forbidden":
+            ratio = ctr(flat[f"{sig}_{A.ink_of(c, p)}"], flat[f"{sig}_{bg}"])
+            if ratio < 3.0:
+                add("BLOCK", "BAD_MATRIX", f"{v} on {bg} is {st} but the ink has {ratio:.2f}:1 contrast (needs 3:1)")
+        if st == "preferred":
+            best[v] += 1
+    if len(bgs - {"foto"}) < 4 or any(n == 0 for n in best.values()):
+        add("BLOCK", "BAD_MATRIX", "the matrix needs 4 or more backgrounds and a preferred background for every version" + (": none for " + ", ".join(k for k, n in best.items() if n == 0) if any(n == 0 for n in best.values()) else ""))
+    roles = {f.get("role") for f in b.get("typography", {}).get("fonts", [])}
+    rs = b.get("typography", {}).get("restrictions", [])
+    if len(rs) < 2 or any(r.get("font_role") not in roles or not r.get("rule") for r in rs):
+        add("BLOCK", "BAD_REFERENCE", "typography.restrictions: 2 or more, each with a font role that exists and a rule")
+    fam_names = {f.get("universe_name") for f in b.get("colour", {}).get("families", [])}
+    sp = b.get("colour", {}).get("spot_refs", [])
+    if not sp or any(r.get("family") not in fam_names or (r.get("status") == "matched" and not r.get("code")) or r.get("status") not in ("matched", "pending_match") for r in sp):
+        add("BLOCK", "BAD_REFERENCE", "colour.spot_refs: one per family, status matched (with a code) or pending_match")
+    if not str(b.get("colour", {}).get("large_area_rule", "")).strip():
+        add("BLOCK", "MISSING_SECTION", "colour.large_area_rule")
+    nt = b.get("voice", {}).get("name_in_text", {})
+    if ident.get("name", "") not in str(nt.get("case", "")) or len(nt.get("never", [])) < 2 or not nt.get("class"):
+        add("BLOCK", "MISSING_SECTION", "voice.name_in_text needs class, a case rule that writes the name as it must appear, and 2 or more never rules")
+    sr = b.get("elements", {}).get("support_rules", {})
+    if not sr.get("as_mask") or not sr.get("as_cut_template") or not sr.get("colours_allowed") or any(f"{sig}_{t}" not in tokens for t in sr.get("colours_allowed", [])):
+        add("BLOCK", "BAD_REFERENCE", "elements.support_rules needs as_mask, as_cut_template and colours_allowed that are tokens")
+    sg = b.get("elements", {}).get("symbol_as_graphic", {})
+    if len(sg.get("positions", [])) < 2 or len(sg.get("colour_options", [])) < 2 or not sg.get("where"):
+        add("BLOCK", "MISSING_SECTION", "elements.symbol_as_graphic needs 2 or more positions, 2 or more colour options and where")
+    for a in b.get("applications", []):
+        pd = a.get("production", {})
+        if any(not str(pd.get(k, "")).strip() for k in PROD_KEYS):
+            add("BLOCK", "MISSING_SECTION", f"application {a.get('id')}: production needs {', '.join(PROD_KEYS)}")
+    dl = b.get("delivery", {})
+    if not dl.get("formats") or not dl.get("colour_systems") or not dl.get("outlined_and_editable"):
+        add("BLOCK", "MISSING_SECTION", "delivery needs formats, colour_systems and outlined_and_editable")
 
 
 def check(b, state_path=None):
@@ -197,6 +314,10 @@ def check(b, state_path=None):
         if PLACEHOLDER.search(s):
             add("BLOCK", "PLACEHOLDER", f"unfinished marker in: {s[:70]}")
             break
+    if b.get("schema") == "brand-source.v2":
+        check_v2(b, add, tokens)
+    else:
+        add("BLOCK", "SOURCE_V1", "brand-source.v1 has no scope, wordmark, lockups, version and background matrices, per-version sizes, production sheets or delivery: upgrade to brand-source.v2")
     if b.get("fictional") and not b.get("_note"):
         add("WARN", "NOT_LABELLED", "marked fictional but carries no _note saying so")
     if not b.get("fictional") and b.get("_note"):
@@ -222,8 +343,8 @@ def main():
     except (OSError, ValueError) as exc:
         print(f"error: {exc}", file=sys.stderr)
         sys.exit(1)
-    if b.get("schema") != "brand-source.v1":
-        print("error: schema must be brand-source.v1", file=sys.stderr)
+    if b.get("schema") not in ("brand-source.v1", "brand-source.v2"):
+        print("error: schema must be brand-source.v1 or brand-source.v2", file=sys.stderr)
         sys.exit(1)
     f, present = check(b, a.state)
     if len(present) < len(SECTIONS) / 2:

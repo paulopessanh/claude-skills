@@ -17,9 +17,9 @@ Reply in the user's language.
 
 ## Workflow
 
-1. **Gate the source.** Fill `brand-source.v1` ([`assets/example_serra_fina_brand.json`](assets/example_serra_fina_brand.json)):
+1. **Gate the source.** Fill `brand-source.v2` ([`assets/example_serra_fina_brand.json`](assets/example_serra_fina_brand.json)):
    story, purpose, pétreos, concept, personality, name, symbol geometry, colour families, type, elements, voice,
-   applications, governance. Every number comes from approved steps 1 to 8.
+   applications, governance, plus the manual sections: scope, wordmark, lockups, version and background matrices, minimum sizes and protection by version, name in text, production sheets and delivery. Every number comes from approved steps 1 to 8.
 
 ```bash
 python3 scripts/ecosystem_source_check.py --input brand.json --state brand-state.json
@@ -43,7 +43,7 @@ python3 scripts/ecosystem_auditor.py --dir ./pkg
 ```
 
    Exit 0 clean, 2 caveats, 4 blocked. It checks palette closure, vetoed hues, font closure, text contrast, anchors,
-   accessibility, external resources and that the manual repeats the source numbers.
+   accessibility, external resources and that the manual repeats the source numbers. It recomputes from the logo files themselves the contrast of every version on every background the matrix allows, the minimum size of each lockup and the delivery formats.
 
 4. **Edit and share.** The Artifact version of the brandbook lets writers edit narrative text (history, purpose, concept,
    personality, name, photography, voice, FAQ, governance), save it to `content.json`, and download a clean HTML for the

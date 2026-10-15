@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added — marketing/brand-studio step 9: brand-ecosystem
 
+- Schema v2 closes the 13 essential gaps found by `manual_coverage_check.py` against a reference manual: 18 of 18 essential needs covered, 3 new chapters, new refusals and audit checks.
 - Sixth skill and tenth step: builds the complete brand (story, concept, symbol, colour, type, voice, applications, tokens, HTML manual) from one `brand-source.v1` file, then audits the package against its own source. Agent `cs-brand-ecosystem-architect`, command `/cs:brand-ecosystem`, 2 references. Counters: skills 395, tools 748, refs 858, agents 124, commands 156.
 
 ### Added — marketing/brand-studio: the forward creative cycle, interlinked with brand-reverse

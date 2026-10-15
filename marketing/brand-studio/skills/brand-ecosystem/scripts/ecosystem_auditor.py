@@ -43,8 +43,10 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 from _ecolib import tokens, contrast, hex_rgb, oklch, hue_gap, NAME_RE, VETO_TOL, CHROMA_MIN   # noqa: E402
 
-CHAPTERS = ["historia", "proposito", "petreos", "conceito", "personalidade", "nome", "simbolo", "versoes", "uso", "cor", "tipografia",
-            "elementos", "fotografia", "movimento", "voz", "aplicacoes", "tokens", "governanca", "faq", "historico"]
+CHAPTERS = ["historia", "proposito", "petreos", "conceito", "personalidade", "nome", "simbolo", "logotipo", "versoes", "fundos", "uso", "cor",
+            "tipografia", "elementos", "fotografia", "movimento", "voz", "aplicacoes", "tokens", "entrega", "governanca", "faq", "historico"]
+POLF = {"positive": "Positive", "negative": "Negative", "mono": "Mono"}
+KINDF = {"symbol": "Symbol", "horizontal": "Horizontal", "vertical": "Vertical"}
 GENERIC = {"serif", "sans-serif", "monospace", "cursive", "inherit", "system-ui"}
 HEXC = re.compile(r"#(?:[0-9a-fA-F]{6}|[0-9a-fA-F]{3})(?![0-9a-zA-Z_-])")
 RGBC = re.compile(r"rgba?\([^)]*\)|hsla?\([^)]*\)", re.I)
@@ -70,6 +72,7 @@ class Page(HTMLParser):
         self.ids, self.hrefs, self.text, self.h1, self.svgs, self.externals = [], [], [], 0, [], []
         self.styles, self.attrs_colour, self.texts_svg, self.lang = [], [], [], None
         self.skip, self.in_style, self.stack = 0, False, []
+        self.svg_depth, self.text_plain = 0, []
 
     def handle_starttag(self, tag, attrs):
         a = dict(attrs)
@@ -82,6 +85,8 @@ class Page(HTMLParser):
             self.h1 += 1
         if tag in ("script", "style", "pre", "code"):
             self.skip += 1
+        if tag == "svg":
+            self.svg_depth += 1
         if tag == "style":
             self.in_style = True
         if tag == "a" and a.get("href"):
@@ -106,6 +111,8 @@ class Page(HTMLParser):
             self.skip = max(0, self.skip - 1)
         if tag == "style":
             self.in_style = False
+        if tag == "svg":
+            self.svg_depth = max(0, self.svg_depth - 1)
         if self.stack:
             self.stack.pop()
 
@@ -114,6 +121,8 @@ class Page(HTMLParser):
             self.styles.append(data)
         elif not self.skip:
             self.text.append(data)
+            if not self.svg_depth:
+                self.text_plain.append(data)
 
 
 def families(value):
@@ -125,7 +134,75 @@ def families(value):
     return out
 
 
-def audit(root, out_findings):
+def logo_file(root, listed, kind, pol):
+    """Path of a logo file in the package, found by its role name, never by the generator's code."""
+    want = f"-{POLF[pol]}."
+    for r in sorted(listed):
+        if r.startswith("logo/") and f"_{KINDF[kind]}{want[:-1]}_" in r and r.endswith(".svg"):
+            return os.path.join(root, r)
+    return None
+
+
+def svg_ink_and_width(fp):
+    """The colour the mark is drawn in (first stroke on a line or polyline) and the width of the file."""
+    root_el = ET.parse(fp).getroot()
+    ink = None
+    for el in root_el.iter():
+        if el.tag.endswith(("polyline", "line")) and el.attrib.get("stroke"):
+            ink = el.attrib["stroke"]
+            break
+    return ink, float(root_el.attrib.get("width", "0") or 0)
+
+
+def audit_v2(root, listed, src, flat, add, text, notes):
+    """Numbers the manual states about versions, sizes and backgrounds, recomputed from the files themselves."""
+    import math
+    sig = src["identity"]["sigla"]
+    ink, wid = {}, {}
+    for k in KINDF:
+        for pol in POLF:
+            fp = logo_file(root, listed, k, pol)
+            if fp is None:
+                add("BLOCK", "MISSING_CHAPTER", f"logo file for {k} {pol}")
+                continue
+            ink[(k, pol)], wid[(k, pol)] = svg_ink_and_width(fp)
+    if not wid:
+        return
+    us = src.get("usage", {})
+    for r in us.get("background_matrix", []):
+        k, _, pol = r["version"].partition(".")
+        if r["background"] == "foto" or r["status"] == "forbidden" or (k, pol) not in ink:
+            continue
+        bg = flat.get(f"{sig}_{r['background']}")
+        if bg is None or not ink[(k, pol)]:
+            add("BLOCK", "MATRIX_UNKNOWN", f"{r['version']} on {r['background']}")
+            continue
+        ratio = contrast(ink[(k, pol)], bg)
+        if ratio < 3.0:
+            add("BLOCK", "MATRIX_CONTRAST", f"{r['version']} is {r['status']} on {r['background']} but the ink in the file has {ratio:.2f}:1 (needs 3:1)")
+    sym_w = wid.get(("symbol", "positive"), 0)
+    ms = src["symbol"]["min_size"]
+    for r in us.get("min_size_by_version", []):
+        w = wid.get((r["lockup"], "positive"), 0)
+        if not (sym_w and w):
+            continue
+        ratio = w / sym_w
+        if r["print_mm"] < math.ceil(ms["print_mm"] * ratio - 1e-9) or r["screen_px"] < math.ceil(ms["screen_px"] * ratio - 1e-9):
+            add("BLOCK", "MIN_SIZE_BELOW_FILE", f"{r['lockup']}: declared {r['print_mm']} mm and {r['screen_px']} px, but the file is {ratio:.2f} times the symbol width")
+    exts = {os.path.splitext(r)[1].lstrip(".") for r in listed}
+    for f in src.get("delivery", {}).get("formats", []):
+        if f not in exts:
+            add("BLOCK", "DELIVERY_NOT_IN_PACKAGE", f"delivery lists {f} but the package has no such file")
+    name = src["identity"]["name"]
+    for where, tx in text:
+        if name.upper() in tx:
+            add("BLOCK", "NAME_CASE", f"{where}: the name in all capitals in running text")
+    pend = [r["family"] for r in src["colour"].get("spot_refs", []) if r.get("status") == "pending_match"]
+    if pend:
+        notes.append("Spot colour is pending a press match for: " + ", ".join(pend) + ". Do not print as spot colour until a code is confirmed.")
+
+
+def audit(root, out_findings, notes=None):
     F = out_findings
     add = lambda lvl, code, msg: F.append((lvl, code, msg))
     mpath = os.path.join(root, "MANIFEST.json")
@@ -268,6 +345,12 @@ def audit(root, out_findings):
     need += [p["text"] for p in src["petreos"]] + [t["name"] for t in src["voice"]["traits"]] + [a["name"] for a in src["applications"]]
     need += [f["name"] for f in src["typography"]["fonts"]] + [f"{src['identity']['sigla']}_{f['universe_name']}_50" for f in src["colour"]["families"]]
     need += [h for h in src["history"]["paragraphs"][:1]]
+    if src.get("schema") == "brand-source.v2":
+        need += [src["governance"]["scope"], src["governance"]["ip_notice"], src["wordmark"]["lettering"], src["lockups"]["horizontal"]["when"], src["lockups"]["vertical"]["when"],
+                 src["usage"]["conflicting_background_rule"], src["usage"]["text_alignment"], src["voice"]["name_in_text"]["case"], src["delivery"]["outlined_and_editable"],
+                 src["colour"]["large_area_rule"]]
+        need += [r["use_when"] for r in src["versions"]["matrix"]] + [r["rule"] for r in src["typography"]["restrictions"]]
+        need += [f"{r['print_mm']} mm" for r in src["usage"]["min_size_by_version"]] + [a["production"]["format"] for a in src["applications"]]
     miss = [n for n in need if n not in text and n.replace("’", "'") not in text]
     for n in miss:
         add("BLOCK", "MISSING_IN_BOOK", n[:70])
@@ -292,6 +375,8 @@ def audit(root, out_findings):
         for hd in HEDGES:
             if re.search(r"(?<![a-z])" + hd + r"(?![a-z])", f_):
                 add("WARN", "VOICE", f"{where}: conditional language '{hd}'")
+    if src.get("schema") == "brand-source.v2":
+        audit_v2(root, listed, src, flat, add, [t for t in text_all if t[0] != books[0]] + [(books[0], re.sub(r"\s+", " ", " ".join(page.text_plain)))], notes if notes is not None else [])
     # ---- guidelines spec
     sp = next((r for r in listed if "Guidelines-Spec" in r), None)
     if sp and os.path.isfile(os.path.join(root, sp)):
@@ -328,9 +413,9 @@ def main():
         root = a.dir
     else:
         ap.error("provide --dir or --sample")
-    F = []
+    F, extra_notes = [], []
     try:
-        audit(root, F)
+        audit(root, F, extra_notes)
     except (OSError, ValueError, KeyError, StopIteration) as exc:
         print(f"error: {exc}", file=sys.stderr)
         sys.exit(1)
@@ -344,6 +429,7 @@ def main():
     verdict = {0: "CLEAN", 2: "CLEAN_WITH_CAVEATS", 4: "BLOCKED"}[code]
     notes = ["The logo files are a geometric study generated from parameters: refine and finalise them in vector.",
              "Text in the logo files uses live fonts: convert to outlines before print.", "CMYK is approximate: print values need an ICC profile and a printed proof."]
+    notes += extra_notes
     if a.output == "json":
         print(json.dumps({"verdict": verdict, "blocks": len(blocks), "warnings": len(F) - len(blocks),
                           "findings": [{"level": l, "code": c, "message": m} for l, c, m in F], "notes": notes}, indent=2, ensure_ascii=False))

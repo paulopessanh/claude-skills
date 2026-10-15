@@ -1,5 +1,5 @@
 {
-  "schema": "brand-source.v1",
+  "schema": "brand-source.v2",
   "_note": "FICTIONAL brand Serra Fina, written for the brand-studio test cycle. Every text and number here is invented for illustration. Shape read by ecosystem_source_check.py, ecosystem_builder.py and ecosystem_auditor.py.",
   "fictional": true,
   "identity": {
@@ -307,7 +307,22 @@
       "#C9A227",
       "#5A3A22"
     ],
-    "print_note": "O CMYK deste pacote é aproximado. Os valores de impressão saem de um perfil ICC e de uma prova impressa na gráfica."
+    "print_note": "O CMYK deste pacote é aproximado. Os valores de impressão saem de um perfil ICC e de uma prova impressa na gráfica.",
+    "spot_refs": [
+      {
+        "family": "Cume",
+        "system": "cor especial",
+        "code": "",
+        "status": "pending_match"
+      },
+      {
+        "family": "Vale",
+        "system": "cor especial",
+        "code": "",
+        "status": "pending_match"
+      }
+    ],
+    "large_area_rule": "Em grandes áreas chapadas, Tinta imprime em quatro cores com preto e uma parte de Cume. Preto puro em offset sai lavado."
   },
   "typography": {
     "fonts": [
@@ -395,7 +410,21 @@
       }
     ],
     "specimen_text": "Feito devagar, no alto da serra",
-    "note": "Confirme a licença e o arquivo de cada fonte antes de entregar ao cliente."
+    "note": "Confirme a licença e o arquivo de cada fonte antes de entregar ao cliente.",
+    "restrictions": [
+      {
+        "font_role": "headline",
+        "rule": "Newsreader serve a títulos, citações e ao nome da marca. Nunca em texto corrido abaixo de 20 px."
+      },
+      {
+        "font_role": "body",
+        "rule": "Instrument Sans serve ao texto e à interface. Nunca no desenho do nome da marca."
+      },
+      {
+        "font_role": "mono",
+        "rule": "JetBrains Mono serve a códigos, lotes e dados técnicos. Nunca em título."
+      }
+    ]
   },
   "elements": {
     "origin_rule": "Todo elemento nasce do ângulo e das alturas do símbolo. As linhas de nível repetem a mesma polilinha, em escala menor, uma abaixo da outra.",
@@ -434,7 +463,33 @@
         "name": "Origem",
         "use": "Mapa e procedência."
       }
-    ]
+    ],
+    "support_rules": {
+      "colours_allowed": [
+        "Cume_50",
+        "Vale_50",
+        "Neblina",
+        "Cume_70"
+      ],
+      "as_mask": "As linhas de nível podem recortar foto em duotone. Sem contorno.",
+      "as_cut_template": "A polilinha do símbolo serve de gabarito de corte para etiqueta e tampa de caixa.",
+      "protection_exception": "Quando o padrão integra a malha e fica nitidamente visível, a assinatura pode tocar as linhas. Não abuse."
+    },
+    "symbol_as_graphic": {
+      "positions": [
+        "inteiro a 0 grau",
+        "inteiro espelhado",
+        "metade a 0 grau",
+        "metade espelhada"
+      ],
+      "colour_options": [
+        "Cume_50 sobre Neblina",
+        "Neblina sobre Cume_50",
+        "Vale_50 sobre Neblina",
+        "Neblina sobre Vale_50"
+      ],
+      "where": "Só em peças de comunicação, em grande área e como fundo de outros elementos."
+    }
   },
   "photography": {
     "principles": [
@@ -543,7 +598,16 @@
         "channel": "Atendimento",
         "tone": "Direto e gentil, com prazo certo."
       }
-    ]
+    ],
+    "name_in_text": {
+      "class": "nome próprio",
+      "case": "Escreva Serra Fina com as duas iniciais maiúsculas.",
+      "never": [
+        "Todo em caixa alta em texto corrido.",
+        "Abreviado ou como sigla.",
+        "Separado em duas linhas sem necessidade."
+      ]
+    }
   },
   "applications": [
     {
@@ -554,7 +618,15 @@
         "O lote vai sempre na faixa Vale.",
         "O símbolo nunca fica sob dobra.",
         "Sem verniz dourado ou metálico."
-      ]
+      ],
+      "production": {
+        "format": "Etiqueta frontal 100 x 150 mm",
+        "colour_mode": "CMYK, 4 cores",
+        "process": "Offset ou digital em rolo",
+        "material": "Papel fosco 90 g, colado no saco",
+        "finishing": "Sem verniz dourado ou metálico",
+        "scale": "1:2"
+      }
     },
     {
       "id": "card",
@@ -564,7 +636,15 @@
         "Papel fosco sem brilho.",
         "Nome da pessoa em Newsreader.",
         "Contatos em Instrument Sans."
-      ]
+      ],
+      "production": {
+        "format": "90 x 50 mm",
+        "colour_mode": "CMYK, 4 cores na frente e 1 no verso",
+        "process": "Offset",
+        "material": "Papel fosco 300 g",
+        "finishing": "Corte reto e laminação fosca",
+        "scale": "1:1"
+      }
     },
     {
       "id": "social",
@@ -574,7 +654,15 @@
         "Uma frase por peça.",
         "Assinatura pequena no canto.",
         "Nenhum texto sobre área clara sem contraste de 4,5 para 1."
-      ]
+      ],
+      "production": {
+        "format": "1080 x 1080 px",
+        "colour_mode": "RGB",
+        "process": "Digital",
+        "material": "Tela",
+        "finishing": "Exporte em PNG sem compressão excessiva",
+        "scale": "1:1"
+      }
     },
     {
       "id": "site",
@@ -584,7 +672,15 @@
         "Um botão principal por tela, em Vale_50.",
         "Fotos com a regra de duotone.",
         "Texto corrido em 18 px."
-      ]
+      ],
+      "production": {
+        "format": "1440 px de largura",
+        "colour_mode": "RGB, tokens da marca",
+        "process": "Digital",
+        "material": "Tela",
+        "finishing": "Fontes pela família com substituto declarado",
+        "scale": "Fluida"
+      }
     },
     {
       "id": "box",
@@ -594,7 +690,15 @@
         "Sem fita dourada.",
         "O selo traz o número do lote.",
         "Papel Neblina com impressão em uma cor."
-      ]
+      ],
+      "production": {
+        "format": "Tampa quadrada de 200 mm",
+        "colour_mode": "Uma cor",
+        "process": "Impressão offset ou serigrafia",
+        "material": "Papel Neblina rígido",
+        "finishing": "Corte especial, sem fita dourada",
+        "scale": "1:3"
+      }
     },
     {
       "id": "letterhead",
@@ -604,14 +708,24 @@
         "Margem de 20 mm.",
         "Texto em Tinta sobre Neblina ou branco.",
         "Sem marca d'água."
-      ]
+      ],
+      "production": {
+        "format": "A4, 210 x 297 mm",
+        "colour_mode": "CMYK, 2 cores",
+        "process": "Offset",
+        "material": "Papel off-set 90 g",
+        "finishing": "Corte reto",
+        "scale": "1:2"
+      }
     }
   ],
   "governance": {
     "owner": "Ana, fundadora, aprova qualquer mudança no símbolo, nas cores e na tipografia.",
     "approval_flow": "Pedido por escrito, parecer do estúdio, decisão da fundadora, registro no histórico de versões.",
     "review_cycle": "Revisão anual do manual e a cada nova linha de produto.",
-    "contact": "marca@serrafina.example"
+    "contact": "marca@serrafina.example",
+    "scope": "Este manual vale para as peças institucionais e comerciais da Serra Fina: embalagem, papelaria, site, redes e caixa de presente. Peças de parceiros e de campanha ficam fora e passam por Ana antes de sair.",
+    "ip_notice": "A marca, o símbolo e os textos deste manual pertencem à Serra Fina. Não reproduza sem autorização escrita da fundadora. Esta é uma marca fictícia criada para o teste do processo."
   },
   "faq": [
     {
@@ -642,5 +756,427 @@
       "change": "Primeira versão do ecossistema da marca.",
       "approved_by": "Ana, fundadora"
     }
-  ]
+  ],
+  "wordmark": {
+    "lettering": "Newsreader peso 500, em caixa alta e baixa, com o espaçamento ajustado para o nome caber na largura da assinatura.",
+    "cap_height_ratio": 0.66,
+    "x_height_ratio": 0.45,
+    "construction_note": "As alturas são estimativas da família. Confirme no arquivo da fonte e em curvas antes de imprimir."
+  },
+  "lockups": {
+    "horizontal": {
+      "when": "Em peças com texto corrido, etiqueta, site e papelaria. A horizontalidade acompanha a leitura."
+    },
+    "vertical": {
+      "when": "Quando a marca precisa de mais visibilidade: embalagem, cartaz e pendão. O eixo vertical destaca o símbolo."
+    }
+  },
+  "versions": {
+    "matrix": [
+      {
+        "lockup": "symbol",
+        "polarity": "positive",
+        "use_when": "Fundo claro e reprodução em cores."
+      },
+      {
+        "lockup": "symbol",
+        "polarity": "negative",
+        "use_when": "Fundo escuro e reprodução em cores."
+      },
+      {
+        "lockup": "symbol",
+        "polarity": "mono",
+        "use_when": "Uma só tinta, relevo seco, carimbo ou bordado."
+      },
+      {
+        "lockup": "horizontal",
+        "polarity": "positive",
+        "use_when": "Fundo claro e reprodução em cores."
+      },
+      {
+        "lockup": "horizontal",
+        "polarity": "negative",
+        "use_when": "Fundo escuro e reprodução em cores."
+      },
+      {
+        "lockup": "horizontal",
+        "polarity": "mono",
+        "use_when": "Uma só tinta, relevo seco, carimbo ou bordado."
+      },
+      {
+        "lockup": "vertical",
+        "polarity": "positive",
+        "use_when": "Fundo claro e reprodução em cores."
+      },
+      {
+        "lockup": "vertical",
+        "polarity": "negative",
+        "use_when": "Fundo escuro e reprodução em cores."
+      },
+      {
+        "lockup": "vertical",
+        "polarity": "mono",
+        "use_when": "Uma só tinta, relevo seco, carimbo ou bordado."
+      }
+    ]
+  },
+  "usage": {
+    "min_size_by_version": [
+      {
+        "lockup": "symbol",
+        "print_mm": 18,
+        "screen_px": 96
+      },
+      {
+        "lockup": "horizontal",
+        "print_mm": 52,
+        "screen_px": 276
+      },
+      {
+        "lockup": "vertical",
+        "print_mm": 32,
+        "screen_px": 168
+      }
+    ],
+    "protection_by_version": [
+      {
+        "lockup": "symbol",
+        "peak_heights": 1.0
+      },
+      {
+        "lockup": "horizontal",
+        "peak_heights": 1.0
+      },
+      {
+        "lockup": "vertical",
+        "peak_heights": 1.0
+      }
+    ],
+    "conflicting_background_rule": "Se o fundo atrapalha a leitura, preencha a área de proteção com Neblina ou Tinta. Use só em último caso e prefira um fundo que dispense o recurso.",
+    "text_alignment": "O texto fica a uma altura de pico de distância da assinatura e alinha com a borda esquerda do nome. Ao lado de texto, use a assinatura horizontal.",
+    "background_matrix": [
+      {
+        "version": "symbol.positive",
+        "background": "Neblina",
+        "status": "preferred"
+      },
+      {
+        "version": "symbol.positive",
+        "background": "Branco",
+        "status": "preferred"
+      },
+      {
+        "version": "symbol.positive",
+        "background": "Cume_70",
+        "status": "forbidden"
+      },
+      {
+        "version": "symbol.positive",
+        "background": "Cume_50",
+        "status": "forbidden"
+      },
+      {
+        "version": "symbol.positive",
+        "background": "Vale_50",
+        "status": "forbidden"
+      },
+      {
+        "version": "symbol.positive",
+        "background": "Tinta",
+        "status": "forbidden"
+      },
+      {
+        "version": "symbol.negative",
+        "background": "Neblina",
+        "status": "forbidden"
+      },
+      {
+        "version": "symbol.negative",
+        "background": "Branco",
+        "status": "forbidden"
+      },
+      {
+        "version": "symbol.negative",
+        "background": "Cume_70",
+        "status": "preferred"
+      },
+      {
+        "version": "symbol.negative",
+        "background": "Cume_50",
+        "status": "preferred"
+      },
+      {
+        "version": "symbol.negative",
+        "background": "Vale_50",
+        "status": "allowed"
+      },
+      {
+        "version": "symbol.negative",
+        "background": "Tinta",
+        "status": "preferred"
+      },
+      {
+        "version": "symbol.mono",
+        "background": "Neblina",
+        "status": "preferred"
+      },
+      {
+        "version": "symbol.mono",
+        "background": "Branco",
+        "status": "preferred"
+      },
+      {
+        "version": "symbol.mono",
+        "background": "Cume_70",
+        "status": "forbidden"
+      },
+      {
+        "version": "symbol.mono",
+        "background": "Cume_50",
+        "status": "forbidden"
+      },
+      {
+        "version": "symbol.mono",
+        "background": "Vale_50",
+        "status": "allowed"
+      },
+      {
+        "version": "symbol.mono",
+        "background": "Tinta",
+        "status": "forbidden"
+      },
+      {
+        "version": "horizontal.positive",
+        "background": "Neblina",
+        "status": "preferred"
+      },
+      {
+        "version": "horizontal.positive",
+        "background": "Branco",
+        "status": "preferred"
+      },
+      {
+        "version": "horizontal.positive",
+        "background": "Cume_70",
+        "status": "forbidden"
+      },
+      {
+        "version": "horizontal.positive",
+        "background": "Cume_50",
+        "status": "forbidden"
+      },
+      {
+        "version": "horizontal.positive",
+        "background": "Vale_50",
+        "status": "forbidden"
+      },
+      {
+        "version": "horizontal.positive",
+        "background": "Tinta",
+        "status": "forbidden"
+      },
+      {
+        "version": "horizontal.negative",
+        "background": "Neblina",
+        "status": "forbidden"
+      },
+      {
+        "version": "horizontal.negative",
+        "background": "Branco",
+        "status": "forbidden"
+      },
+      {
+        "version": "horizontal.negative",
+        "background": "Cume_70",
+        "status": "preferred"
+      },
+      {
+        "version": "horizontal.negative",
+        "background": "Cume_50",
+        "status": "preferred"
+      },
+      {
+        "version": "horizontal.negative",
+        "background": "Vale_50",
+        "status": "allowed"
+      },
+      {
+        "version": "horizontal.negative",
+        "background": "Tinta",
+        "status": "preferred"
+      },
+      {
+        "version": "horizontal.mono",
+        "background": "Neblina",
+        "status": "preferred"
+      },
+      {
+        "version": "horizontal.mono",
+        "background": "Branco",
+        "status": "preferred"
+      },
+      {
+        "version": "horizontal.mono",
+        "background": "Cume_70",
+        "status": "forbidden"
+      },
+      {
+        "version": "horizontal.mono",
+        "background": "Cume_50",
+        "status": "forbidden"
+      },
+      {
+        "version": "horizontal.mono",
+        "background": "Vale_50",
+        "status": "allowed"
+      },
+      {
+        "version": "horizontal.mono",
+        "background": "Tinta",
+        "status": "forbidden"
+      },
+      {
+        "version": "vertical.positive",
+        "background": "Neblina",
+        "status": "preferred"
+      },
+      {
+        "version": "vertical.positive",
+        "background": "Branco",
+        "status": "preferred"
+      },
+      {
+        "version": "vertical.positive",
+        "background": "Cume_70",
+        "status": "forbidden"
+      },
+      {
+        "version": "vertical.positive",
+        "background": "Cume_50",
+        "status": "forbidden"
+      },
+      {
+        "version": "vertical.positive",
+        "background": "Vale_50",
+        "status": "forbidden"
+      },
+      {
+        "version": "vertical.positive",
+        "background": "Tinta",
+        "status": "forbidden"
+      },
+      {
+        "version": "vertical.negative",
+        "background": "Neblina",
+        "status": "forbidden"
+      },
+      {
+        "version": "vertical.negative",
+        "background": "Branco",
+        "status": "forbidden"
+      },
+      {
+        "version": "vertical.negative",
+        "background": "Cume_70",
+        "status": "preferred"
+      },
+      {
+        "version": "vertical.negative",
+        "background": "Cume_50",
+        "status": "preferred"
+      },
+      {
+        "version": "vertical.negative",
+        "background": "Vale_50",
+        "status": "allowed"
+      },
+      {
+        "version": "vertical.negative",
+        "background": "Tinta",
+        "status": "preferred"
+      },
+      {
+        "version": "vertical.mono",
+        "background": "Neblina",
+        "status": "preferred"
+      },
+      {
+        "version": "vertical.mono",
+        "background": "Branco",
+        "status": "preferred"
+      },
+      {
+        "version": "vertical.mono",
+        "background": "Cume_70",
+        "status": "forbidden"
+      },
+      {
+        "version": "vertical.mono",
+        "background": "Cume_50",
+        "status": "forbidden"
+      },
+      {
+        "version": "vertical.mono",
+        "background": "Vale_50",
+        "status": "allowed"
+      },
+      {
+        "version": "vertical.mono",
+        "background": "Tinta",
+        "status": "forbidden"
+      },
+      {
+        "version": "symbol.negative",
+        "background": "foto",
+        "status": "allowed",
+        "note": "Sobre foto escura e uniforme. Fora disso, preencha a área de proteção."
+      },
+      {
+        "version": "symbol.positive",
+        "background": "foto",
+        "status": "allowed",
+        "note": "Sobre foto clara e uniforme. Fora disso, preencha a área de proteção."
+      },
+      {
+        "version": "horizontal.negative",
+        "background": "foto",
+        "status": "allowed",
+        "note": "Sobre foto escura e uniforme. Fora disso, preencha a área de proteção."
+      },
+      {
+        "version": "horizontal.positive",
+        "background": "foto",
+        "status": "allowed",
+        "note": "Sobre foto clara e uniforme. Fora disso, preencha a área de proteção."
+      },
+      {
+        "version": "vertical.negative",
+        "background": "foto",
+        "status": "allowed",
+        "note": "Sobre foto escura e uniforme. Fora disso, preencha a área de proteção."
+      },
+      {
+        "version": "vertical.positive",
+        "background": "foto",
+        "status": "allowed",
+        "note": "Sobre foto clara e uniforme. Fora disso, preencha a área de proteção."
+      }
+    ]
+  },
+  "delivery": {
+    "formats": [
+      "svg",
+      "json",
+      "css",
+      "html",
+      "md"
+    ],
+    "colour_systems": [
+      "HEX",
+      "RGB",
+      "CMYK aproximado"
+    ],
+    "outlined_and_editable": "Os SVG saem com texto editável em fonte viva. A versão em curvas fica para o time de criação antes da gráfica.",
+    "protection_marker": "Cada arquivo de assinatura traz a área de proteção no manual. O arquivo de produção do time deve marcá-la com um retângulo que não imprime."
+  }
 }

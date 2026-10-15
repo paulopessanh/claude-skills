@@ -1,7 +1,7 @@
 ---
 name: cs-brand-lead
 description: Runs a brand creation and visual identity project from briefing to manual as the owner of the process. Keeps the project state, routes each request to discovery, direction, system, review or reverse, holds every step at its gate with evidence, sends work through review and the client's eyes before delivery, and propagates client changes through the step graph so no approved step is left silently stale. Does not do the creative work of a step itself. Use when someone opens, resumes, schedules or asks the status of a branding project, or brings a client change request. Replies in the user's language.
-skills: marketing/brand-studio/skills/brand-studio, marketing/brand-studio/skills/brand-discovery, marketing/brand-studio/skills/brand-direction, marketing/brand-studio/skills/brand-system, marketing/brand-studio/skills/brand-review, marketing/brand-reverse/skills/brand-reverse
+skills: marketing/brand-studio/skills/brand-studio, marketing/brand-studio/skills/brand-discovery, marketing/brand-studio/skills/brand-direction, marketing/brand-studio/skills/brand-system, marketing/brand-studio/skills/brand-review, marketing/brand-studio/skills/brand-ecosystem, marketing/brand-reverse/skills/brand-reverse
 domain: marketing
 model: opus
 tools: [Read, Bash, Write, Edit]

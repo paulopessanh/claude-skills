@@ -6,6 +6,7 @@ Lanes and the skill each one loads:
   discovery  brand-discovery  briefing, kick-off, research, competitors, ICP, territories (steps 1-3)
   direction  brand-direction  naming, anatomy, symbol paths, colour, type, shapes vote (steps 4-5)
   system     brand-system     identity presentation, guidelines, pieces, manual, file names (steps 6-8)
+  ecosystem  brand-ecosystem  compile every approved step into the complete, audited brand package (step 9)
   review     brand-review     review a deliverable, read it through the client's eyes, triage a change request
   reverse    brand-reverse    reverse engineer a reference brand into method
 
@@ -37,6 +38,9 @@ LANES = {
         "guidelines", "diretrizes", "manual", "brandbook", "brand book", "apresentacao da marca", "versoes", "area de protecao",
         "reducao minima", "pecas", "aplicacoes", "tokens", "nomenclatura de arquivos", "nome de arquivo", "usos proibidos",
         "identity system", "clear space", "minimum size", "applications", "file naming"]},
+    "ecosystem": {"skill": "brand-ecosystem", "steps": ["9"], "kw": [
+        "ecossistema", "ecossistema da marca", "pacote da marca", "pacote completo", "gerar os assets", "gerar assets", "brandbook completo",
+        "kit de marca", "entrega final da marca", "brand ecosystem", "brand package", "full brand kit", "generate the assets", "brand kit"]},
     "review": {"skill": "brand-review", "steps": [], "kw": [
         "revisar", "revisao", "review", "olhar do cliente", "feedback", "pedido de alteracao", "alteracao do cliente", "change request",
         "o cliente vai gostar", "client lens", "checar", "conferir", "validar", "lint", "premortem"]},
@@ -80,7 +84,8 @@ def blocked_note(lane, state_path):
     if live:
         return f"work already open on step(s) {', '.join(live)}"
     startable = [s for s in steps if S[s]["status"] == "not_started"]
-    deps = {"1": [], "2": ["1"], "3": ["1", "2"], "4": ["1", "2", "3"], "5": ["4"], "6": ["4", "5"], "6.5": ["6"], "7": ["6", "6.5"], "8": ["1", "2", "3", "4", "5", "6", "6.5", "7"]}
+    deps = {"1": [], "2": ["1"], "3": ["1", "2"], "4": ["1", "2", "3"], "5": ["4"], "6": ["4", "5"], "6.5": ["6"], "7": ["6", "6.5"],
+            "8": ["1", "2", "3", "4", "5", "6", "6.5", "7"], "9": ["1", "2", "3", "4", "5", "6", "6.5", "7", "8"]}
     if startable and all(any(S[d]["status"] != "approved" for d in deps[s]) for s in startable):
         need = sorted({d for s in startable for d in deps[s] if S[d]["status"] != "approved" and d not in steps})
         return f"BLOCKED: step(s) {', '.join(startable)} need approved step(s) {', '.join(need)} first"

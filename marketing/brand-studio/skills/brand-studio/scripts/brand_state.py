@@ -7,7 +7,7 @@ This tool is a JSON-backed state machine that makes the dependency between steps
 
 Steps (a dependency graph, not a list):
   1 Briefing -> 2 Kick-off -> 3 Research -> 4 Direction -> 5 Shapes dynamic -> 6 Brand & identity
-  -> 6.5 Team guidelines -> 7 Pieces -> 8 Manual
+  -> 6.5 Team guidelines -> 7 Pieces -> 8 Manual -> 9 Ecosystem (the complete, audited brand package)
 Status: not_started, in_progress, in_review, with_client, approved, reopened, stale.
 
 Hard rules (each refusal exits 4):
@@ -35,12 +35,13 @@ import re
 import sys
 import tempfile
 
-STEPS = ["1", "2", "3", "4", "5", "6", "6.5", "7", "8"]
+STEPS = ["1", "2", "3", "4", "5", "6", "6.5", "7", "8", "9"]
 NAMES = {"1": "Briefing", "2": "Kick-off", "3": "Research and immersion", "4": "Creative and visual direction",
          "5": "Shapes dynamic", "6": "Brand and identity presentation", "6.5": "Team guidelines",
-         "7": "Graphic pieces", "8": "Brand manual"}
+         "7": "Graphic pieces", "8": "Brand manual", "9": "Brand ecosystem"}
 DEPS = {"1": [], "2": ["1"], "3": ["1", "2"], "4": ["1", "2", "3"], "5": ["4"], "6": ["4", "5"],
-        "6.5": ["6"], "7": ["6", "6.5"], "8": ["1", "2", "3", "4", "5", "6", "6.5", "7"]}
+        "6.5": ["6"], "7": ["6", "6.5"], "8": ["1", "2", "3", "4", "5", "6", "6.5", "7"],
+        "9": ["1", "2", "3", "4", "5", "6", "6.5", "7", "8"]}
 GATES = {
     "1": ["facts_sourced", "hypotheses_marked", "scope_matches_contract", "dates_coherent", "gaps_listed", "kickoff_agenda_ready"],
     "2": ["extraction_validated", "purpose_and_attributes_defined", "ideal_client_drafted", "territories_listed", "baseline_inputs_captured"],
@@ -53,12 +54,14 @@ GATES = {
     "6.5": ["signatures_published", "technical_rules_complete", "no_story_or_concept_inside", "approved_by_lead"],
     "7": ["pieces_follow_guidelines", "print_specs_present", "approved_pieces_only_in_exports"],
     "8": ["every_approved_step_reflected", "manual_matches_guidelines", "version_history_present", "client_and_internal_versions_in_sync"],
+    "9": ["source_complete_and_from_approved_steps", "assets_generated_from_one_source", "audit_clean_or_caveats_named",
+          "story_concept_form_colour_type_voice_all_present", "geometric_study_labelled_for_the_team", "package_manifest_with_checksums"],
 }
 TOUCH_STEPS = {
-    "scope": ["1", "2", "3", "4", "5", "6", "6.5", "7", "8"], "audience": ["3", "4", "6", "8"],
-    "name": ["4", "6", "6.5", "7", "8"], "anatomy": ["4", "6", "6.5", "8"], "symbol": ["4", "5", "6", "6.5", "7", "8"],
-    "colour": ["4", "6", "6.5", "7", "8"], "type": ["4", "6", "6.5", "7", "8"], "elements": ["4", "6", "6.5", "7", "8"],
-    "voice": ["4", "6", "8"], "pieces": ["7", "8"],
+    "scope": ["1", "2", "3", "4", "5", "6", "6.5", "7", "8", "9"], "audience": ["3", "4", "6", "8", "9"],
+    "name": ["4", "6", "6.5", "7", "8", "9"], "anatomy": ["4", "6", "6.5", "8", "9"], "symbol": ["4", "5", "6", "6.5", "7", "8", "9"],
+    "colour": ["4", "6", "6.5", "7", "8", "9"], "type": ["4", "6", "6.5", "7", "8", "9"], "elements": ["4", "6", "6.5", "7", "8", "9"],
+    "voice": ["4", "6", "8", "9"], "pieces": ["7", "8", "9"],
 }
 VERDICTS = ("released", "released_with_caveats", "held")
 

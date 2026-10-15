@@ -4,12 +4,12 @@ Confidence key: 🟢 published primary source · 🟡 secondary, or this suite's
 
 ## The graph
 
-`1 Briefing -> 2 Kick-off -> 3 Research -> 4 Direction -> 5 Shapes dynamic -> 6 Brand and identity -> 6.5 Team guidelines -> 7 Pieces -> 8 Manual`
+`1 Briefing -> 2 Kick-off -> 3 Research -> 4 Direction -> 5 Shapes dynamic -> 6 Brand and identity -> 6.5 Team guidelines -> 7 Pieces -> 8 Manual -> 9 Ecosystem`
 
 Not a list but a dependency graph: step 4 needs 1, 2 and 3; step 6 needs 4 and 5; step 8 needs everything. `brand_state.py`
 encodes it, so "can we start this?" is computed, not remembered.
 
-🟡 The nine steps are this suite's working model. They split the five practitioner phases in Wheeler (research, strategy,
+🟡 The ten steps are this suite's working model. They split the five practitioner phases in Wheeler (research, strategy,
 identity design, touchpoints, asset management) so that each step has one set of decisions and one gate. Do not present
 the count as a standard.
 

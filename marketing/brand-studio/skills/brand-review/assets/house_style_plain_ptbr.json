@@ -6,5 +6,5 @@
               "ecossistema", "jornada transformadora", "nivel seguinte", "next level", "holistico", "robusto e escalavel"],
   "hedges": ["talvez", "poderia", "poderia ser", "pode ser que", "possivelmente", "perhaps", "might", "could potentially", "it seems"],
   "preferred_terms": {"logo": ["logotipo"], "descriptor": ["descritor"]},
-  "placeholders": ["todo", "tbd", "lorem ipsum", "xxx", "inserir aqui", "preencher", "fill in", "{{", "}}"]
+  "placeholders": ["TODO", "TBD", "XXX", "lorem ipsum", "{{", "}}"]
 }

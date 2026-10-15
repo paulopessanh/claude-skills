@@ -8,7 +8,7 @@ reaction still need the human or model review (see the brand-review skill).
 Checks (BLOCK holds the deliverable, WARN asks for a look):
   BANNED_CHAR       BLOCK  characters the profile bans (default: em dash, en dash, semicolon)
   EMOJI             BLOCK  emoji, unless --allow-emoji (voting legends)
-  PLACEHOLDER       BLOCK  TODO, TBD, lorem ipsum, XXX, [..], {{ }}, unfinished markers
+  PLACEHOLDER       BLOCK  TODO, TBD, XXX (capitals only), lorem ipsum, [..], {{ }}, [inserir ...] markers
   VETOED_COLOUR     BLOCK  a hex colour in the text within 25 degrees of a hue the client vetoed (--vetoed-hex)
   CLICHE            WARN   phrases from the profile's cliché list
   HEDGE             WARN   conditional language where a statement is possible
@@ -39,7 +39,7 @@ DEFAULT_PROFILE = {
                 "ecossistema", "jornada transformadora", "nivel seguinte", "next level", "holistico", "robusto e escalavel"],
     "hedges": ["talvez", "poderia", "poderia ser", "pode ser que", "possivelmente", "perhaps", "might", "could potentially", "it seems"],
     "preferred_terms": {},
-    "placeholders": ["todo", "tbd", "lorem ipsum", "xxx", "inserir aqui", "preencher", "fill in", "{{", "}}"],
+    "placeholders": ["TODO", "TBD", "XXX", "lorem ipsum", "{{", "}}"],     # TODO, TBD, XXX match in capitals only
 }
 EMOJI = re.compile("[\U0001F300-\U0001FAFF☀-➿\U0001F000-\U0001F2FF⭐⬆✅❌]")
 HEXRE = re.compile(r"#(?:[0-9a-fA-F]{6})\b")
@@ -79,10 +79,18 @@ def lint(text, prof, vetoed, allow_emoji, year):
                 add("BLOCK", "BANNED_CHAR", n, f"{nm} ({ch!r})")
         if not allow_emoji and EMOJI.search(line):
             add("BLOCK", "EMOJI", n, "emoji in text")
+        hit = None
         for ph in prof["placeholders"]:
-            if re.search(r"(?<![a-z0-9])" + re.escape(ph) + r"(?![a-z0-9])", f) or re.search(r"\[[^\]\n]{0,3}\]|\[(x+|\.\.\.|…)\]", line):
-                add("BLOCK", "PLACEHOLDER", n, f"unfinished marker '{ph}'" if ph in f else "unfinished marker [..]")
+            # Capitalised markers (TODO, TBD, XXX) match in capitals only: Portuguese "todo" means "every".
+            pat = r"(?<![A-Za-z0-9])" + re.escape(ph) + r"(?![A-Za-z0-9])"
+            if re.search(pat, line, 0 if ph.isupper() else re.I):
+                hit = f"unfinished marker '{ph}'"
                 break
+        if not hit and (re.search(r"\[\s*(x+|\.\.\.|\u2026)?\s*\]", line)
+                        or re.search(r"\[[^\]\n]*\b(inserir|preencher|fill in|placeholder)\b[^\]\n]*\]", line, re.I)):
+            hit = "unfinished marker [..]"
+        if hit:
+            add("BLOCK", "PLACEHOLDER", n, hit)
         for hx in HEXRE.findall(line):
             c, h = hue(hx)
             if c >= 0.04 and any(min(abs(h - v), 360 - abs(h - v)) <= 25 for v in vet):

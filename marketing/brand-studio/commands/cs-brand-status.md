@@ -1,6 +1,6 @@
 ---
 name: "cs-brand-status"
-description: "/cs:brand-status — Status report of a branding project: nine steps with status and gate progress, stale steps, locked decisions, open client changes and the next action."
+description: "/cs:brand-status — Status report of a branding project: ten steps with status and gate progress, stale steps, locked decisions, open client changes and the next action."
 argument-hint: "[path to brand-state.json, default ./brand-state.json]"
 ---
 

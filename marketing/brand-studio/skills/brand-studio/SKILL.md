@@ -1,6 +1,6 @@
 ---
 name: brand-studio
-description: Use when someone opens, resumes or manages a brand creation and visual identity project, from briefing to manual. Triggers include "novo cliente de marca", "status do projeto de marca", "qual o próximo passo", "pedido de alteração do cliente", "reabrir o passo", "criar uma marca do zero", "processo criativo de branding", "open a branding project", "what is next in the brand project". Owns the nine-step process as a state machine with gates, review, approval and change propagation, and routes each request to discovery, direction, system, review or reverse. Not for doing a step's work itself.
+description: Use when someone opens, resumes or manages a brand creation and visual identity project, from briefing to manual. Triggers include "novo cliente de marca", "status do projeto de marca", "qual o próximo passo", "pedido de alteração do cliente", "reabrir o passo", "criar uma marca do zero", "processo criativo de branding", "open a branding project", "what is next in the brand project". Owns the ten-step process as a state machine with gates, review, approval and change propagation, and routes each request to discovery, direction, system, ecosystem, review or reverse. Not for doing a step's work itself.
 license: MIT
 context: fork
 metadata:

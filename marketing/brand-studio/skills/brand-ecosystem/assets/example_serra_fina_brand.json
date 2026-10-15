@@ -1,0 +1,646 @@
+{
+  "schema": "brand-source.v1",
+  "_note": "FICTIONAL brand Serra Fina, written for the brand-studio test cycle. Every text and number here is invented for illustration. Shape read by ecosystem_source_check.py, ecosystem_builder.py and ecosystem_auditor.py.",
+  "fictional": true,
+  "identity": {
+    "name": "Serra Fina",
+    "sigla": "SFI",
+    "sector": "chocolate artesanal",
+    "language": "pt-BR",
+    "descriptor": "Chocolate de altitude",
+    "tagline": "Feito devagar, no alto da serra",
+    "version": "1.0.0",
+    "date": "2026-10-15",
+    "owner": "Ana, fundadora",
+    "slogan": {
+      "decision": "exclude",
+      "reason": "Não há campanha no escopo do contrato."
+    },
+    "hookline": {
+      "decision": "exclude",
+      "reason": "Ainda não há estratégia de marketing para uma frase de repetição."
+    },
+    "type": "mixed"
+  },
+  "provenance": {
+    "state_file": "brand-state.json",
+    "steps_approved": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "6.5",
+      "7",
+      "8"
+    ],
+    "documents": [
+      "passo1_v2.md",
+      "kickoff.md",
+      "passo3.md",
+      "passo4.md",
+      "passo5.md",
+      "passo6.md",
+      "spec.json"
+    ]
+  },
+  "history": {
+    "title": "Um chocolate que pede tempo",
+    "paragraphs": [
+      "A Serra Fina começou em 2019, numa propriedade de quatro hectares na Mantiqueira. Ana, a fundadora, queria provar uma ideia simples: chocolate bom não tem pressa.",
+      "O primeiro lote saiu em 2021. Cada barra nasce de lotes pequenos, com o tempo que a receita pede, no alto da serra. Beto cuida da marca e do contato com quem compra, e a equipe cresceu em volta dessa mesma regra de ritmo.",
+      "Hoje a Serra Fina chega a redes de varejo e a assinantes que recebem o lote do mês em casa. O tamanho mudou. O ritmo não mudou."
+    ],
+    "milestones": [
+      {
+        "year": 2019,
+        "text": "Início da produção na propriedade de quatro hectares na Mantiqueira."
+      },
+      {
+        "year": 2021,
+        "text": "Primeiro lote vendido."
+      },
+      {
+        "year": 2026,
+        "text": "Nasce a identidade visual e o nome vira sistema."
+      }
+    ],
+    "name_origin": "O nome vem da serra onde tudo começou. Serra é o lugar. Fina é a linha de cume vista de longe e é também a mão que o chocolate pede.",
+    "sources": [
+      "apresentação da empresa",
+      "ligação com a fundadora de 22/09",
+      "kickoff.md"
+    ]
+  },
+  "purpose": {
+    "mission": "Fazer chocolate de altitude com o tempo que ele pede e mostrar de onde ele vem.",
+    "vision": "Ser a referência em chocolate de altitude no Brasil.",
+    "positioning": "Para quem presenteia e para quem cozinha em casa, a Serra Fina é o chocolate que mostra a origem no sabor e no desenho, ao contrário do chocolate de prateleira que esconde o lote.",
+    "promise": "Cada barra diz de que lote veio e quanto tempo levou."
+  },
+  "petreos": [
+    {
+      "text": "O tempo é ingrediente",
+      "origin": "kickoff.md, propósito definido pelos sócios",
+      "visual_translation": "Uma linha desenhada de uma vez só, sem pressa e sem retoque."
+    },
+    {
+      "text": "A serra é o selo",
+      "origin": "brief.json, origem do nome, e ligação de 22/09",
+      "visual_translation": "O cume aparece como prova de origem, nunca como enfeite."
+    },
+    {
+      "text": "Precisão sem frieza",
+      "origin": "kickoff.md, atributos precisão e calma",
+      "visual_translation": "Ângulos exatos e cor calma, com tipografia de leitura acolhedora."
+    }
+  ],
+  "vetados": [
+    {
+      "text": "Nada de cacau literal",
+      "reason": "O símbolo pictórico é o clichê da categoria, usado por 3 de 7 concorrentes (fonte: mapa de concorrentes)."
+    },
+    {
+      "text": "Nada de marrom",
+      "reason": "Decisão da fundadora no kickoff de 30/09."
+    },
+    {
+      "text": "Nada de dourado ou folha metálica",
+      "reason": "Decisão dos dois sócios no kickoff de 30/09."
+    }
+  ],
+  "personality": {
+    "attributes": [
+      "paciente",
+      "preciso",
+      "enraizado",
+      "calmo"
+    ],
+    "is_not": [
+      "luxuoso por vitrine",
+      "rústico por pose",
+      "frio como laboratório"
+    ],
+    "archetype_hypothesis": "Sábio com traço de Criador. É uma hipótese de conversa e não um veredito."
+  },
+  "audience": {
+    "summary": "Quem presenteia e quem cozinha em casa, com atenção à origem e disposição de pagar por ela. Segue como hipótese até as entrevistas do próximo ciclo.",
+    "personas": [
+      {
+        "name": "Quem presenteia",
+        "who": "Compra para datas e quer entregar algo com história.",
+        "thinks": "Quero que quem recebe saiba de onde isso veio.",
+        "needs": "Um presente que se explica sozinho, na caixa e na etiqueta."
+      },
+      {
+        "name": "Quem cozinha em casa",
+        "who": "Faz bolo, brigadeiro e sobremesa e escolhe o chocolate pelo comportamento na receita.",
+        "thinks": "Preciso saber como esse chocolate derrete e que sabor ele deixa.",
+        "needs": "Informação técnica clara, sem jargão, no verso da embalagem."
+      }
+    ],
+    "emotional_promises": [
+      "Calma ao abrir a caixa.",
+      "Confiança na origem.",
+      "Orgulho de ter escolhido bem."
+    ]
+  },
+  "concept": {
+    "big_idea": "O tempo é o ingrediente.",
+    "formula": {
+      "icon": "A linha de cume lembra a serra de longe.",
+      "index": "O ângulo e a altura apontam para a altitude em que o chocolate é feito.",
+      "symbol": "Um traço contínuo significa paciência, por convenção de ofício."
+    },
+    "manifesto": [
+      "Chocolate não se apressa.",
+      "Se apressa, perde o que a serra deu.",
+      "Por isso cada lote leva o tempo que leva. Cada barra diz de onde veio.",
+      "Fazemos devagar para você sentir rápido."
+    ]
+  },
+  "symbol": {
+    "name": "Linha de cume",
+    "rationale": "Uma linha só, desenhada de uma vez, sobe e desce como o cume visto de longe. Os ângulos são constantes e as alturas diferem, como numa serra de verdade.",
+    "slope_deg": 48,
+    "vertices": [
+      0,
+      1.0,
+      0.42,
+      0.7,
+      0.3,
+      0.46,
+      0
+    ],
+    "stroke_ratio": 0.075,
+    "protection_rule": "Altura do pico mais alto do símbolo, em todos os lados.",
+    "min_size": {
+      "print_mm": 18,
+      "screen_px": 96
+    },
+    "misuse": [
+      "Esticar ou comprimir o símbolo.",
+      "Girar o símbolo.",
+      "Trocar a cor fora da paleta.",
+      "Contornar a linha.",
+      "Aplicar sombra ou brilho.",
+      "Colocar sobre fotografia movimentada.",
+      "Fechar a linha em forma de montanha cheia."
+    ],
+    "geometric_study_note": "Os arquivos de símbolo deste pacote são um estudo geométrico gerado por parâmetros, para o time de criação refinar e finalizar em vetor. O texto das assinaturas usa fonte viva e precisa ser convertido em curvas antes da gráfica."
+  },
+  "colour": {
+    "families": [
+      {
+        "pt_name": "Azul",
+        "universe_name": "Cume",
+        "hex": "#2B3A67",
+        "role": "Base da marca. Fundos, títulos e a assinatura.",
+        "meaning": "A altura e a calma do céu visto da serra."
+      },
+      {
+        "pt_name": "Verde-azulado",
+        "universe_name": "Vale",
+        "hex": "#2F7F86",
+        "role": "Origem e ação. Selos, links e botões.",
+        "meaning": "O vale que fica abaixo do cume."
+      }
+    ],
+    "neutrals": [
+      {
+        "token": "SFI_Neblina",
+        "name": "Neblina",
+        "hex": "#EDF0F2",
+        "role": "Fundo claro da marca."
+      },
+      {
+        "token": "SFI_Tinta",
+        "name": "Tinta",
+        "hex": "#12161C",
+        "role": "Texto corrido sobre fundo claro."
+      },
+      {
+        "token": "SFI_Branco",
+        "name": "Branco",
+        "hex": "#FFFFFF",
+        "role": "Texto sobre os passos escuros e áreas de respiro."
+      }
+    ],
+    "steps": [
+      10,
+      20,
+      30,
+      40,
+      50,
+      60,
+      70
+    ],
+    "ratio": {
+      "light_bg": [
+        [
+          "SFI_Neblina",
+          45
+        ],
+        [
+          "SFI_Cume_50",
+          30
+        ],
+        [
+          "SFI_Vale_50",
+          15
+        ],
+        [
+          "SFI_Branco",
+          10
+        ]
+      ],
+      "dark_bg": [
+        [
+          "SFI_Cume_70",
+          55
+        ],
+        [
+          "SFI_Cume_10",
+          30
+        ],
+        [
+          "SFI_Vale_50",
+          15
+        ]
+      ]
+    },
+    "pairs": [
+      {
+        "fg": "SFI_Tinta",
+        "bg": "SFI_Neblina",
+        "declared": "AA"
+      },
+      {
+        "fg": "SFI_Neblina",
+        "bg": "SFI_Cume_50",
+        "declared": "AA"
+      },
+      {
+        "fg": "SFI_Cume_10",
+        "bg": "SFI_Cume_70",
+        "declared": "AA"
+      },
+      {
+        "fg": "SFI_Branco",
+        "bg": "SFI_Vale_50",
+        "declared": "AA"
+      },
+      {
+        "fg": "SFI_Cume_50",
+        "bg": "SFI_Neblina",
+        "declared": "AA"
+      }
+    ],
+    "gradient": {
+      "from": "SFI_Cume_50",
+      "to": "SFI_Vale_50",
+      "angle": 135,
+      "rule": "Sempre da cor principal para uma única outra família, neste ângulo."
+    },
+    "vetoed_hexes": [
+      "#C9A227",
+      "#5A3A22"
+    ],
+    "print_note": "O CMYK deste pacote é aproximado. Os valores de impressão saem de um perfil ICC e de uma prova impressa na gráfica."
+  },
+  "typography": {
+    "fonts": [
+      {
+        "role": "headline",
+        "name": "Newsreader",
+        "google_family": "Newsreader:opsz,wght@6..72,300..700",
+        "license": "SIL Open Font License 1.1",
+        "fallback": "Georgia, serif",
+        "usage": "Títulos, citações e o nome da marca."
+      },
+      {
+        "role": "body",
+        "name": "Instrument Sans",
+        "google_family": "Instrument+Sans:wght@400..700",
+        "license": "SIL Open Font License 1.1",
+        "fallback": "Arial, sans-serif",
+        "usage": "Texto corrido, interface e legendas."
+      },
+      {
+        "role": "mono",
+        "name": "JetBrains Mono",
+        "google_family": "JetBrains+Mono:wght@400..600",
+        "license": "SIL Open Font License 1.1",
+        "fallback": "Courier New, monospace",
+        "usage": "Códigos de cor, lotes e dados técnicos."
+      }
+    ],
+    "scale": [
+      {
+        "level": "Display",
+        "size_px": 72,
+        "line_height": 1.05,
+        "weight": 300,
+        "font_role": "headline",
+        "tracking": "-0.01em"
+      },
+      {
+        "level": "H1",
+        "size_px": 56,
+        "line_height": 1.1,
+        "weight": 400,
+        "font_role": "headline",
+        "tracking": "-0.005em"
+      },
+      {
+        "level": "H2",
+        "size_px": 40,
+        "line_height": 1.15,
+        "weight": 400,
+        "font_role": "headline",
+        "tracking": "0"
+      },
+      {
+        "level": "H3",
+        "size_px": 28,
+        "line_height": 1.2,
+        "weight": 500,
+        "font_role": "headline",
+        "tracking": "0"
+      },
+      {
+        "level": "Corpo",
+        "size_px": 18,
+        "line_height": 1.55,
+        "weight": 400,
+        "font_role": "body",
+        "tracking": "0"
+      },
+      {
+        "level": "Legenda",
+        "size_px": 14,
+        "line_height": 1.4,
+        "weight": 400,
+        "font_role": "body",
+        "tracking": "0"
+      },
+      {
+        "level": "Etiqueta",
+        "size_px": 12,
+        "line_height": 1.3,
+        "weight": 600,
+        "font_role": "body",
+        "tracking": "0.08em"
+      }
+    ],
+    "specimen_text": "Feito devagar, no alto da serra",
+    "note": "Confirme a licença e o arquivo de cada fonte antes de entregar ao cliente."
+  },
+  "elements": {
+    "origin_rule": "Todo elemento nasce do ângulo e das alturas do símbolo. As linhas de nível repetem a mesma polilinha, em escala menor, uma abaixo da outra.",
+    "pattern": {
+      "lines": 9,
+      "gap_ratio": 0.34
+    },
+    "pictograms": [
+      {
+        "id": "ridge",
+        "name": "Cume",
+        "use": "Origem e lote."
+      },
+      {
+        "id": "lot",
+        "name": "Lote",
+        "use": "Número do lote e peso."
+      },
+      {
+        "id": "altitude",
+        "name": "Altitude",
+        "use": "Dados de origem."
+      },
+      {
+        "id": "time",
+        "name": "Tempo",
+        "use": "Tempo de descanso e preparo."
+      },
+      {
+        "id": "gift",
+        "name": "Presente",
+        "use": "Caixas e assinatura."
+      },
+      {
+        "id": "origin",
+        "name": "Origem",
+        "use": "Mapa e procedência."
+      }
+    ]
+  },
+  "photography": {
+    "principles": [
+      "Luz da manhã, lateral e baixa.",
+      "Mãos e processo, sem rostos.",
+      "Superfícies neutras em Neblina ou Cume.",
+      "O produto ocupa pouco do quadro e o ar fala."
+    ],
+    "treatment": "Duotone entre Cume_70 e Neblina para fundos e fotos de apoio. Fotos de produto mantêm a cor real.",
+    "do": [
+      "Mostrar o lote, o tempo e a serra.",
+      "Deixar espaço vazio dentro do quadro.",
+      "Usar uma só fonte de luz."
+    ],
+    "dont": [
+      "Usar banco de imagens com sorrisos posados.",
+      "Usar tons de marrom ou dourado como cenário.",
+      "Colocar o símbolo sobre área movimentada."
+    ]
+  },
+  "motion": {
+    "principles": [
+      "Movimento tem a velocidade da escrita à mão.",
+      "A linha se desenha de uma vez, da esquerda para a direita.",
+      "Nada pula, nada pisca, nada gira.",
+      "Quem prefere menos movimento recebe a marca parada."
+    ],
+    "logo_animation": {
+      "duration_ms": 1800,
+      "easing": "cubic-bezier(0.4, 0, 0.2, 1)",
+      "note": "A animação respeita a preferência do sistema por menos movimento."
+    }
+  },
+  "voice": {
+    "traits": [
+      {
+        "name": "Calma",
+        "is": "fala sem pressa e sem exclamação",
+        "is_not": "lenta ou vaga",
+        "example_do": "O lote de outubro descansou por três semanas.",
+        "example_dont": "Corra! Últimas barras do lote!"
+      },
+      {
+        "name": "Enraizada",
+        "is": "nomeia o lugar e o lote",
+        "is_not": "romântica sobre o campo",
+        "example_do": "Feito na Mantiqueira, lote 12.",
+        "example_dont": "O sabor autêntico da natureza."
+      },
+      {
+        "name": "Exata",
+        "is": "dá números e datas",
+        "is_not": "fria ou técnica por vaidade",
+        "example_do": "Derrete a 34 graus e deixa final de amêndoa.",
+        "example_dont": "Textura aveludada e inesquecível."
+      }
+    ],
+    "messaging": [
+      {
+        "territory": "Presente",
+        "message": "Um presente que diz de onde veio.",
+        "proof": "Cada caixa traz o lote e a data de fabricação."
+      },
+      {
+        "territory": "Cozinha em casa",
+        "message": "Chocolate que se comporta na receita.",
+        "proof": "O verso da barra traz ponto de derretimento e sugestão de uso."
+      },
+      {
+        "territory": "Assinatura",
+        "message": "Um lote novo, todo mês, sem pressa.",
+        "proof": "O lote do mês chega com a história de como foi feito."
+      }
+    ],
+    "vocabulary": {
+      "use": [
+        "lote",
+        "serra",
+        "descansar",
+        "devagar",
+        "origem",
+        "ponto"
+      ],
+      "avoid": [
+        "premium",
+        "gourmet",
+        "experiência única",
+        "irresistível",
+        "pecado"
+      ]
+    },
+    "tone_by_channel": [
+      {
+        "channel": "Embalagem",
+        "tone": "Curto, factual, com número."
+      },
+      {
+        "channel": "Site",
+        "tone": "Claro e acolhedor, frases curtas."
+      },
+      {
+        "channel": "Redes",
+        "tone": "Observador, sem apelo de urgência."
+      },
+      {
+        "channel": "Atendimento",
+        "tone": "Direto e gentil, com prazo certo."
+      }
+    ]
+  },
+  "applications": [
+    {
+      "id": "bag",
+      "name": "Embalagem de 250 g",
+      "spec": "Etiqueta frontal 100 x 150 mm, fundo Cume_50, selo e nome em Neblina.",
+      "rules": [
+        "O lote vai sempre na faixa Vale.",
+        "O símbolo nunca fica sob dobra.",
+        "Sem verniz dourado ou metálico."
+      ]
+    },
+    {
+      "id": "card",
+      "name": "Cartão de visita",
+      "spec": "90 x 50 mm, frente Neblina com assinatura horizontal, verso Cume_50.",
+      "rules": [
+        "Papel fosco sem brilho.",
+        "Nome da pessoa em Newsreader.",
+        "Contatos em Instrument Sans."
+      ]
+    },
+    {
+      "id": "social",
+      "name": "Post quadrado",
+      "spec": "1080 x 1080 px, fundo Cume_70 com linhas de nível.",
+      "rules": [
+        "Uma frase por peça.",
+        "Assinatura pequena no canto.",
+        "Nenhum texto sobre área clara sem contraste de 4,5 para 1."
+      ]
+    },
+    {
+      "id": "site",
+      "name": "Página inicial",
+      "spec": "1440 px de largura, cabeçalho com assinatura e uma chamada principal.",
+      "rules": [
+        "Um botão principal por tela, em Vale_50.",
+        "Fotos com a regra de duotone.",
+        "Texto corrido em 18 px."
+      ]
+    },
+    {
+      "id": "box",
+      "name": "Caixa de presente",
+      "spec": "Tampa quadrada de 200 mm com selo central e linhas de nível.",
+      "rules": [
+        "Sem fita dourada.",
+        "O selo traz o número do lote.",
+        "Papel Neblina com impressão em uma cor."
+      ]
+    },
+    {
+      "id": "letterhead",
+      "name": "Papel timbrado",
+      "spec": "A4, assinatura no topo, rodapé com a linha de cume fina.",
+      "rules": [
+        "Margem de 20 mm.",
+        "Texto em Tinta sobre Neblina ou branco.",
+        "Sem marca d'água."
+      ]
+    }
+  ],
+  "governance": {
+    "owner": "Ana, fundadora, aprova qualquer mudança no símbolo, nas cores e na tipografia.",
+    "approval_flow": "Pedido por escrito, parecer do estúdio, decisão da fundadora, registro no histórico de versões.",
+    "review_cycle": "Revisão anual do manual e a cada nova linha de produto.",
+    "contact": "marca@serrafina.example"
+  },
+  "faq": [
+    {
+      "q": "Posso usar o símbolo em outra cor?",
+      "a": "Só nas versões da paleta: Cume, Neblina ou Tinta em uma cor. Outras cores não passam pela aprovação."
+    },
+    {
+      "q": "Posso colocar o símbolo sobre uma foto?",
+      "a": "Sim, sobre fotos calmas e de fundo limpo. Sobre fotos movimentadas, use a versão com fundo sólido."
+    },
+    {
+      "q": "Qual fonte uso se não tiver a Newsreader?",
+      "a": "Use Georgia nos títulos e Arial no texto, que são os substitutos definidos. Prefira instalar as fontes oficiais."
+    },
+    {
+      "q": "Posso usar dourado em datas especiais?",
+      "a": "Não. Dourado e metálico estão vetados em todos os usos da marca."
+    },
+    {
+      "q": "Onde peço os arquivos?",
+      "a": "Escreva para o contato de governança e informe a aplicação e o prazo."
+    }
+  ],
+  "changelog": [
+    {
+      "version": "1.0.0",
+      "date": "2026-10-15",
+      "change": "Primeira versão do ecossistema da marca.",
+      "approved_by": "Ana, fundadora"
+    }
+  ]
+}

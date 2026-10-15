@@ -31,6 +31,13 @@ python3 scripts/guidelines_completeness.py --input spec.json     # exit 0 comple
 It checks that every token's RGB equals its HEX, that each contrast pair declared AA passes when recomputed, that no
 token name or colour is duplicated, and that nothing a team needs is missing. Fix conflicts before gaps.
 
+To see what a complete manual still asks of the source, run the coverage check. It compares the source with 34 needs
+reverse engineered from a real corporate manual and names the field to add for each gap (exit 2 on an essential gap):
+
+```bash
+python3 scripts/manual_coverage_check.py --source brand-source.json
+```
+
 **Step 6.5, team guidelines.** Technical rules only: signatures, colour, grid, type, elements, pictograms, components,
 pieces. No story, no concept. Publish by version for the lead's review with a visible status, then a final version
 with no status, always at the same address. A change to colour, type, element or mark changes this document first.
@@ -67,3 +74,4 @@ folder is not approved. Warns on bad names, bad dates, duplicate versions, gaps 
 
 - [`references/identity_system_spec.md`](references/identity_system_spec.md): what a spec holds, standards manuals, tokens
 - [`references/manual_as_living_document.md`](references/manual_as_living_document.md): versions, one source, drift
+- [`references/manual_anatomy_reference.md`](references/manual_anatomy_reference.md): the reverse engineered manual structure, 7 layers, 34 needs

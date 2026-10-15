@@ -79,7 +79,9 @@ body.dk-open{overflow:hidden}
  body.dk-print #bk-root>*:not(#deck),body.dk-print .ed-bar,body.dk-print .ed-pop,body.dk-print .ed-toast{display:none!important}
  body.dk-print #deck{position:static;background:none;padding:0;display:block}
  body.dk-print #deck .dk-bar{display:none}
- body.dk-print #deck .dk-stage{width:1280px}
+ body.dk-print #deck .dk-stage{width:1280px;display:block;margin:0;padding:0}
+ body.dk-print .sl:last-child{break-after:auto}
+ body.dk-print,body.dk-print #bk-root{margin:0;padding:0;background:none;height:auto}
  body.dk-print .sl,body.dk-print .sl[hidden]{display:flex;width:1280px;height:720px;aspect-ratio:auto;border-radius:0;break-after:page;font-size:25px;-webkit-print-color-adjust:exact;print-color-adjust:exact}
 }
 """

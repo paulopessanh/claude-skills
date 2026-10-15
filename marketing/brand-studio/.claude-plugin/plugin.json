@@ -1,0 +1,19 @@
+{
+  "name": "brand-studio",
+  "description": "The full creative cycle of brand creation and visual identity, from briefing to manual, as five interlinked skills sharing one project state. brand-studio is the orchestrator (context: fork): a nine-step state machine with gates that need evidence, review verdicts, approval, and change propagation that marks every downstream step stale when an earlier one reopens, plus a pt/en router that reads the state. brand-discovery finds gaps, contradictions and impossible timelines in a brief and maps the competitive category in OKLCH. brand-direction screens names, validates anatomy, builds accessible colour families that block vetoed hues, and tallies the client's vote with quorum and a double count. brand-review lints deliverables and reads them through the client's eyes. brand-system checks guidelines for gaps and numbers that contradict each other and file names. Connects to brand-reverse by data. 11 stdlib scripts with typed exit codes, 10 references with per-claim confidence levels, 4 agents, 4 commands.",
+  "version": "2.12.0",
+  "author": {
+    "name": "Alireza Rezvani",
+    "url": "https://alirezarezvani.com"
+  },
+  "homepage": "https://github.com/alirezarezvani/claude-skills/tree/main/marketing/brand-studio",
+  "repository": "https://github.com/alirezarezvani/claude-skills",
+  "license": "MIT",
+  "skills": [
+    "./skills/brand-studio",
+    "./skills/brand-discovery",
+    "./skills/brand-direction",
+    "./skills/brand-system",
+    "./skills/brand-review"
+  ]
+}

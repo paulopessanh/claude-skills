@@ -1,0 +1,23 @@
+{
+  "_note": "FICTIONAL client Serra Fina, craft chocolate from the Mantiqueira highlands. Shape read by brief_gap_analyzer.py.",
+  "as_of": "2026-10-15",
+  "founded_year": 2019,
+  "fields": {
+    "scope_contracted": {"value": "Brand name check, symbol, colour, type, guidelines, manual. Packaging pieces out of scope.", "source": "signed contract", "date": "2026-09-20", "class": "fact"},
+    "ambition": {"value": "Become the reference for highland chocolate in Brazil within five years.", "source": "founder call", "date": "2026-09-22", "class": "fact"},
+    "audience": {"value": "Gift buyers and home bakers who pay more for provenance.", "source": "founder call", "date": "2026-09-22", "class": "hypothesis"},
+    "name_origin": {"value": "Founders chose Serra Fina after the ridge where the first cacao was planted.", "source": "founder call", "date": "2026-09-22", "class": "fact"},
+    "company_history": {"value": "Started 2019 with 4 hectares, first bar sold in 2021.", "source": "company deck", "date": "2026-09-01", "class": "fact"},
+    "services": {"value": "Bean-to-bar chocolate, gift boxes, subscription.", "source": "site", "date": "2026-09-01", "class": "fact"},
+    "differentiators": {"value": "Altitude grown cacao, single farm.", "source": "assumed", "date": "2026-09-22", "class": "fact"},
+    "current_brand": {"value": "Temporary logo made by the founders.", "source": "site", "date": "2026-09-01", "class": "fact"},
+    "competitors": {"value": "Cacau Real, Doce Nobre, Terra Boa", "source": "founder call", "date": "2026-02-01", "class": "fact"}
+  },
+  "decisors": [
+    {"name": "Ana", "role": "founder", "likes": ["blue tones", "hand drawn line"], "dislikes": ["gold foil", "brown packaging"]},
+    {"name": "Beto", "role": "marketing", "likes": ["gold foil", "warm brown"], "dislikes": ["pastel colours"]}
+  ],
+  "timeline": [
+    {"label": "Years supplying farm", "years": 9, "since_year": 2017}
+  ]
+}

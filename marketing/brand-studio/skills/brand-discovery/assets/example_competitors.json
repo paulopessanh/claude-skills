@@ -1,0 +1,127 @@
+{
+  "_note": "FICTIONAL craft chocolate competitors for the fictional client Serra Fina. Shape read by competitor_matrix.py. Every competitor needs a source and a date.",
+  "vetoed_hexes": [
+    "#C9A227"
+  ],
+  "candidate": {
+    "palette": [
+      "#2B3A67",
+      "#F4EFE6",
+      "#B24A2F"
+    ]
+  },
+  "competitors": [
+    {
+      "name": "Cacau Real",
+      "palette": [
+        "#3B2314",
+        "#D4AF37"
+      ],
+      "symbol_type": "emblem",
+      "anatomy": "mixed",
+      "tone": [
+        "heritage",
+        "premium",
+        "tradition"
+      ],
+      "source": "site, home page",
+      "date": "2026-10-02"
+    },
+    {
+      "name": "Doce Nobre",
+      "palette": [
+        "#4A2C1D",
+        "#C9A227"
+      ],
+      "symbol_type": "wordmark",
+      "anatomy": "nominative",
+      "tone": [
+        "premium",
+        "heritage",
+        "luxury"
+      ],
+      "source": "site, home page",
+      "date": "2026-10-02"
+    },
+    {
+      "name": "Terra Boa",
+      "palette": [
+        "#2F5D3A",
+        "#8B5A2B"
+      ],
+      "symbol_type": "pictorial",
+      "anatomy": "mixed",
+      "tone": [
+        "natural",
+        "origin",
+        "premium"
+      ],
+      "source": "instagram grid",
+      "date": "2026-10-03"
+    },
+    {
+      "name": "Folha Verde",
+      "palette": [
+        "#1E6B45",
+        "#F1E6CF"
+      ],
+      "symbol_type": "pictorial",
+      "anatomy": "mixed",
+      "tone": [
+        "natural",
+        "organic",
+        "origin"
+      ],
+      "source": "site, about page",
+      "date": "2026-10-03"
+    },
+    {
+      "name": "Bean Lab",
+      "palette": [
+        "#111111",
+        "#E4572E"
+      ],
+      "symbol_type": "lettermark",
+      "anatomy": "mixed",
+      "tone": [
+        "modern",
+        "craft",
+        "bold"
+      ],
+      "source": "site, home page",
+      "date": "2026-10-04"
+    },
+    {
+      "name": "Nibs and Co",
+      "palette": [
+        "#5A3A22",
+        "#E8C07D"
+      ],
+      "symbol_type": "emblem",
+      "anatomy": "mixed",
+      "tone": [
+        "craft",
+        "heritage",
+        "handmade"
+      ],
+      "source": "packaging photo",
+      "date": "2026-10-04"
+    },
+    {
+      "name": "Mata Atlantica",
+      "palette": [
+        "#2B6B4F",
+        "#D8B26E"
+      ],
+      "symbol_type": "pictorial",
+      "anatomy": "mixed",
+      "tone": [
+        "natural",
+        "origin",
+        "craft"
+      ],
+      "source": "site, home page",
+      "date": "2026-10-05"
+    }
+  ]
+}

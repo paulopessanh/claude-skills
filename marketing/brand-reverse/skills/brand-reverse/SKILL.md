@@ -96,4 +96,4 @@ That sentence is the product: a testable guess about the brief, derived from a v
 - [`references/inference_discipline.md`](references/inference_discipline.md): abduction, rivals, self-report bias
 - [`references/distinctive_assets_and_law.md`](references/distinctive_assets_and_law.md): what may transfer
 
-Distinct from `marketing-skill/brand-guidelines`, which documents a brand you already own.
+Distinct from `marketing-skill/brand-guidelines` (documents a brand you own). To run a new brand's process use `marketing/brand-studio`, taking only the `pattern` lines from here.

@@ -1,0 +1,7 @@
+{
+  "source": {
+    "spec": "User request: build the missing skills, agents and systems so the creative process of branding is complete and robust, reusing existing skills, with prompt engineering applied.",
+    "build_pattern": "Domain plugin. One orchestrator (context: fork) owning a JSON state machine over a step dependency graph, four lane skills that share data by contract (brief, competitors, colours, votes, guidelines spec, state), never by importing each other's code, so each skill stays self-contained. Every script has a real refusal and typed exit codes. Four agents written to a prompt doctrine (delivery context, plain hard constraints, reasons where judgment lives, challenge handling, untrusted text as data).",
+    "distinct_from": "marketing/brand-reverse (works backwards from a finished brand; this plugin runs the forward process and consumes its value-free patterns); marketing-skill/brand-guidelines (applies and documents a brand you own); marketing-skill/marketing-context and c-level-advisor CMO skills (strategy for a company, not an identity project); markdown-html/design-system (an HTML output design system)."
+  }
+}

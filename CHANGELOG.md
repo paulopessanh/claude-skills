@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added — marketing/brand-studio: the forward creative cycle, interlinked with brand-reverse
+
+Five skills (orchestrator, discovery, direction, system, review), four agents, four commands and eleven stdlib scripts that run a
+brand and visual identity project from briefing to manual.
+
+- `brand_state.py`: nine steps as a dependency graph with evidence-backed gates, review verdicts tied to the deliverable linter,
+  approval, and change propagation that marks downstream steps stale.
+- Discovery, direction, review and system scripts: brief gaps and impossible timelines, OKLCH competitor map, name screening,
+  anatomy validation, gamut-safe colour families that block vetoed hues, vote tally with quorum and double count, deliverable lint,
+  guidelines completeness and consistency, file names.
+- Skills depend on each other by data contract, never by importing code. Connects to `brand-reverse` through its value-free patterns.
+- Counters: skills 389 → 394; tools 731 → 742; refs 845 → 855; agents 119 → 123; commands 151 → 155; plugins 100 → 101.
+
 ### Added — marketing/brand-reverse: reverse-engineer a brand back to its creative process
 
 Single-skill plugin that works backwards from a finished brand and visual identity to the

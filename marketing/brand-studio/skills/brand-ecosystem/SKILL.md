@@ -19,7 +19,7 @@ Reply in the user's language.
 
 1. **Gate the source.** Fill `brand-source.v2` ([`assets/example_serra_fina_brand.json`](assets/example_serra_fina_brand.json)):
    story, purpose, pétreos, concept, personality, name, symbol geometry, colour families, type, elements, voice,
-   applications, governance, plus the manual sections: scope, wordmark, lockups, version and background matrices, minimum sizes and protection by version, name in text, production sheets and delivery. Every number comes from approved steps 1 to 8.
+   applications, governance, plus the optional `strategy` block (method and evidence, diagnosis, turns, direction, voice and content; 22 essentials checked against `brand-system/assets/strategic_blueprint.v1.json`), plus the manual sections: scope, wordmark, lockups, version and background matrices, minimum sizes and protection by version, name in text, production sheets and delivery. Every number comes from approved steps 1 to 8.
 
 ```bash
 python3 scripts/ecosystem_source_check.py --input brand.json --state brand-state.json
@@ -43,11 +43,17 @@ python3 scripts/ecosystem_auditor.py --dir ./pkg
 ```
 
    Exit 0 clean, 2 caveats, 4 blocked. It checks palette closure, vetoed hues, font closure, text contrast, anchors,
-   accessibility, external resources and that the manual repeats the source numbers. It recomputes from the logo files themselves the contrast of every version on every background the matrix allows, the minimum size of each lockup and the delivery formats.
+   accessibility, external resources and that the manual repeats the source numbers. With a `strategy` block it also checks chapter and slide numbering, one year in every footer, one running header per chapter, the contents against real pages, that content shares add up to 100, that research states n and its qualitative nature, and that the 12 platform cells repeat their sources. It recomputes from the logo files themselves the contrast of every version on every background the matrix allows, the minimum size of each lockup and the delivery formats.
 
 4. **Edit and share.** The Artifact version of the brandbook lets writers edit narrative text (history, purpose, concept,
    personality, name, photography, voice, FAQ, governance), save it to `content.json`, and download a clean HTML for the
    client. Colour, type, symbol, tokens and the locked decisions stay read only, so the manual keeps matching the logo.
+
+   With a `strategy` block the manual gains six strategic chapters and a **Deck** button. The deck is a 16:9 slide
+   deck in the grammar of the studied strategic manual (running header, eyebrow, title in two weights, one dark module,
+   a "Por trás do termo" footnote, unique page numbers, a contents slide with real pages). Writers edit slide text
+   and save it to `deck.json` (separate from `content.json`); anyone downloads a single-file HTML deck with arrow keys
+   and print to PDF. The platform slide is derived and locked. `deck/*.html` is also written to the package.
 
 5. **Record and hand over.** Submit step 9 in `brand_state.py` with the audit exit code as evidence. A person approves.
 

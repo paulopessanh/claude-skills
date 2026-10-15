@@ -49,7 +49,7 @@ body.has-edbar{padding-bottom:96px}
 EDIT_JS = r"""
 (function(){
 var EDITABLE=['historia','proposito','conceito','personalidade','nome','fotografia','voz','faq','governanca'];
-var LOCKS={petreos:'Pétreos e vetados são decisões travadas com o cliente. Reabra a decisão no projeto, não aqui.',
+var LOCKS={metodo:'Texto estratégico vem da fonte. Edite a fonte e gere de novo, assim a plataforma e os capítulos continuam iguais.',diagnostico:'Texto estratégico vem da fonte. Edite a fonte e gere de novo.',viradas:'Texto estratégico vem da fonte. Edite a fonte e gere de novo.',direcao:'Texto estratégico vem da fonte. Edite a fonte e gere de novo.',tom:'Texto estratégico vem da fonte. Edite a fonte e gere de novo.',plataforma:'A plataforma é derivada dos outros capítulos e nunca é escrita à mão.',petreos:'Pétreos e vetados são decisões travadas com o cliente. Reabra a decisão no projeto, não aqui.',
  simbolo:'Este capítulo nasce da geometria da fonte. Para mudar o símbolo, mude a fonte e gere de novo.',versoes:'Gerado da fonte.',uso:'Gerado da fonte (medidas e erros de uso).',
  cor:'Cores, passos e contrastes vêm da fonte. Para mudar uma cor, mude a fonte e gere de novo, assim o logo e o manual continuam iguais.',
  tipografia:'Tipos e escala vêm da fonte.',elementos:'Gerado da fonte.',movimento:'Tempos e curvas vêm da fonte.',aplicacoes:'Gerado da fonte.',tokens:'Tokens e arquivos vêm da fonte.',historico:'Histórico gerado da fonte.',logotipo:'Construção e medidas vêm da fonte e do arquivo da assinatura.',fundos:'A matriz vem da fonte e passa por checagem de contraste. Para mudar, mude a fonte e gere de novo.',entrega:'Formatos e sistemas de cor vêm da fonte e do pacote.'};

@@ -997,9 +997,20 @@
    "pages": "64",
    "from": [],
    "checks": [
-    "strategy.platform_summary>=10"
+    "concept.big_idea",
+    "identity.tagline",
+    "purpose.essence",
+    "purpose.reason_to_exist",
+    "purpose.promise",
+    "strategy.category",
+    "purpose.positioning",
+    "strategy.values>=3",
+    "personality.archetype.intersection_name",
+    "voice.traits>=3",
+    "audience.summary",
+    "strategy.synthesis.desired_perception"
    ],
-   "proposed_field": "strategy.platform_summary[] {label, value} (derivada, nunca escrita à mão)"
+   "proposed_field": "Nenhum campo novo. O gerador deriva as 12 células destes campos e o auditor confere que cada célula repete o texto de origem."
   },
   {
    "id": "P48",

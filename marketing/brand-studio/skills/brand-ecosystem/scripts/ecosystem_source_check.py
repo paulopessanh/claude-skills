@@ -183,6 +183,121 @@ def check_v2(b, add, tokens):
         add("BLOCK", "MISSING_SECTION", "delivery needs formats, colour_systems and outlined_and_editable")
 
 
+STRAT_ESSENTIAL = [
+    "strategy.guiding_question", "strategy.method.pillars>=3", "strategy.evidence_base>=3", "strategy.reading>=4", "strategy.goals>=3", "strategy.critical_view",
+    "strategy.tensions>=3", "strategy.icp", "strategy.icp_insight", "audience.personas>=3", "audience.personas[].blocker", "audience.personas[].needs_to_hear",
+    "strategy.competition>=3", "personality.archetype.primary", "personality.archetype.secondary", "personality.archetype.shadow", "personality.archetype.balanced_by",
+    "personality.archetype.intersection_name", "strategy.turns>=3", "strategy.synthesis.scenario", "strategy.synthesis.problem", "strategy.synthesis.opportunity",
+    "strategy.synthesis.territory", "strategy.synthesis.desired_perception", "strategy.category", "strategy.not_category>=1", "strategy.spectrum",
+    "strategy.value_proposition", "strategy.promise_guarantees>=3", "purpose.essence", "purpose.reason_to_exist", "strategy.values>=3", "concept.reasons>=3",
+    "history.arc>=5", "personality.scales>=8", "voice.principles>=4", "voice.before_after>=3", "voice.traits>=3", "strategy.sources>=3", "strategy.primary_research_note",
+    "strategy.reading[].found",
+    "strategy.reading[].meaning",
+    "strategy.goals[].horizon",
+    "strategy.goals[].brand_role",
+    "strategy.tensions[].side_a",
+    "strategy.tensions[].side_b",
+    "strategy.tensions[].decision",
+    "audience.personas[].needs",
+    "strategy.competition[].does_well",
+    "strategy.competition[].fails_at",
+    "strategy.competition[].we_differ",
+    "strategy.turns[].title",
+    "strategy.turns[].text",
+    "purpose.positioning",
+    "purpose.promise",
+    "purpose.mission",
+    "purpose.vision",
+    "strategy.values[].definition",
+    "strategy.values[].behavior",
+    "concept.big_idea",
+    "history.arc[].stage",
+    "history.arc[].text",
+    "personality.scales[].left",
+    "personality.scales[].right",
+    "personality.scales[].position",
+    "voice.principles[].rule",
+    "voice.principles[].application",
+    "voice.before_after[].before",
+    "voice.before_after[].after",
+    "identity.tagline",
+    "audience.summary",
+    "strategy.sources[].supports"]
+
+
+def _get(node, parts):
+    cur = node
+    for i, p in enumerate(parts):
+        if p.endswith("[]"):
+            cur = cur.get(p[:-2]) if isinstance(cur, dict) else None
+            if not isinstance(cur, list) or not cur:
+                return False, None
+            vals = []
+            for it in cur:
+                ok, v = _get(it, parts[i + 1:]) if parts[i + 1:] else (True, it)
+                if not ok:
+                    return False, None
+                vals.append(v)
+            return True, vals
+        if isinstance(cur, dict) and p in cur:
+            cur = cur[p]
+        else:
+            return False, None
+    return True, cur
+
+
+def _has(b, expr):
+    n = None
+    if ">=" in expr:
+        expr, n = expr.split(">=")
+        n = int(n)
+    ok, v = _get(b, expr.split("."))
+    if not ok:
+        return False
+    if n is not None:
+        return isinstance(v, list) and len(v) >= n
+    if isinstance(v, list):
+        return bool(v) and all(bool(x if not isinstance(x, str) else x.strip()) for x in v)
+    return bool(v if not isinstance(v, str) else v.strip()) or isinstance(v, (int, float))
+
+
+def check_strategy(b, add):
+    """The strategic block: the essentials of the strategic blueprint, and the consistency rules the reference manual itself broke or kept."""
+    s = b["strategy"]
+    miss = [e for e in STRAT_ESSENTIAL if not _has(b, e)]
+    if miss:
+        add("BLOCK", "STRATEGY_INCOMPLETE", "missing or empty: " + ", ".join(miss[:8]) + (f" and {len(miss) - 8} more" if len(miss) > 8 else ""))
+    if "platform_summary" in s:
+        add("BLOCK", "PLATFORM_HAND_WRITTEN", "strategy.platform_summary is derived by the builder and must not be written by hand")
+    for t in s.get("tensions", []):
+        if not str(t.get("decision", "")).strip() or not str(t.get("side_a", "")).strip() or not str(t.get("side_b", "")).strip():
+            add("BLOCK", "TENSION_NO_DECISION", f"a tension needs two sides and a written decision: {str(t.get('side_a', ''))[:40]}")
+    sh = [x.get("share") for x in s.get("content_pillars", [])]
+    if sh and (any(not isinstance(x, int) or x <= 0 for x in sh) or sum(sh) != 100):
+        add("BLOCK", "SHARES_NOT_100", f"content pillar shares must be whole numbers that add up to 100; they add up to {sum(x for x in sh if isinstance(x, int))}")
+    pc = s.get("perception")
+    if pc and (not isinstance(pc.get("n"), int) or pc["n"] < 1 or "qualitativ" not in str(pc.get("sample_note", "")).lower()):
+        add("BLOCK", "SAMPLE_UNLABELLED", "the perception research needs n and a note that it is a qualitative signal and not a statistic")
+    outlets = {x.get("outlet") for x in s.get("sources", [])}
+    for m in s.get("market_data", []):
+        if not m.get("source") or m["source"] not in outlets:
+            add("BLOCK", "DATA_NO_SOURCE", f"market data '{str(m.get('label', ''))[:40]}' needs a source listed in strategy.sources")
+    for x in b.get("personality", {}).get("scales", []):
+        if x.get("position") not in (0, 1, 2, 3, 4) or not x.get("left") or not x.get("right"):
+            add("BLOCK", "BAD_SCALE", f"scale '{x.get('left')}' to '{x.get('right')}' needs a position from 0 to 4")
+    for d in s.get("differentials", []):
+        if d.get("copyability") not in ("conduct", "effort"):
+            add("BLOCK", "BAD_COPYABILITY", f"differential '{str(d.get('name', ''))[:40]}': copyability is conduct or effort")
+    for v in s.get("values", []):
+        if not v.get("behavior"):
+            add("BLOCK", "VALUE_NO_BEHAVIOR", f"value '{v.get('name')}' needs the behavior where it shows")
+    tm = s.get("territory_map")
+    if tm and tm.get("own") not in [q.get("name") for q in tm.get("quadrants", [])]:
+        add("BLOCK", "BAD_REFERENCE", "territory_map.own must be the name of one quadrant")
+    if "slogan_system" in s and b.get("identity", {}).get("slogan", {}).get("decision") == "exclude":
+        add("WARN", "CONTRADICTION", "a slogan system is written but identity.slogan is excluded for this version")
+
+
 def check(b, state_path=None):
     out = []
     add = lambda lvl, code, msg: out.append((lvl, code, msg))
@@ -318,6 +433,8 @@ def check(b, state_path=None):
         check_v2(b, add, tokens)
     else:
         add("BLOCK", "SOURCE_V1", "brand-source.v1 has no scope, wordmark, lockups, version and background matrices, per-version sizes, production sheets or delivery: upgrade to brand-source.v2")
+    if b.get("strategy"):
+        check_strategy(b, add)
     if b.get("fictional") and not b.get("_note"):
         add("WARN", "NOT_LABELLED", "marked fictional but carries no _note saying so")
     if not b.get("fictional") and b.get("_note"):

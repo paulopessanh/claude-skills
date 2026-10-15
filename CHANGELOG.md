@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added — marketing/brand-studio step 9: brand-ecosystem
 
 - Schema v2 closes the 13 essential gaps found by `manual_coverage_check.py` against a reference manual: 18 of 18 essential needs covered, 3 new chapters, new refusals and audit checks.
+- brand-ecosystem: optional `strategy` block closes the strategic gaps (22 of 22 essentials on the Serra Fina example), adds 6 strategic chapters and an editable 16:9 deck in the grammar of the studied manual, with a Deck button in the Artifact manual, save to `deck.json`, single-file HTML download and print to PDF. Auditor gains deck and platform checks. 35 of 35 mutations caught.
 - brand-system: second reverse engineered blueprint, `assets/strategic_blueprint.v1.json` (49 needs in layers S0 to S4, document spine, 8 QA rules), from 66 page images of a strategic branding manual. Two references: method and content patterns, page grammar and presentation rhythm. Same checker, `--blueprint` flag. Counters: refs 860.
 - Sixth skill and tenth step: builds the complete brand (story, concept, symbol, colour, type, voice, applications, tokens, HTML manual) from one `brand-source.v1` file, then audits the package against its own source. Agent `cs-brand-ecosystem-architect`, command `/cs:brand-ecosystem`, 2 references. Counters: skills 395, tools 748, refs 858, agents 124, commands 156.
 

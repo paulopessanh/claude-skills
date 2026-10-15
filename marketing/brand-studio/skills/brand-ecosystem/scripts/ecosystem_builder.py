@@ -149,12 +149,19 @@ def build(src_path, out, state=None, fragment=None):
     put("voice", "Voz-e-Mensagens", voice_md(b), "Guia de voz e mensagens", "md")
     put("source", "Source", json.dumps(b, indent=2, ensure_ascii=False) + "\n", "A fonte única da qual tudo foi gerado", "json")
     book_rel = f"brandbook/{S('Brandbook', 'html')}"
-    listing = files + [(book_rel, "O manual da marca, uma página"), ("MANIFEST.json", "Cada arquivo com função, tamanho e SHA-256"), ("README.md", "Como abrir e o que conferir antes de entregar")]
+    deck_rel = f"deck/{S('Deck', 'html')}" if b.get("strategy") else None
+    listing = files + [(book_rel, "O manual da marca, uma página")] + ([(deck_rel, "O deck estratégico, 16:9, uma página")] if deck_rel else []) \
+        + [("MANIFEST.json", "Cada arquivo com função, tamanho e SHA-256"), ("README.md", "Como abrir e o que conferir antes de entregar")]
     page = BK.build(b, flat, fams, c, svgs, listing, standalone=True)
     os.makedirs(os.path.join(out, "brandbook"), exist_ok=True)
     with open(os.path.join(out, book_rel), "w", encoding="utf-8", newline="\n") as fh:
         fh.write(page)
     files.append((book_rel, "O manual da marca, uma página"))
+    if deck_rel:
+        os.makedirs(os.path.join(out, "deck"), exist_ok=True)
+        with open(os.path.join(out, deck_rel), "w", encoding="utf-8", newline="\n") as fh:
+            fh.write(BK.build_deck(b, flat, fams, c, svgs))
+        files.append((deck_rel, "O deck estratégico, 16:9, uma página"))
     if fragment:
         with open(fragment, "w", encoding="utf-8", newline="\n") as fh:
             fh.write(BK.build(b, flat, fams, c, svgs, listing, standalone=False))
@@ -174,6 +181,8 @@ def build(src_path, out, state=None, fragment=None):
     for l, cd, m in warns:
         print(f"  [{l}] {cd}: {m}")
     print(f"  brandbook: {book_rel}")
+    if deck_rel:
+        print(f"  deck: {deck_rel}")
     return 0
 
 

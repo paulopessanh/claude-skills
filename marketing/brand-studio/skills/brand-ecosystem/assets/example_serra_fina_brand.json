@@ -71,13 +71,41 @@
       "apresentação da empresa",
       "ligação com a fundadora de 22/09",
       "kickoff.md"
+    ],
+    "arc": [
+      {
+        "stage": "Origem",
+        "text": "Em 2019, Ana começa a produção numa propriedade de quatro hectares na Mantiqueira."
+      },
+      {
+        "stage": "Descoberta",
+        "text": "Ela percebe que o tempo de descanso muda o sabor do lote."
+      },
+      {
+        "stage": "Prova",
+        "text": "Amigos pedem mais barras e perguntam de que lote vieram."
+      },
+      {
+        "stage": "Virada",
+        "text": "Em 2021 sai o primeiro lote vendido."
+      },
+      {
+        "stage": "Crescimento",
+        "text": "A produção cresce por lotes e chega ao varejo e à assinatura."
+      },
+      {
+        "stage": "Agora",
+        "text": "A marca passa a mostrar o lote em cada barra e a contar a história do mês."
+      }
     ]
   },
   "purpose": {
     "mission": "Fazer chocolate de altitude com o tempo que ele pede e mostrar de onde ele vem.",
     "vision": "Ser a referência em chocolate de altitude no Brasil.",
     "positioning": "Para quem presenteia e para quem cozinha em casa, a Serra Fina é o chocolate que mostra a origem no sabor e no desenho, ao contrário do chocolate de prateleira que esconde o lote.",
-    "promise": "Cada barra diz de que lote veio e quanto tempo levou."
+    "promise": "Cada barra diz de que lote veio e quanto tempo levou.",
+    "essence": "Fazer devagar.",
+    "reason_to_exist": "Provar que chocolate bom não tem pressa e que a origem merece aparecer na barra."
   },
   "petreos": [
     {
@@ -122,7 +150,69 @@
       "rústico por pose",
       "frio como laboratório"
     ],
-    "archetype_hypothesis": "Sábio com traço de Criador. É uma hipótese de conversa e não um veredito."
+    "archetype_hypothesis": "Sábio com traço de Criador. É uma hipótese de conversa e não um veredito.",
+    "archetype": {
+      "primary": "Sábio",
+      "secondary": "Criador",
+      "intersection_name": "O mestre de lote",
+      "origin": "O conhecimento do ritmo veio do estudo da própria receita. O ofício veio de fazer com as mãos.",
+      "brings": "Autoridade calma, precisão e prazer de fazer bem.",
+      "shadow": "Pode virar professoral e distante, ou perfeccionista e lento.",
+      "balanced_by": "O Criador traz calor e gosto de fazer. O Sábio traz medida e prazo.",
+      "seasoning": "O Cuidador aparece como tempero na hora do presente, mas não comanda."
+    },
+    "scales": [
+      {
+        "left": "Popular",
+        "right": "Exclusiva",
+        "position": 3
+      },
+      {
+        "left": "Acessível",
+        "right": "Aspiracional",
+        "position": 2
+      },
+      {
+        "left": "Institucional",
+        "right": "Próxima",
+        "position": 3
+      },
+      {
+        "left": "Funcional",
+        "right": "Experiencial",
+        "position": 3
+      },
+      {
+        "left": "Clássica",
+        "right": "Contemporânea",
+        "position": 2
+      },
+      {
+        "left": "Tradicional",
+        "right": "Inovadora",
+        "position": 1
+      },
+      {
+        "left": "Discreta",
+        "right": "Ousada",
+        "position": 1
+      },
+      {
+        "left": "Generalista",
+        "right": "Especialista",
+        "position": 4
+      },
+      {
+        "left": "Racional",
+        "right": "Emocional",
+        "position": 2
+      },
+      {
+        "left": "Massiva",
+        "right": "Personalizada",
+        "position": 3
+      }
+    ]
   },
   "audience": {
     "summary": "Quem presenteia e quem cozinha em casa, com atenção à origem e disposição de pagar por ela. Segue como hipótese até as entrevistas do próximo ciclo.",
@@ -131,13 +221,26 @@
         "name": "Quem presenteia",
         "who": "Compra para datas e quer entregar algo com história.",
         "thinks": "Quero que quem recebe saiba de onde isso veio.",
-        "needs": "Um presente que se explica sozinho, na caixa e na etiqueta."
+        "needs": "Um presente que se explica sozinho, na caixa e na etiqueta.",
+        "blocker": "Medo de dar um presente genérico",
+        "needs_to_hear": "Esta caixa diz de onde veio."
       },
       {
         "name": "Quem cozinha em casa",
         "who": "Faz bolo, brigadeiro e sobremesa e escolhe o chocolate pelo comportamento na receita.",
         "thinks": "Preciso saber como esse chocolate derrete e que sabor ele deixa.",
-        "needs": "Informação técnica clara, sem jargão, no verso da embalagem."
+        "needs": "Informação técnica clara, sem jargão, no verso da embalagem.",
+        "blocker": "Não sabe como o chocolate se comporta na receita",
+        "needs_to_hear": "Aqui o ponto de derreter vem escrito."
+      },
+      {
+        "name": "Quem assina o lote do mês",
+        "who": "Recebe uma caixa por mês e gosta de saber a história de cada lote.",
+        "thinks": "Quero um motivo para esperar a próxima caixa.",
+        "needs": "Um lote novo, com a história de como foi feito, sem pressa.",
+        "blocker": "Medo de enjoar do mesmo sabor",
+        "needs_to_hear": "Todo mês um lote diferente.",
+        "highest_value": true
       }
     ],
     "emotional_promises": [
@@ -158,6 +261,24 @@
       "Se apressa, perde o que a serra deu.",
       "Por isso cada lote leva o tempo que leva. Cada barra diz de onde veio.",
       "Fazemos devagar para você sentir rápido."
+    ],
+    "reasons": [
+      {
+        "title": "Vale para toda a linha",
+        "text": "Barra, caixa e assinatura nascem do mesmo ritmo."
+      },
+      {
+        "title": "Nasce da fundadora",
+        "text": "Veio da ideia de Ana: chocolate bom não tem pressa."
+      },
+      {
+        "title": "Enfrenta a pressa do mercado",
+        "text": "Quem acredita que o tempo conta volta a esperar pelo bom."
+      },
+      {
+        "title": "Tem um limite honesto",
+        "text": "O que a marca mostra é sempre o que o lote entrega."
+      }
     ]
   },
   "symbol": {
@@ -607,7 +728,65 @@
         "Abreviado ou como sigla.",
         "Separado em duas linhas sem necessidade."
       ]
-    }
+    },
+    "principles": [
+      {
+        "rule": "Diz o lote.",
+        "application": "Todo texto sobre a barra traz lote ou data."
+      },
+      {
+        "rule": "Vai direto.",
+        "application": "Se cabe em uma frase, não usa duas."
+      },
+      {
+        "rule": "Honesta até no não.",
+        "application": "Diz o que a barra não é e por quê."
+      },
+      {
+        "rule": "Calma, sem pressa.",
+        "application": "Sem exclamação, sem contagem regressiva."
+      },
+      {
+        "rule": "De gente para gente.",
+        "application": "Usa você e frases curtas."
+      }
+    ],
+    "before_after": [
+      {
+        "before": "Produto de qualidade superior, feito com ingredientes selecionados.",
+        "after": "Feito com cacau da Mantiqueira. Lote 12, descansou três semanas."
+      },
+      {
+        "before": "Experiência única de sabor.",
+        "after": "Derrete a 34 graus e deixa final de amêndoa."
+      },
+      {
+        "before": "ÚLTIMAS UNIDADES! Compre agora!",
+        "after": "O lote de outubro tem 400 barras. Quando acabar, o próximo sai em novembro."
+      },
+      {
+        "before": "Não temos esse produto.",
+        "after": "Esse a gente não faz. Para presente, a caixa de três lotes resolve."
+      }
+    ],
+    "dictionary": [
+      {
+        "term": "Lote",
+        "plain": "Um grupo pequeno de barras feito junto, no mesmo dia e com a mesma receita."
+      },
+      {
+        "term": "Descanso",
+        "plain": "O tempo que o chocolate fica parado antes de virar barra, para o sabor se assentar."
+      },
+      {
+        "term": "Ponto de derretimento",
+        "plain": "A temperatura em que a barra derrete. Ajuda a escolher para a receita."
+      },
+      {
+        "term": "Altitude",
+        "plain": "A altura da propriedade. Muda o clima e o sabor do cacau."
+      }
+    ]
   },
   "applications": [
     {
@@ -1178,5 +1357,581 @@
     ],
     "outlined_and_editable": "Os SVG saem com texto editável em fonte viva. A versão em curvas fica para o time de criação antes da gráfica.",
     "protection_marker": "Cada arquivo de assinatura traz a área de proteção no manual. O arquivo de produção do time deve marcá-la com um retângulo que não imprime."
+  },
+  "strategy": {
+    "welcome": {
+      "addressee": "Ana e Beto",
+      "text": "Este documento reúne o que descobrimos sobre a Serra Fina e o que a marca decide ser daqui para frente. Serve a vocês, à equipe e a quem um dia falar em nome da marca. É um guia para decidir e não um material para ler de uma vez.",
+      "signed_by": "Equipe do projeto de marca"
+    },
+    "guiding_question": "Por que um chocolate feito com tanto cuidado ainda parece, na prateleira, só mais uma barra artesanal?",
+    "method": {
+      "name": "Quatro lentes",
+      "pillars": [
+        {
+          "letter": "N",
+          "name": "Negócio",
+          "question": "Como a Serra Fina ganha dinheiro e onde trava?"
+        },
+        {
+          "letter": "P",
+          "name": "Público",
+          "question": "Quem compra e o que sente ao escolher?"
+        },
+        {
+          "letter": "V",
+          "name": "Valor",
+          "question": "O que a marca entrega que ninguém copia?"
+        },
+        {
+          "letter": "H",
+          "name": "História",
+          "question": "Que história a marca carrega e como a conta?"
+        }
+      ],
+      "rule": "Separar o que a marca acredita sobre si do que as evidências mostram. Onde as duas coisas não batem está a estratégia."
+    },
+    "evidence_base": [
+      {
+        "kind": "imersões",
+        "count": 3,
+        "note": "encontros de uma hora e meia com a fundadora e o sócio"
+      },
+      {
+        "kind": "respostas válidas",
+        "count": 9,
+        "note": "na pesquisa anônima com clientes e equipe"
+      },
+      {
+        "kind": "anos de histórico",
+        "count": 5,
+        "note": "de operação analisados"
+      },
+      {
+        "kind": "leituras de mercado",
+        "count": 4,
+        "note": "todas fictícias neste exemplo"
+      }
+    ],
+    "term_notes": [
+      {
+        "term": "Posicionamento",
+        "plain": "É o que você quer que alguém responda quando perguntarem o que é a Serra Fina."
+      },
+      {
+        "term": "Arquétipo",
+        "plain": "É um personagem que todo mundo reconhece. Com um arquétipo claro, as pessoas entendem quem a marca é antes de ler o que ela faz."
+      },
+      {
+        "term": "Sombra",
+        "plain": "É o risco de cada personagem quando exagera."
+      },
+      {
+        "term": "Big idea",
+        "plain": "É o conceito central que amarra tudo. Dele saem o jeito de falar, o conteúdo e o atendimento."
+      },
+      {
+        "term": "Território",
+        "plain": "É o assunto e o espaço na cabeça das pessoas que a marca quer ocupar."
+      },
+      {
+        "term": "Pilares de conteúdo",
+        "plain": "São os grandes assuntos da marca. Garantem que tudo o que ela publica reforça o mesmo posicionamento."
+      }
+    ],
+    "reading": [
+      {
+        "pillar": "Negócio",
+        "found": "A produção é pequena e vende bem para quem já conhece a origem. Fora desse círculo, a barra é só mais uma na prateleira.",
+        "meaning": "O boca a boca provou o chocolate. Para crescer além dele, a marca precisa mostrar a origem antes da prova."
+      },
+      {
+        "pillar": "Público",
+        "found": "Quem presenteia e quem cozinha em casa escolhem por motivos diferentes, mas os dois querem saber de onde o chocolate vem.",
+        "meaning": "A origem é o argumento comum. O que muda é onde ela aparece: na caixa para um, no verso da barra para o outro."
+      },
+      {
+        "pillar": "Valor",
+        "found": "O diferencial está no ritmo de trabalho. O lote descansa o tempo que precisa e cada barra diz isso.",
+        "meaning": "Essa conduta é difícil de copiar. Hoje quase ninguém fica sabendo dela antes de provar."
+      },
+      {
+        "pillar": "História",
+        "found": "A marca nasceu de uma ideia simples de Ana: chocolate bom não tem pressa. A serra deu o lugar.",
+        "meaning": "É uma história verdadeira e curta. Ainda não está contada em lugar nenhum de forma igual."
+      }
+    ],
+    "premises": [
+      {
+        "title": "Produção em lotes",
+        "text": "Cada lote é pequeno e tem número. A marca nunca promete volume que o lote não sustenta."
+      },
+      {
+        "title": "A origem vende",
+        "text": "Quem compra pela primeira vez pergunta de onde veio. A resposta precisa estar na embalagem."
+      },
+      {
+        "title": "Cresceu pelo contato direto",
+        "text": "Quase todo cliente chegou por indicação ou por assinatura. A marca investiu pouco em anúncio."
+      },
+      {
+        "title": "Preço coerente com o tempo",
+        "text": "O preço sobe com o tempo de descanso do lote e não com o enfeite da caixa."
+      },
+      {
+        "title": "Duas frentes de venda",
+        "text": "O varejo e a assinatura sustentam a operação. As duas usam o mesmo nome."
+      }
+    ],
+    "goals": [
+      {
+        "horizon": "Agora",
+        "business_goal": "Deixar claro, na prateleira e no site, que cada barra tem lote e origem.",
+        "brand_role": "Dar à embalagem uma regra única para dizer lote, data e origem."
+      },
+      {
+        "horizon": "12 meses",
+        "business_goal": "Dobrar a base de assinantes sem baixar o preço.",
+        "brand_role": "Contar a história do lote do mês de um jeito que se repita em toda caixa."
+      },
+      {
+        "horizon": "1 a 2 anos",
+        "business_goal": "Entrar em mais redes de varejo sem perder o controle do lote.",
+        "brand_role": "Manter a mesma marca, com o mesmo cuidado, em qualquer prateleira."
+      },
+      {
+        "horizon": "3 anos",
+        "business_goal": "Ser a referência em chocolate de altitude no Brasil.",
+        "brand_role": "Construir uma marca forte o bastante para sustentar novas linhas."
+      }
+    ],
+    "critical_view": "A visão de três anos é grande para uma equipe pequena que cuida de tudo. A marca pode apontar para esse futuro, mas o que promete em público precisa ser o que a produção entrega hoje.",
+    "tensions": [
+      {
+        "side_a": "Fazemos devagar",
+        "side_b": "Queremos crescer no varejo",
+        "decision": "O crescimento acompanha o lote. A Serra Fina só entra onde consegue entregar o mesmo cuidado."
+      },
+      {
+        "side_a": "Artesanal de verdade",
+        "side_b": "Embalagem que parece industrial",
+        "decision": "A embalagem mostra o lote e a data antes de qualquer enfeite. Quem vê entende que alguém fez."
+      },
+      {
+        "side_a": "Origem como orgulho",
+        "side_b": "Origem como clichê do campo",
+        "decision": "A origem aparece como dado: lugar, altitude e lote. Nunca como cenário romântico."
+      },
+      {
+        "side_a": "Preço justo",
+        "side_b": "Percepção de chocolate caro",
+        "decision": "O preço se explica pelo tempo de descanso. A marca nunca se apresenta como barata, nem como luxo."
+      }
+    ],
+    "owner_corrections": [
+      {
+        "belief": "O cliente compra pelo sabor.",
+        "evidence": "As respostas da pesquisa citam a origem e o lote antes do sabor.",
+        "decision": "A origem passa a abrir a comunicação e o sabor vem em seguida."
+      }
+    ],
+    "icp": "Adulto que gosta de cozinhar ou de presentear, valoriza saber quem fez e paga mais quando entende o motivo.",
+    "icp_insight": "Muitos assinantes começaram comprando um presente. A marca não precisa só buscar novos compradores. Ela já forma assinantes dentro da própria base de presenteadores.",
+    "non_clients": [
+      "Quem escolhe só pelo menor preço por quilo",
+      "Quem pede para esconder o lote da embalagem",
+      "Quem quer entrega no mesmo dia em qualquer lugar"
+    ],
+    "non_client_rule": "O filtro é de comportamento e nunca de origem ou de perfil.",
+    "value_premises": [
+      {
+        "title": "Entender vale mais",
+        "text": "Saber o que se está comprando vale mais para o cliente do que um desconto."
+      },
+      {
+        "title": "O tempo se explica",
+        "text": "O preço só faz sentido quando o cliente sabe quanto o lote descansou."
+      },
+      {
+        "title": "Origem é prova",
+        "text": "Lote, data e altitude valem mais do que um adjetivo."
+      },
+      {
+        "title": "Pouco, bem dito",
+        "text": "Uma informação exata convence mais do que cinco promessas."
+      }
+    ],
+    "competition": [
+      {
+        "type": "Chocolate industrial de prateleira",
+        "does_well": "Está em todo lugar e custa pouco",
+        "fails_at": "Esconde a origem e o lote",
+        "we_differ": "Mostra o lote e a data em cada barra"
+      },
+      {
+        "type": "Chocolate premium de vitrine",
+        "does_well": "Tem embalagem cuidada e boa imagem",
+        "fails_at": "Vende o luxo e fala pouco do chocolate",
+        "we_differ": "Vende o tempo e a origem, com dado e sem pose"
+      },
+      {
+        "type": "Outras marcas artesanais",
+        "does_well": "Têm história e produção pequena",
+        "fails_at": "Contam a origem de jeitos diferentes em cada peça",
+        "we_differ": "Conta a origem sempre do mesmo jeito, com número"
+      },
+      {
+        "type": "Importados de origem única",
+        "does_well": "Têm prestígio e ficha técnica",
+        "fails_at": "Custam caro e vêm de longe",
+        "we_differ": "Entrega a mesma clareza de origem, feita no Brasil"
+      }
+    ],
+    "territory_map": {
+      "x_axis": "Clareza sobre a origem",
+      "y_axis": "Cuidado de produção",
+      "quadrants": [
+        {
+          "name": "Cuidado, mas não explica",
+          "brands": [
+            "Marcas premium de vitrine"
+          ]
+        },
+        {
+          "name": "Cuidado e explica",
+          "brands": [
+            "Serra Fina"
+          ]
+        },
+        {
+          "name": "Não cuida e não explica",
+          "brands": [
+            "Chocolate industrial"
+          ]
+        },
+        {
+          "name": "Explica, mas sem cuidado",
+          "brands": [
+            "Marcas de rótulo detalhado e produção em escala"
+          ]
+        }
+      ],
+      "own": "Cuidado e explica"
+    },
+    "universe": {
+      "atmosphere": "Calma e clareza. Um lugar alto e organizado, longe do barulho da prateleira.",
+      "language": "Fala como quem conhece o lote. Palavras da marca: lote, serra, descansar, origem.",
+      "posture": "Segura sem ser arrogante. Diz o que sabe e o que ainda não sabe.",
+      "aesthetics": "Limpa e exata, com ângulos precisos e cores calmas. Pessoas e lugares reais no lugar de imagens de banco.",
+      "digital": "Um perfil só, com o lote do mês e a história de como foi feito.",
+      "not_fit": "Urgência falsa, adjetivo de vitrine, cenário romântico do campo e humor às custas de quem compra."
+    },
+    "perception": {
+      "n": 9,
+      "sample_note": "Amostra pequena e qualitativa. É um sinal e não uma estatística.",
+      "purpose_answers": [
+        {
+          "label": "Fazer chocolate com cuidado",
+          "count": 4
+        },
+        {
+          "label": "Mostrar de onde vem",
+          "count": 3
+        },
+        {
+          "label": "Dar um bom presente",
+          "count": 2
+        }
+      ],
+      "traits_today": [
+        {
+          "trait": "Cuidadosa",
+          "count": 7
+        },
+        {
+          "trait": "Honesta",
+          "count": 5
+        },
+        {
+          "trait": "Calma",
+          "count": 4
+        },
+        {
+          "trait": "Rara",
+          "count": 3
+        }
+      ],
+      "traits_future": [
+        {
+          "trait": "Reconhecida",
+          "count": 5
+        },
+        {
+          "trait": "Próxima",
+          "count": 4
+        },
+        {
+          "trait": "Acessível",
+          "count": 3
+        },
+        {
+          "trait": "Presente",
+          "count": 3
+        }
+      ],
+      "reading": "O cuidado já é percebido. O que as pessoas pedem é mais presença e mais clareza sobre o lote. Ou seja: mostrar o que a Serra Fina faz e colocar rosto nisso."
+    },
+    "turns": [
+      {
+        "title": "A Serra Fina não vende chocolate. Vende clareza de origem.",
+        "text": "Quem escolhe uma barra quer saber de onde ela veio. Tudo que mostra a origem vale mais do que qualquer lista de sabores."
+      },
+      {
+        "title": "O tempo é o produto mais valioso.",
+        "text": "Descansar o lote é o que ninguém faz com pressa. É a conduta que o concorrente não copia."
+      },
+      {
+        "title": "Explicar virou luxo.",
+        "text": "Num mercado que usa adjetivos, dizer lote, data e altitude é o que dá luxo sem preço de vitrine."
+      },
+      {
+        "title": "A origem é o herói. A pose é o vilão.",
+        "text": "A serra aparece como prova e nunca como enfeite. O vilão é o cenário romântico que esconde o lote."
+      },
+      {
+        "title": "O primeiro presente já forma assinante.",
+        "text": "Quem recebe um lote de presente tende a voltar. A jornada começa na caixa e acompanha o ano inteiro."
+      }
+    ],
+    "synthesis": {
+      "scenario": "Cinco anos de lotes pequenos, crescimento por indicação e um mercado cheio de barras artesanais parecidas.",
+      "problem": "Fora do círculo de quem conhece, a Serra Fina parece só mais uma barra e mostra menos do que faz.",
+      "opportunity": "O lugar de quem faz com cuidado e explica a origem com dado está vazio.",
+      "territory": "O chocolate de altitude que mostra o lote, a data e a origem em cada barra.",
+      "desired_perception": "Eles fazem devagar, dizem de onde vem e me entregam o lote certo. Se é Serra Fina, eu sei o que estou comendo."
+    },
+    "category": "Chocolate artesanal de altitude",
+    "not_category": [
+      "Não é chocolate de vitrine",
+      "Não é chocolate industrial de prateleira"
+    ],
+    "spectrum": {
+      "from": "Popular",
+      "to": "Exclusiva",
+      "position": 3,
+      "note": "Equilíbrio: cuidado de ateliê, preço explicado."
+    },
+    "value_proposition": "Você chega querendo um bom chocolate ou um bom presente. Sai sabendo de onde veio, quanto tempo levou e como usar.",
+    "promise_guarantees": [
+      "Você nunca fica sem saber o lote.",
+      "Você nunca paga por enfeite.",
+      "Você nunca recebe uma barra que passou da data."
+    ],
+    "differentials": [
+      {
+        "name": "Lote e data em cada barra",
+        "proof": "Toda embalagem traz o número do lote e a data de fabricação",
+        "copyability": "conduct"
+      },
+      {
+        "name": "Descanso do lote",
+        "proof": "O lote descansa o tempo que a receita pede, mesmo quando o pedido aperta",
+        "copyability": "conduct"
+      },
+      {
+        "name": "Dado no lugar de adjetivo",
+        "proof": "O verso traz ponto de derretimento e sugestão de uso",
+        "copyability": "effort"
+      },
+      {
+        "name": "Origem de altitude",
+        "proof": "Produção na propriedade da Mantiqueira, em quatro hectares",
+        "copyability": "effort"
+      },
+      {
+        "name": "Assinatura com história",
+        "proof": "Cada lote do mês chega com a história de como foi feito",
+        "copyability": "effort"
+      }
+    ],
+    "values": [
+      {
+        "name": "Paciência",
+        "definition": "Foi o que fez a Serra Fina nascer.",
+        "behavior": "Deixa o lote descansar o tempo certo. Prefere atrasar uma entrega a vender uma barra que ainda não está pronta."
+      },
+      {
+        "name": "Exatidão",
+        "definition": "Nada vago na barra nem no texto.",
+        "behavior": "Diz o número, a data e o lote. Corrige na hora quando erra."
+      },
+      {
+        "name": "Origem",
+        "definition": "O lugar faz parte do produto.",
+        "behavior": "Nomeia a serra e o lote. Mostra de onde vem antes de dizer que é bom."
+      }
+    ],
+    "principles": [
+      "Mostramos o lote, não o enfeite.",
+      "Não apressamos o lote para atender a um pedido.",
+      "Dizemos o que sabemos e o que não sabemos.",
+      "Preço explicado. A Serra Fina não entra em disputa de preço."
+    ],
+    "narrative_rules": [
+      {
+        "title": "O herói é quem escolhe",
+        "text": "A Serra Fina é o guia. Quem compra aparece como quem escolheu bem."
+      },
+      {
+        "title": "Histórias reais",
+        "text": "Cada lote tem uma história concreta de como foi feito."
+      },
+      {
+        "title": "Mostrar o bastidor",
+        "text": "Para cada barra pronta, há semanas de descanso. Mostrar isso é mostrar valor."
+      },
+      {
+        "title": "Nunca vender pela pressa",
+        "text": "A marca explica com calma e não cria urgência."
+      }
+    ],
+    "tone_by_situation": [
+      {
+        "situation": "Explicar um lote",
+        "tone": "Didático e calmo, com número"
+      },
+      {
+        "situation": "Anunciar o lote do mês",
+        "tone": "Caloroso e exato"
+      },
+      {
+        "situation": "Recusar um pedido urgente",
+        "tone": "Firme e gentil, com prazo certo"
+      },
+      {
+        "situation": "Errar uma entrega",
+        "tone": "Responsável: assume, corrige e não se justifica demais"
+      }
+    ],
+    "themes": [
+      "Descanso",
+      "Origem",
+      "Lote",
+      "Mão",
+      "Presente",
+      "Receita"
+    ],
+    "manifesto_close": "Devagar é o jeito de chegar bem.",
+    "content_pillars": [
+      {
+        "name": "Lote do mês",
+        "share": 40,
+        "topics": "O lote, a data e como foi feito",
+        "examples": [
+          "Lote 12 em três fotos",
+          "O que descansou por três semanas"
+        ]
+      },
+      {
+        "name": "Na receita",
+        "share": 25,
+        "topics": "Uso do chocolate na cozinha",
+        "examples": [
+          "Brigadeiro que não talha",
+          "Ponto de derreter em casa"
+        ]
+      },
+      {
+        "name": "Origem",
+        "share": 20,
+        "topics": "A serra, a altitude e a propriedade",
+        "examples": [
+          "A manhã no cume",
+          "De onde vem o cacau do lote"
+        ]
+      },
+      {
+        "name": "Presente",
+        "share": 15,
+        "topics": "Caixas e datas",
+        "examples": [
+          "Uma caixa que diz de onde veio"
+        ]
+      }
+    ],
+    "content_always": [
+      "Falar do lote com número e data",
+      "Um termo técnico por vez, sempre explicado",
+      "Rosto ou mão em metade dos conteúdos"
+    ],
+    "content_never": [
+      "Urgência falsa ou contagem regressiva",
+      "Cenário romântico do campo",
+      "Adjetivo de vitrine"
+    ],
+    "communication_rules": [
+      {
+        "title": "Clareza no primeiro contato",
+        "text": "Quem vê a embalagem entende o lote na hora."
+      },
+      {
+        "title": "Origem antes do sabor",
+        "text": "A origem abre a conversa. O sabor confirma."
+      },
+      {
+        "title": "Prova antes de promessa",
+        "text": "Lote, data e altitude antes de qualquer elogio."
+      },
+      {
+        "title": "Valor antes do preço",
+        "text": "Explicar o tempo antes de falar o valor."
+      },
+      {
+        "title": "A embalagem fala",
+        "text": "A caixa e o verso da barra são os primeiros textos da marca."
+      }
+    ],
+    "bio": "Chocolate de altitude. Feito devagar, no alto da serra. Um lote novo todo mês.",
+    "touchpoints": [
+      {
+        "name": "Embalagem",
+        "change": "Lote, data e origem em lugar fixo, sempre no mesmo tamanho"
+      },
+      {
+        "name": "Site",
+        "change": "A origem na primeira frase e a assinatura pela jornada de quem compra"
+      },
+      {
+        "name": "Atendimento",
+        "change": "Tom de voz e prazo certo antes do preço"
+      },
+      {
+        "name": "Redes",
+        "change": "Perfil único, com o lote do mês em destaque"
+      }
+    ],
+    "closing": {
+      "reframe": "A Serra Fina não precisa virar outra marca. Precisa ser vista pelo que já faz.",
+      "next_step": "Identidade visual"
+    },
+    "sources": [
+      {
+        "outlet": "Entrevistas de imersão",
+        "supports": "Origem, ritmo de trabalho e metas"
+      },
+      {
+        "outlet": "Pesquisa anônima",
+        "supports": "Percepção atual e futura"
+      },
+      {
+        "outlet": "Mapa de concorrentes",
+        "supports": "Concorrência e território"
+      },
+      {
+        "outlet": "Histórico de vendas",
+        "supports": "Canais e crescimento por indicação"
+      }
+    ],
+    "primary_research_note": "Imersões de 22 e 29 de setembro e de 6 de outubro de 2026, e pesquisa anônima com nove respostas válidas. Todos os dados deste exemplo são fictícios."
   }
 }

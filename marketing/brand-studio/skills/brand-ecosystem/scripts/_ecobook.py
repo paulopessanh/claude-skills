@@ -16,6 +16,8 @@ import sys
 from _ecolib import contrast, hex_rgb, cmyk_approx, ridge_points, file_stem
 import _ecoassets as A
 import _ecoedit as E
+import _ecostrat as ST
+import _ecodeck as DK
 
 esc = html.escape
 
@@ -116,6 +118,7 @@ details{{background:var(--surface);border:1px solid var(--line);border-radius:12
 @keyframes draw{{from{{stroke-dashoffset:var(--len)}}to{{stroke-dashoffset:0}}}}
 @media (prefers-reduced-motion: reduce){{.replay .ln{{animation:none}}}}
 footer.col{{border-top:1px solid var(--line);padding-block:32px;font-size:14px;color:var(--muted)}}
+{(ST.CSS + DK.CSS) if ST.has(b) else ""}
 """
 
 
@@ -184,6 +187,10 @@ def build(b, flat, fams, c, svgs, files, standalone=True):
     add("personalidade", "Personalidade e público", f'<ul class="chips">' + "".join(f"<li>{esc(a)}</li>" for a in ps["attributes"]) + "</ul>"
         + p_("A marca não é: " + ", ".join(ps["is_not"]) + ".") + p_("Arquétipo (hipótese): " + ps["archetype_hypothesis"]) + f'<h3>Para quem</h3>{p_(au["summary"])}<div class="grid g2">{pers}</div>'
         + "<h3>Promessas emocionais</h3><ul>" + "".join(f"<li>{esc(x)}</li>" for x in au["emotional_promises"]) + "</ul>")
+
+    if ST.has(b):
+        for _ch in ST.chapters(b):
+            add(*_ch)
 
     # --- nome e anatomia
     ids = ident
@@ -364,8 +371,10 @@ def build(b, flat, fams, c, svgs, files, standalone=True):
     hero = (f'<header class="hero" id="capa"><div class="sym">{uniq(svgs["Symbol-Negative"], "hero")}</div><h1>{esc(name)}</h1><p class="tag">{esc(ident["tagline"])}</p>'
             f'<p>{esc(ident["descriptor"])}. Manual da marca, versão {esc(ident["version"])}.{note}</p>'
             f'<div class="meta"><span class="badge">V{esc(ident["version"])}</span><span class="badge">{esc(ident["date"])}</span><span class="badge">Símbolo: estudo geométrico</span></div></header>')
+    deck_html, _n_slides = DK.deck_markup(b, c, svgs, uniq) if ST.has(b) else ("", 0)
+    deck_btn = '<button type="button" class="btn" id="deck-open">Deck</button>' if deck_html else ""
     topb = (f'<header class="top gut"><div class="in"><a class="logo" href="#capa" aria-label="{esc(name)}, início"><span class="only-light">{uniq(svgs["Horizontal-Positive"], "tl")}</span>'
-            f'<span class="only-dark">{uniq(svgs["Horizontal-Negative"], "td")}</span></a><span class="sp"></span><button type="button" class="btn" id="menu" aria-expanded="false" aria-controls="toc" hidden>Capítulos</button>'
+            f'<span class="only-dark">{uniq(svgs["Horizontal-Negative"], "td")}</span></a><span class="sp"></span>{deck_btn}<button type="button" class="btn" id="menu" aria-expanded="false" aria-controls="toc" hidden>Capítulos</button>'
             f'<button type="button" class="btn" id="theme">Tema</button></div></header>')
     page = (f'<a class="skip" href="#conteudo">Ir para o conteúdo</a>{topb}<div class="shell gut"><nav class="toc" id="toc" aria-label="Capítulos">{nav}</nav>'
             f'<main id="conteudo">{hero}{body_ch}<footer class="col">{esc(name)} · {esc(ident["descriptor"])} · V{esc(ident["version"])} · {esc(ident["date"])}. Gerado de uma fonte única (brand-source.v1).{note}</footer></main></div>')
@@ -373,11 +382,13 @@ def build(b, flat, fams, c, svgs, files, standalone=True):
     link = f'<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={fonts}&display=swap">'
     title = f"{name} Manual da Marca"
     style = '<style id="bk-css">' + css(b, flat, c) + "</style>"
-    root = f'<div id="bk-root">{page}</div>'
+    root = f'<div id="bk-root">{page}{deck_html}</div>'
+    dkjs = f'<script id="dk-js">{DK.VIEW_JS}</script>' if deck_html else ""
+    dked = f'<script id="dk-ed-js" data-edit-ui>{DK.edit_js(file_stem(b, "Deck-Cliente") + ".html")}</script>' if deck_html else ""
     if standalone:
         return (f'<!doctype html><html lang="{esc(ident["language"])}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">'
-                f'<title>{esc(title)}</title>{link}{style}</head><body>{root}<script id="bk-js">{JS}</script></body></html>')
-    return (f'<title>{esc(title)}</title><meta name="claude:viewport-fit-sides" content="cover">{link}{style}{root}<script id="bk-js">{JS}</script><style id="ed-css" data-edit-ui>{E.edit_css()}</style><script id="ed-js" data-edit-ui>{E.edit_js(file_stem(b, "Manual-Cliente") + ".html")}</script>')
+                f'<title>{esc(title)}</title>{link}{style}</head><body>{root}<script id="bk-js">{JS}</script>{dkjs}</body></html>')
+    return (f'<title>{esc(title)}</title><meta name="claude:viewport-fit-sides" content="cover">{link}{style}{root}<script id="bk-js">{JS}</script>{dkjs}<style id="ed-css" data-edit-ui>{E.edit_css()}</style><script id="ed-js" data-edit-ui>{E.edit_js(file_stem(b, "Manual-Cliente") + ".html")}</script>{dked}')
 
 
 def _misuse_figs(c, misuse):
@@ -479,6 +490,17 @@ def _type(b, c):
         rows += (f'<tr><td>{esc(label)}</td><td>{s["size_px"]} px, {s["line_height"]}, {s["weight"]}</td><td><div style="font:{s["weight"]} min({s["size_px"]}px,7vw)/{s["line_height"]} {esc(fam)};letter-spacing:{s["tracking"]}">{esc(sample)}</div></td></tr>')
     return (f'<div class="grid g3">{cards}</div><h3>Escala</h3><div class="tw"><table><thead><tr><th>Nível</th><th>Tamanho, entrelinha, peso</th><th>Amostra</th></tr></thead><tbody>{rows}</tbody></table></div>'
             + p_(ty["note"]) + "<h3>Onde cada fonte não entra</h3>" + kv_table([(r["font_role"], r["rule"]) for r in ty["restrictions"]], ("Papel", "Restrição")))
+
+
+def build_deck(b, flat, fams, c, svgs):
+    """A single-file deck: the same slides as the manual's deck, open at once, with arrow keys and print to PDF."""
+    ident = b["identity"]
+    deck, _ = DK.deck_markup(b, c, svgs, uniq, standalone=True)
+    fonts = "&family=".join(f["google_family"] for f in b["typography"]["fonts"])
+    link = f'<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={fonts}&display=swap">'
+    style = '<style id="bk-css">' + css(b, flat, c) + "</style>"
+    return (f'<!doctype html><html lang="{esc(ident["language"])}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">'
+            f'<title>{esc(ident["name"])} Deck</title>{link}{style}</head><body class="dk-standalone"><div id="bk-root">{deck}</div><script id="dk-js">{DK.VIEW_JS}</script></body></html>')
 
 
 if __name__ == "__main__":

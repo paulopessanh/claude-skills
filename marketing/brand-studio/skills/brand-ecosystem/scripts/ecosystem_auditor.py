@@ -37,6 +37,7 @@ import os
 import re
 import sys
 import xml.etree.ElementTree as ET
+import html
 from html.parser import HTMLParser
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -202,6 +203,155 @@ def audit_v2(root, listed, src, flat, add, text, notes):
         notes.append("Spot colour is pending a press match for: " + ", ".join(pend) + ". Do not print as spot colour until a code is confirmed.")
 
 
+STRAT_IDS = ["metodo", "diagnostico", "viradas", "direcao", "tom", "plataforma"]
+SKIP_KEYS = {"copyability", "kind", "letter", "position", "count", "n", "share", "highest_value"}
+
+
+def leaf_strings(o):
+    if isinstance(o, str):
+        if len(o) >= 3:
+            yield o
+    elif isinstance(o, dict):
+        for k, v in o.items():
+            if not str(k).startswith("_") and k not in SKIP_KEYS:
+                yield from leaf_strings(v)
+    elif isinstance(o, list):
+        for v in o:
+            yield from leaf_strings(v)
+
+
+def audit_strategy(src, html_src, text, add):
+    """The strategic chapters: present, numbered in order, and repeating the source. Cells of the platform are re-derived here."""
+    st = src["strategy"]
+    sec = re.findall(r'<section id="([^"]+)" class="ch">', html_src)
+    for cid in STRAT_IDS:
+        if cid not in sec:
+            add("BLOCK", "MISSING_CHAPTER", cid)
+    nums = [int(n) for n in re.findall(r'<p class="eyebrow">Cap\u00edtulo (\d+)</p>', html_src)]
+    if nums != list(range(1, len(sec) + 1)):
+        add("BLOCK", "CHAPTER_NUMBERING", f"chapter numbers {nums[:6]}... are not 1 to {len(sec)} in order")
+    nav = re.search(r'<nav class="toc"[^>]*>(.*?)</nav>', html_src, re.S)
+    links = re.findall(r'href="#([^"]+)"', nav.group(1)) if nav else []
+    if links != sec:
+        add("BLOCK", "CHAPTER_NUMBERING", "the chapter list does not follow the order of the chapters")
+    need = list(leaf_strings(st))
+    for blk in ("audience", "history", "concept", "voice"):
+        for key in {"audience": ["personas"], "history": ["arc"], "concept": ["reasons"], "voice": ["principles", "before_after", "dictionary"]}[blk]:
+            need += list(leaf_strings(src[blk].get(key, [])))
+    need += list(leaf_strings(src["personality"].get("archetype", {}))) + list(leaf_strings(src["personality"].get("scales", [])))
+    need += [src["purpose"]["essence"], src["purpose"]["reason_to_exist"]]
+    seen = set()
+    for n in need:
+        if n in seen:
+            continue
+        seen.add(n)
+        if n not in text and n.replace("\u2019", "'") not in text:
+            add("BLOCK", "MISSING_IN_BOOK", "strategy: " + n[:60])
+    # the label of each personality ruler is computed from its position: 0 and 4 are the ends, 2 is the middle
+    for x in src["personality"].get("scales", []):
+        lab = {0: "100% " + x["left"], 1: "75% " + x["left"], 2: "Equil\u00edbrio", 3: "75% " + x["right"], 4: "100% " + x["right"]}.get(x.get("position"))
+        if lab is None or lab not in text:
+            add("BLOCK", "MISSING_IN_BOOK", f"ruler label for {x['left']} / {x['right']}")
+    # tensions without a decision, and the decision itself
+    for t in st.get("tensions", []):
+        if not str(t.get("decision", "")).strip():
+            add("BLOCK", "TENSION_NO_DECISION", str(t.get("side_a", ""))[:50])
+    # shares
+    sh = [x.get("share", 0) for x in st.get("content_pillars", [])]
+    if sh and sum(sh) != 100:
+        add("BLOCK", "SHARES_NOT_100", f"content pillars add up to {sum(sh)}")
+    for x in st.get("content_pillars", []):
+        if f"{x['share']}%" not in text:
+            add("BLOCK", "MISSING_IN_BOOK", f"share {x['share']}% of {x['name']}")
+    # small sample
+    pc = st.get("perception")
+    if pc:
+        if not pc.get("n") or "qualitativ" not in fold(pc.get("sample_note", "")):
+            add("BLOCK", "SAMPLE_UNLABELLED", "the perception research needs n and a note that it is qualitative")
+        if f"Respostas v\u00e1lidas: {pc.get('n')}" not in text:
+            add("BLOCK", "MISSING_IN_BOOK", "perception sample size")
+    # sources of market data
+    outlets = {x["outlet"] for x in st.get("sources", [])}
+    for m in st.get("market_data", []):
+        if m.get("source") not in outlets:
+            add("BLOCK", "DATA_NO_SOURCE", str(m.get("label", ""))[:50])
+    # the 12 cells of the platform, derived again from the source
+    cells = platform_values(src)
+    m_ = re.search(r'<dl class="plat">(.*?)</dl>', html_src, re.S)
+    page_cells = [html.unescape(re.sub(r"<[^>]+>", "", x)) for x in re.findall(r"<dd>(.*?)</dd>", m_.group(1), re.S)] if m_ else []
+    if len(page_cells) != 12:
+        add("BLOCK", "PLATFORM_CELLS", f"the platform page has {len(page_cells)} cells; expected 12")
+    for i, (want, got) in enumerate(zip(cells, page_cells)):
+        if want.strip() != got.strip():
+            add("BLOCK", "PLATFORM_CELLS", f"cell {i + 1} does not repeat its source: '{got[:50]}'")
+
+
+def platform_values(src):
+    """The 12 cells of the platform, derived again from the source (independent of the builder)."""
+    st = src["strategy"]
+    vals = ", ".join(v["name"] for v in st.get("values", []))
+    traits = ", ".join(t["name"] for t in src["voice"]["traits"])
+    return [src["concept"]["big_idea"], src["identity"]["tagline"], src["purpose"]["essence"], src["purpose"]["reason_to_exist"], src["purpose"]["promise"], st.get("category", ""),
+            src["purpose"]["positioning"], vals, src["personality"]["archetype"]["intersection_name"], traits, src["audience"]["summary"], st.get("synthesis", {}).get("desired_perception", "")]
+
+
+def audit_deck(src, html_src, text, add, where):
+    """The deck follows the same consistency rules as the reference manual's lessons: numbering, running header, year, contents, derived platform."""
+    st = src["strategy"]
+    arts = re.findall(r'<article class="sl[^"]*" id="dk-(\d+)" data-n="(\d+)"(?: data-ch="(\d)")?', html_src)
+    if not arts:
+        add("BLOCK", "DECK_EMPTY", f"{where}: no slides found")
+        return
+    ids = [int(a) for a, _, _ in arts]
+    ns = [int(n) for _, n, _ in arts]
+    if ids != list(range(1, len(arts) + 1)) or ns != ids:
+        add("BLOCK", "DECK_NUMBERING", f"{where}: slide numbers are not 1 to {len(arts)} in order and unique")
+    pg = [int(x) for x in re.findall(r'<span class="pg">(\d+)</span>', html_src)]
+    if pg != list(range(2, len(arts) + 1)):
+        add("BLOCK", "DECK_NUMBERING", f"{where}: the page numbers in the footers are not 2 to {len(arts)} in order and unique")
+    years = set(re.findall(r"<footer><span>[^<]*</span><span>[^<]*? \u00b7 (\d{4})</span>", html_src))
+    if years != {str(src["identity"]["date"])[:4]}:
+        add("BLOCK", "DECK_YEAR", f"{where}: the footers show years {sorted(years)}; the date of the source is {src['identity']['date']}")
+    heads = {}
+    for n_, ch_, lab in re.findall(r'<article class="sl[^"]*" id="dk-(\d+)" data-n="\d+" data-ch="(\d)"[^>]*>(?:<span class="wm"[^>]*>[^<]*</span>)?<header><span>([^<]*)</span>', html_src):
+        heads.setdefault(ch_, set()).add(lab)
+    for ch_, labs in heads.items():
+        if len(labs) != 1:
+            add("BLOCK", "DECK_HEADER", f"{where}: chapter {ch_} has more than one running header: {sorted(labs)}")
+    toc = re.search(r'<div class="tc">(.*?)</div></div>(?:<p class="tn">.*?</p>)?<footer>', html_src, re.S)
+    if not toc:
+        add("BLOCK", "DECK_TOC", f"{where}: no contents slide")
+    else:
+        groups = re.findall(r"<div><h3>([^<]*)</h3>((?:<a .*?</a>)+)</div>", toc.group(1), re.S)
+        if not groups:
+            add("BLOCK", "DECK_TOC", f"{where}: the contents slide lists no parts")
+        for gname, rows in groups:
+            for to, pgn in re.findall(r'<a data-to="dk-(\d+)"><span>[^<]*</span><b>(\d+)</b></a>', rows):
+                if to != pgn or int(to) > len(arts):
+                    add("BLOCK", "DECK_TOC", f"{where}: the contents point to page {pgn} but the link goes to slide {to}")
+                    continue
+                m = re.search(r'<article class="sl[^"]*" id="dk-' + to + r'" data-n="\d+" data-ch="\d"[^>]*>(?:<span class="wm"[^>]*>[^<]*</span>)?<header><span>([^<]*)</span>', html_src)
+                if not m or html.unescape(m.group(1)) != html.unescape(gname):
+                    add("BLOCK", "DECK_HEADER", f"{where}: slide {to} runs under '{m.group(1) if m else '?'}' but the contents list it under '{gname}'")
+    m_ = re.search(r'<dl class="plat">(.*?)</dl>', html_src, re.S)
+    cells = [html.unescape(re.sub(r"<[^>]+>", "", x)) for x in re.findall(r"<dd>(.*?)</dd>", m_.group(1), re.S)] if m_ else []
+    want = platform_values(src)
+    if len(cells) != 12 or any(a.strip() != b_.strip() for a, b_ in zip(want, cells)):
+        add("BLOCK", "PLATFORM_CELLS", f"{where}: the platform slide does not repeat its sources")
+    for t in st.get("tensions", []):
+        if t["decision"] not in text:
+            add("BLOCK", "MISSING_IN_BOOK", f"{where}: tension decision: {t['decision'][:50]}")
+    for x in st.get("content_pillars", []):
+        if f"{x['share']}%" not in text:
+            add("BLOCK", "MISSING_IN_BOOK", f"{where}: share {x['share']}% of {x['name']}")
+    pc = st.get("perception")
+    if pc and f"Respostas v\u00e1lidas: {pc['n']}" not in text:
+        add("BLOCK", "SAMPLE_UNLABELLED", f"{where}: the deck shows the research without its sample size")
+    for n in [st["guiding_question"], st["synthesis"]["territory"], src["purpose"]["positioning"], src["concept"]["big_idea"]] + [v["name"] for v in st["values"]]:
+        if n not in text:
+            add("BLOCK", "MISSING_IN_BOOK", f"{where}: {n[:50]}")
+
+
 def audit(root, out_findings, notes=None):
     F = out_findings
     add = lambda lvl, code, msg: F.append((lvl, code, msg))
@@ -283,7 +433,9 @@ def audit(root, out_findings, notes=None):
         elif rel.endswith(".md"):
             text_all.append((rel, open(fp, encoding="utf-8").read()))
     # ---- brandbook
-    books = [r for r in listed if r.endswith(".html")]
+    html_files = sorted(r for r in listed if r.endswith(".html"))
+    books = [r for r in html_files if "Brandbook" in r] or html_files[:1]
+    decks = [r for r in html_files if "_Deck_" in r]
     if not books:
         add("BLOCK", "MISSING_CHAPTER", "no brandbook HTML in the manifest")
         return src, flat
@@ -302,6 +454,32 @@ def audit(root, out_findings, notes=None):
             used_fonts.update(families(a["font-family"]))
     text = re.sub(r"\s+", " ", " ".join(page.text))
     text_all.append((books[0], text))
+    if src.get("strategy"):
+        if 'id="deck-open"' not in html_src or 'id="deck"' not in html_src:
+            add("BLOCK", "MISSING_CHAPTER", "the manual has no deck button or no deck")
+        audit_deck(src, html_src, text, add, "manual")
+        if not decks:
+            add("BLOCK", "MISSING_CHAPTER", "no deck file in the manifest")
+    for dr in decks:
+        dpage = Page()
+        dsrc = open(os.path.join(root, dr), encoding="utf-8").read()
+        dpage.feed(dsrc)
+        for s_ in dpage.styles + dpage.attrs_colour:
+            colours_in(s_)
+            for m in re.finditer(r"font-family\s*:\s*([^;}]+)", s_):
+                used_fonts.update(families(m.group(1)))
+        for a in dpage.texts_svg:
+            check_text(a, dr)
+            if a.get("font-family"):
+                used_fonts.update(families(a["font-family"]))
+        for ex in dpage.externals:
+            add("BLOCK", "EXTERNAL_RESOURCE", ex)
+        for d_ in sorted({i for i in dpage.ids if dpage.ids.count(i) > 1}):
+            add("BLOCK", "DUPLICATE_ID", f"deck: {d_}")
+        dtext = re.sub(r"\s+", " ", " ".join(dpage.text))
+        text_all.append((dr, dtext))
+        if src.get("strategy"):
+            audit_deck(src, dsrc, dtext, add, "deck")
     # chapters, anchors, ids
     for ch in CHAPTERS:
         if ch not in page.ids:
@@ -377,6 +555,8 @@ def audit(root, out_findings, notes=None):
                 add("WARN", "VOICE", f"{where}: conditional language '{hd}'")
     if src.get("schema") == "brand-source.v2":
         audit_v2(root, listed, src, flat, add, [t for t in text_all if t[0] != books[0]] + [(books[0], re.sub(r"\s+", " ", " ".join(page.text_plain)))], notes if notes is not None else [])
+    if src.get("strategy"):
+        audit_strategy(src, html_src, text, add)
     # ---- guidelines spec
     sp = next((r for r in listed if "Guidelines-Spec" in r), None)
     if sp and os.path.isfile(os.path.join(root, sp)):

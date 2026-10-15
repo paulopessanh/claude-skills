@@ -7,6 +7,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added — marketing/brand-reverse: reverse-engineer a brand back to its creative process
+
+Single-skill plugin that works backwards from a finished brand and visual identity to the
+process that could have produced it, then plans a process for a new brand.
+
+- `evidence_ledger.py` separates observed, inferred and hypothesised claims and blocks intent
+  written as fact, inference with no rival explanation, and citations to artifacts that do not exist.
+- `process_reconstructor.py` rebuilds an eight-stage chain (briefing to guidelines), marks
+  unobservable stages LOST, back-propagates requirements from visible outputs, asks one question
+  per stage for someone who was there, and with `--plan` emits the process for the new brand.
+- `method_transfer_guard.py` blocks hex codes, names, typefaces and assets leaking into
+  transferable patterns and refuses a new brand too close to the reference. Not trademark clearance.
+- `palette_logic_analyzer.py` reads colour and type logic and attaches a rival explanation to every reading.
+- 3 references with per-claim confidence levels, fictional example brand, `cs-brand-reverse-analyst`
+  agent, `/cs:brand-reverse` command. Counters: skills 388 → 389; tools 727 → 731; refs 842 → 845;
+  agents 118 → 119; commands 150 → 151; plugins 99 → 100.
+
 ### Added — engineering/spinning-up-deep-rl: the first book compiled by book-to-skill
 
 Knowledge-base plugin compiled end-to-end by `engineering/book-to-skill` from OpenAI's

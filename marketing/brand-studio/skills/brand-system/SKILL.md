@@ -37,7 +37,7 @@ reverse engineered from a real corporate manual and names the field to add for e
 ```bash
 python3 scripts/manual_coverage_check.py --source brand-source.json
 
-For the strategic half (platform, personas, archetype, voice), add `--blueprint assets/strategic_blueprint.v1.json`. It lists 16 needs in layer S and never changes the visual essentials.
+For the strategic half (platform, personas, archetype, voice), add `--blueprint assets/strategic_blueprint.v1.json`. It lists 49 needs in layers S0 to S4 (22 essential) and never changes the visual essentials.
 ```
 
 **Step 6.5, team guidelines.** Technical rules only: signatures, colour, grid, type, elements, pictograms, components,
@@ -77,4 +77,5 @@ folder is not approved. Warns on bad names, bad dates, duplicate versions, gaps 
 - [`references/identity_system_spec.md`](references/identity_system_spec.md): what a spec holds, standards manuals, tokens
 - [`references/manual_as_living_document.md`](references/manual_as_living_document.md): versions, one source, drift
 - [`references/manual_anatomy_reference.md`](references/manual_anatomy_reference.md): the reverse engineered manual structure, 7 layers, 34 needs
-- [`references/strategic_manual_reference.md`](references/strategic_manual_reference.md): the strategic platform half (16 needs, layer S), the page grammar and how a reel presents it
+- [`references/strategic_manual_reference.md`](references/strategic_manual_reference.md): the strategic platform half (49 needs in layers S0 to S4), the method and the content patterns
+- [`references/strategic_page_grammar.md`](references/strategic_page_grammar.md): the page grammar, the visual rhythm and 8 QA rules

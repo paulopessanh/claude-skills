@@ -2,28 +2,254 @@
  "schema": "manual-blueprint.v1",
  "reference": {
   "kind": "strategic brand platform manual",
-  "origin": "Reverse engineered from 24 page captures shown in a short vertical video of one published strategic branding manual (about 65 pages, 2026, Portuguese). Pages were read at about 1000 px wide, so small print is partly lost.",
-  "method": "Structure, page grammar and rules are paraphrased. No text, client name, number, quote or fact of the reference is carried here.",
-  "evidence": "Every need is OBSERVED on a captured page. The reading of why it exists is INFERRED. Pages not shown in the video are not in the blueprint."
+  "origin": "Reverse engineered from 66 distinct page images of one strategic branding manual (about 66 pages, 2026, Portuguese), supplied by the user. One page number is absent from the folder and two images repeat the same page.",
+  "method": "Structure, page grammar, rules and the reading of why each page exists are paraphrased. No client name, figure, quote, source or fact of the reference is carried here, so a new brand borrows the method and never the content.",
+  "evidence": "Every need is OBSERVED on a page image. The reading of why it exists is INFERRED. Page numbers in the pages field are the numbers printed on the pages, which the reference itself does not always keep consistent."
  },
  "layers": [
   {
-   "id": "S",
-   "name": "Plataforma estratégica",
-   "question": "Quem a marca é por dentro, para quem fala e o que decide ser, antes de qualquer forma?"
+   "id": "S0",
+   "name": "Abertura e método",
+   "question": "Para quem é o documento, que pergunta o conduz e com que evidência foi feito?"
+  },
+  {
+   "id": "S1",
+   "name": "Diagnóstico",
+   "question": "O que é verdade hoje sobre o negócio, o público, o valor, a concorrência e a percepção?"
+  },
+  {
+   "id": "S2",
+   "name": "Viradas de chave",
+   "question": "Que leituras nascem de cruzar o que o dono diz com o que as evidências mostram?"
+  },
+  {
+   "id": "S3",
+   "name": "Direção estratégica",
+   "question": "O que a marca decide ser, dizer e fazer daqui para frente?"
+  },
+  {
+   "id": "S4",
+   "name": "Fecho e fontes",
+   "question": "Qual é o próximo passo e de onde vieram os dados?"
   }
  ],
- "sections": [],
+ "sections": [
+  {
+   "n": "0",
+   "title": "Abertura",
+   "pages": "1-5",
+   "items": [
+    {
+     "n": "0.1",
+     "title": "Capa",
+     "pages": "1"
+    },
+    {
+     "n": "0.2",
+     "title": "Carta de boas-vindas",
+     "pages": "2"
+    },
+    {
+     "n": "0.3",
+     "title": "Sumário",
+     "pages": "3"
+    },
+    {
+     "n": "0.4",
+     "title": "Uma pergunta que guiou tudo",
+     "pages": "4"
+    },
+    {
+     "n": "0.5",
+     "title": "Como o material foi construído",
+     "pages": "5"
+    }
+   ]
+  },
+  {
+   "n": "1",
+   "title": "Diagnóstico",
+   "pages": "6-28",
+   "items": [
+    {
+     "n": "1.1",
+     "title": "Leitura por pilar",
+     "pages": "7"
+    },
+    {
+     "n": "1.2",
+     "title": "O mercado mudou de lugar",
+     "pages": "8-10"
+    },
+    {
+     "n": "1.3",
+     "title": "Premissas e objetivos",
+     "pages": "11-12"
+    },
+    {
+     "n": "1.4",
+     "title": "Pontos de atenção",
+     "pages": "13-14"
+    },
+    {
+     "n": "1.5",
+     "title": "Consumidor ideal e personas",
+     "pages": "15-17"
+    },
+    {
+     "n": "1.6",
+     "title": "Valor percebido",
+     "pages": "18-20"
+    },
+    {
+     "n": "1.7",
+     "title": "Concorrência e território",
+     "pages": "21-22"
+    },
+    {
+     "n": "1.8",
+     "title": "Arquétipo e universo",
+     "pages": "23-25"
+    },
+    {
+     "n": "1.9",
+     "title": "Pesquisa de percepção",
+     "pages": "26-28"
+    }
+   ]
+  },
+  {
+   "n": "2",
+   "title": "Viradas de chave",
+   "pages": "29-37",
+   "items": [
+    {
+     "n": "2.1",
+     "title": "As sete viradas",
+     "pages": "30-36"
+    },
+    {
+     "n": "2.2",
+     "title": "Síntese estratégica",
+     "pages": "37"
+    }
+   ]
+  },
+  {
+   "n": "3",
+   "title": "Direção estratégica",
+   "pages": "38-64",
+   "items": [
+    {
+     "n": "3.1",
+     "title": "Posicionamento e promessa",
+     "pages": "39-41"
+    },
+    {
+     "n": "3.2",
+     "title": "Essência, propósito, missão e visão",
+     "pages": "42"
+    },
+    {
+     "n": "3.3",
+     "title": "Valores e princípios",
+     "pages": "43-44"
+    },
+    {
+     "n": "3.4",
+     "title": "Big idea e slogan",
+     "pages": "45-48"
+    },
+    {
+     "n": "3.5",
+     "title": "Narrativa e manifesto",
+     "pages": "49-51"
+    },
+    {
+     "n": "3.6",
+     "title": "Personalidade e tom de voz",
+     "pages": "52-56"
+    },
+    {
+     "n": "3.7",
+     "title": "Pilares de conteúdo",
+     "pages": "57-60"
+    },
+    {
+     "n": "3.8",
+     "title": "Comunicação e arquitetura",
+     "pages": "61-63"
+    },
+    {
+     "n": "3.9",
+     "title": "Plataforma da marca",
+     "pages": "64"
+    }
+   ]
+  },
+  {
+   "n": "4",
+   "title": "Encerramento",
+   "pages": "65-66",
+   "items": [
+    {
+     "n": "4.1",
+     "title": "Encerramento",
+     "pages": "65"
+    },
+    {
+     "n": "4.2",
+     "title": "Fontes",
+     "pages": "66"
+    }
+   ]
+  }
+ ],
  "needs": [
   {
-   "id": "S01",
-   "layer": "S",
-   "need": "Pergunta-guia",
-   "answers": "Que pergunta única conduz todo o trabalho?",
-   "pattern": "Uma página abre com a pergunta de negócio em forma de contraste (o que a empresa entrega contra o que mostra) e anuncia as partes do documento.",
-   "kind": "narrative",
+   "id": "P01",
+   "layer": "S0",
+   "need": "Capa com destinatário e autoria",
+   "answers": "Para quem é, quem assina e quando?",
+   "pattern": "Capa escura com sobretítulo, nome da marca em corpo grande, frase da marca e três campos: preparado para, estratégia por, data.",
+   "kind": "spec",
    "priority": "recommended",
    "pages": "1",
+   "from": [],
+   "checks": [
+    "identity.name",
+    "identity.tagline",
+    "identity.owner",
+    "identity.date"
+   ],
+   "proposed_field": "identity.* (já existe)"
+  },
+  {
+   "id": "P02",
+   "layer": "S0",
+   "need": "Carta de boas-vindas assinada",
+   "answers": "Como o documento se apresenta e a quem serve?",
+   "pattern": "Contracapa clara com saudação em corpo grande, três parágrafos curtos (o que é, de onde veio, para quem serve) e assinatura do autor. Diz que o material é guia de decisão e não de leitura.",
+   "kind": "narrative",
+   "priority": "recommended",
+   "pages": "2",
+   "from": [],
+   "checks": [
+    "strategy.welcome.addressee",
+    "strategy.welcome.text",
+    "strategy.welcome.signed_by"
+   ],
+   "proposed_field": "strategy.welcome {addressee, text, signed_by}"
+  },
+  {
+   "id": "P03",
+   "layer": "S0",
+   "need": "Pergunta-guia",
+   "answers": "Que pergunta única conduz todo o trabalho?",
+   "pattern": "Uma pergunta em forma de contraste entre o que a empresa entrega e o que mostra, citada em bloco com filete lateral. À direita, a resposta curta e o mapa das partes.",
+   "kind": "narrative",
+   "priority": "essential",
+   "pages": "4",
    "from": [],
    "checks": [
     "strategy.guiding_question"
@@ -31,14 +257,79 @@
    "proposed_field": "strategy.guiding_question"
   },
   {
-   "id": "S02",
-   "layer": "S",
-   "need": "Mudança de cenário externo",
-   "answers": "Que regra ou mercado mudou e quando?",
-   "pattern": "Linha do tempo com 3 a 5 marcos datados. Cada marco traz o fato e o efeito sobre a marca. A fonte vai no rodapé.",
+   "id": "P04",
+   "layer": "S0",
+   "need": "Método e base de evidências",
+   "answers": "Como a investigação foi feita e quanto material a sustenta?",
+   "pattern": "Quatro pilares (negócio, audiência, valor, estória) com uma pergunta cada, e uma faixa de números com a base: encontros, respostas, anos de histórico, fontes públicas. Regra do método: separar o que o dono acredita do que as evidências mostram.",
+   "kind": "diagram",
+   "priority": "essential",
+   "pages": "5",
+   "from": [],
+   "checks": [
+    "strategy.method.pillars>=3",
+    "strategy.evidence_base>=3"
+   ],
+   "proposed_field": "strategy.method {name, pillars[] {letter, name, question}}, strategy.evidence_base[] {kind, count, note}"
+  },
+  {
+   "id": "P05",
+   "layer": "S0",
+   "need": "Glossário no rodapé da página",
+   "answers": "Como um leigo entende cada termo técnico sem sair da página?",
+   "pattern": "Rodapé fixo 'Por trás do termo' com uma ou duas linhas que definem o conceito da página em palavras simples.",
+   "kind": "rule",
+   "priority": "recommended",
+   "pages": "4 a 64",
+   "from": [],
+   "checks": [
+    "strategy.term_notes>=5"
+   ],
+   "proposed_field": "strategy.term_notes[] {term, plain}"
+  },
+  {
+   "id": "P06",
+   "layer": "S1",
+   "need": "Leitura por pilar: o que achamos e o que significa",
+   "answers": "Qual é o achado de cada pilar e a sua consequência?",
+   "pattern": "Quatro quadros, um por pilar. Em cada um, duas camadas rotuladas: o que encontramos e o que isso significa, a segunda em peso forte.",
+   "kind": "matrix",
+   "priority": "essential",
+   "pages": "7",
+   "from": [],
+   "checks": [
+    "strategy.reading>=4",
+    "strategy.reading[].found",
+    "strategy.reading[].meaning"
+   ],
+   "proposed_field": "strategy.reading[] {pillar, found, meaning}"
+  },
+  {
+   "id": "P07",
+   "layer": "S1",
+   "need": "Dados de mercado com fonte",
+   "answers": "Qual dado de mercado dimensiona o público?",
+   "pattern": "Gráfico simples: um anel com a parcela principal ao lado de barras de comparação, com a barra do público da marca em preto e as demais em cinza. Uma frase de leitura e a fonte no rodapé.",
    "kind": "diagram",
    "priority": "conditional",
-   "pages": "1",
+   "pages": "8",
+   "from": [],
+   "checks": [
+    "strategy.market_data>=1",
+    "strategy.market_data[].source"
+   ],
+   "proposed_field": "strategy.market_data[] {label, figure, source}",
+   "condition": "só quando um dado externo dimensiona o público"
+  },
+  {
+   "id": "P08",
+   "layer": "S1",
+   "need": "Linha do tempo de mudança de regras",
+   "answers": "Que mudança externa justifica rever a marca e quando?",
+   "pattern": "Linha com 4 marcos datados. Cada um traz o fato e o efeito. O marco que virou a chave vem em círculo cheio. Fonte no rodapé.",
+   "kind": "diagram",
+   "priority": "conditional",
+   "pages": "9",
    "from": [],
    "checks": [
     "strategy.market_shifts>=3",
@@ -46,35 +337,65 @@
     "strategy.market_shifts[].effect"
    ],
    "proposed_field": "strategy.market_shifts[] {date, fact, effect, source}",
-   "condition": "só quando uma mudança externa justifica a revisão da marca"
+   "condition": "só quando uma mudança externa justifica a revisão"
   },
   {
-   "id": "S03",
-   "layer": "S",
-   "need": "Personas com trava e frase de entrada",
-   "answers": "Para quem a marca fala e o que cada pessoa precisa ouvir?",
-   "pattern": "3 a 4 colunas, uma por pessoa: situação, o que quer, o que trava e a frase que precisa ouvir. A persona de maior valor ganha o cartão escuro.",
-   "kind": "matrix",
+   "id": "P09",
+   "layer": "S1",
+   "need": "O que o cenário significa para a marca",
+   "answers": "Que consequências práticas o cenário traz?",
+   "pattern": "Página escura com uma frase central sobre quem é o novo cliente e três consequências numeradas.",
+   "kind": "narrative",
    "priority": "recommended",
-   "pages": "1",
+   "pages": "10",
    "from": [],
    "checks": [
-    "audience.personas>=3",
-    "audience.personas[].wants",
-    "audience.personas[].blocker",
-    "audience.personas[].needs_to_hear"
+    "strategy.market_implications>=3"
    ],
-   "proposed_field": "audience.personas[] {situation, wants, blocker, needs_to_hear, highest_value}"
+   "proposed_field": "strategy.market_implications[] {title, text}"
   },
   {
-   "id": "S04",
-   "layer": "S",
-   "need": "Pontos de tensão com decisão",
-   "answers": "Onde o discurso e a percepção divergem e o que se decide?",
-   "pattern": "Lista numerada de 3 a 5 tensões. Cada uma nomeia os dois lados e fecha com uma decisão escrita. A tensão sem decisão não entra.",
+   "id": "P10",
+   "layer": "S1",
+   "need": "Premissas do negócio",
+   "answers": "Que verdades a marca não pode contrariar?",
+   "pattern": "Seis blocos numerados, cada um com um título curto e duas linhas. Cobrem categoria, serviço principal, origem do crescimento, preço, escopo e papel do fundador.",
    "kind": "matrix",
    "priority": "recommended",
-   "pages": "1",
+   "pages": "11",
+   "from": [],
+   "checks": [
+    "strategy.premises>=4"
+   ],
+   "proposed_field": "strategy.premises[] {title, text}"
+  },
+  {
+   "id": "P11",
+   "layer": "S1",
+   "need": "Metas por horizonte e papel da marca",
+   "answers": "O que o negócio quer em cada prazo e o que a marca faz por isso?",
+   "pattern": "Cinco colunas por horizonte (agora, 12 meses, 1 a 2 anos, 3 anos). Cada uma com a meta do negócio e o papel da marca. Abaixo, um olhar crítico sobre o que a operação sustenta hoje.",
+   "kind": "matrix",
+   "priority": "essential",
+   "pages": "12",
+   "from": [],
+   "checks": [
+    "strategy.goals>=3",
+    "strategy.goals[].horizon",
+    "strategy.goals[].brand_role",
+    "strategy.critical_view"
+   ],
+   "proposed_field": "strategy.goals[] {horizon, business_goal, brand_role}, strategy.critical_view"
+  },
+  {
+   "id": "P12",
+   "layer": "S1",
+   "need": "Tensões com decisão",
+   "answers": "Onde o discurso e a percepção divergem e o que se decide?",
+   "pattern": "Lista numerada de 4 a 7 tensões. Cada linha nomeia os dois lados e fecha com uma decisão escrita em coluna própria. Tensão sem decisão não entra.",
+   "kind": "matrix",
+   "priority": "essential",
+   "pages": "13 e 14",
    "from": [],
    "checks": [
     "strategy.tensions>=3",
@@ -85,32 +406,167 @@
    "proposed_field": "strategy.tensions[] {side_a, side_b, decision}"
   },
   {
-   "id": "S05",
-   "layer": "S",
+   "id": "P13",
+   "layer": "S1",
+   "need": "Correções à leitura do dono",
+   "answers": "Em que a evidência corrige o que o dono achava?",
+   "pattern": "Faixa curta no fim da página: dois sinais em que a pesquisa contradiz ou amplia a crença do dono, e a decisão de incluí-los.",
+   "kind": "rule",
+   "priority": "recommended",
+   "pages": "14",
+   "from": [],
+   "checks": [
+    "strategy.owner_corrections>=1"
+   ],
+   "proposed_field": "strategy.owner_corrections[] {belief, evidence, decision}"
+  },
+  {
+   "id": "P14",
+   "layer": "S1",
+   "need": "Perfil de cliente ideal com achado",
+   "answers": "Quem mais combina com a marca e que achado muda o jogo?",
+   "pattern": "Parágrafo do perfil à esquerda e um módulo escuro à direita com o achado que muda a estratégia.",
+   "kind": "narrative",
+   "priority": "essential",
+   "pages": "15",
+   "from": [],
+   "checks": [
+    "strategy.icp",
+    "strategy.icp_insight"
+   ],
+   "proposed_field": "strategy.icp, strategy.icp_insight"
+  },
+  {
+   "id": "P15",
+   "layer": "S1",
+   "need": "Personas com trava e frase de entrada",
+   "answers": "Para quem a marca fala e o que cada pessoa precisa ouvir?",
+   "pattern": "Quatro colunas, uma por pessoa: situação, o que quer, o que trava e a frase que precisa ouvir. A persona de maior valor vai no cartão escuro.",
+   "kind": "matrix",
+   "priority": "essential",
+   "pages": "16",
+   "from": [],
+   "checks": [
+    "audience.personas>=3",
+    "audience.personas[].needs",
+    "audience.personas[].blocker",
+    "audience.personas[].needs_to_hear"
+   ],
+   "proposed_field": "audience.personas[] {name, who, needs, blocker, needs_to_hear, highest_value}"
+  },
+  {
+   "id": "P16",
+   "layer": "S1",
+   "need": "Não clientes por comportamento",
+   "answers": "Quem a marca não procura e por quê?",
+   "pattern": "Três marcas com X, filtro por comportamento e nunca por origem, e uma frase do dono que explica o limite.",
+   "kind": "rule",
+   "priority": "recommended",
+   "pages": "17",
+   "from": [],
+   "checks": [
+    "strategy.non_clients>=2"
+   ],
+   "proposed_field": "strategy.non_clients[] (comportamento, nunca origem)"
+  },
+  {
+   "id": "P17",
+   "layer": "S1",
    "need": "Equação de valor percebido",
    "answers": "O que o cliente soma e o que subtrai ao decidir?",
-   "pattern": "Fração: ganhos em cima (resultado, segurança, clareza, rapidez, trato), perdas embaixo (preço, esforço, risco, espera). Uma tabela lê cada fator da marca hoje, com barra de 1 a 5, leitura e ação.",
+   "pattern": "Fração: ganhos em cima em caixas pretas, perdas embaixo em caixas vazadas, com a conclusão em duas linhas. Uma segunda página lê cada fator em barras de 1 a 5, com leitura e ação.",
    "kind": "diagram",
    "priority": "conditional",
-   "pages": "2",
+   "pages": "18 e 20",
    "from": [],
    "checks": [
     "strategy.value_equation.gains>=3",
     "strategy.value_equation.costs>=3",
-    "strategy.value_equation.reading[].score"
+    "strategy.value_equation.reading[].score",
+    "strategy.value_equation.reading[].action"
    ],
    "proposed_field": "strategy.value_equation {gains[], costs[], reading[] {factor, score, reading, action}}",
    "condition": "só em serviço de confiança alta, onde o risco percebido pesa"
   },
   {
-   "id": "S06",
-   "layer": "S",
-   "need": "Arquétipo com sombra",
-   "answers": "Que personagem a marca é, o que ele traz e o que o exagero estraga?",
-   "pattern": "Dois arquétipos (principal e secundário) em diagrama de interseção. Tabela com origem, o que traz, a sombra e quem equilibra. Um terceiro arquétipo entra só como tempero.",
+   "id": "P18",
+   "layer": "S1",
+   "need": "Premissas de valor",
+   "answers": "Que crenças sobre valor a marca assume?",
+   "pattern": "Cinco colunas numeradas com título e duas linhas, e uma frase do dono em destaque que resume a lógica do preço.",
    "kind": "matrix",
    "priority": "recommended",
-   "pages": "2",
+   "pages": "19",
+   "from": [],
+   "checks": [
+    "strategy.value_premises>=3"
+   ],
+   "proposed_field": "strategy.value_premises[] {title, text}"
+  },
+  {
+   "id": "P19",
+   "layer": "S1",
+   "need": "Concorrência por tipo",
+   "answers": "Quem ocupa o mercado, o que faz bem, onde falha e onde a marca difere?",
+   "pattern": "Tabela de quatro colunas: tipo, faz bem, falha em, a marca faz diferente. Rodapé: serve para achar o lugar livre e nunca para copiar.",
+   "kind": "matrix",
+   "priority": "essential",
+   "pages": "21",
+   "from": [],
+   "checks": [
+    "strategy.competition>=3",
+    "strategy.competition[].does_well",
+    "strategy.competition[].fails_at",
+    "strategy.competition[].we_differ"
+   ],
+   "proposed_field": "strategy.competition[] {type, does_well, fails_at, we_differ}"
+  },
+  {
+   "id": "P20",
+   "layer": "S1",
+   "need": "Mapa de território em dois eixos",
+   "answers": "Qual quadrante está vazio e é da marca?",
+   "pattern": "Quadro 2x2 com dois eixos (profundidade técnica e clareza da linguagem). Cada quadrante nomeia o jeito e traz os concorrentes. O quadrante da marca vai em preto.",
+   "kind": "diagram",
+   "priority": "recommended",
+   "pages": "22",
+   "from": [],
+   "checks": [
+    "strategy.territory_map.x_axis",
+    "strategy.territory_map.y_axis",
+    "strategy.territory_map.quadrants>=4",
+    "strategy.territory_map.own"
+   ],
+   "proposed_field": "strategy.territory_map {x_axis, y_axis, quadrants[], own}"
+  },
+  {
+   "id": "P21",
+   "layer": "S1",
+   "need": "Universo da marca",
+   "answers": "Como a marca soa, parece e se comporta antes de qualquer peça?",
+   "pattern": "Seis blocos: atmosfera, linguagem, postura, estética visual, presença digital e o que não cabe (em preto). Nota: cor, tipografia e grafismo ficam para a identidade visual.",
+   "kind": "matrix",
+   "priority": "recommended",
+   "pages": "23",
+   "from": [],
+   "checks": [
+    "strategy.universe.atmosphere",
+    "strategy.universe.language",
+    "strategy.universe.posture",
+    "strategy.universe.aesthetics",
+    "strategy.universe.not_fit"
+   ],
+   "proposed_field": "strategy.universe {atmosphere, language, posture, aesthetics, digital, not_fit}"
+  },
+  {
+   "id": "P22",
+   "layer": "S1",
+   "need": "Arquétipo principal e secundário com sombra",
+   "answers": "Que personagem a marca é e o que o exagero estraga?",
+   "pattern": "Diagrama de interseção entre dois arquétipos, com o nome da interseção. Tabela com origem, o que traz, a sombra e quem equilibra. Um terceiro arquétipo entra só como tempero.",
+   "kind": "matrix",
+   "priority": "essential",
+   "pages": "24 e 25",
    "from": [],
    "checks": [
     "personality.archetype.primary",
@@ -118,17 +574,53 @@
     "personality.archetype.shadow",
     "personality.archetype.balanced_by"
    ],
-   "proposed_field": "personality.archetype {primary, secondary, shadow, balanced_by, seasoning}"
+   "proposed_field": "personality.archetype {primary, secondary, intersection_name, origin, brings, shadow, balanced_by, seasoning}"
   },
   {
-   "id": "S07",
-   "layer": "S",
+   "id": "P23",
+   "layer": "S1",
+   "need": "Pesquisa de percepção",
+   "answers": "O que as pessoas de dentro e de fora dizem da marca?",
+   "pattern": "Três páginas: respostas agrupadas à pergunta de propósito, características de hoje contra as pedidas para o futuro, e uma síntese de força, prova, pedido, alerta, lição e confirmação. O rodapé declara que a amostra é pequena e qualitativa.",
+   "kind": "diagram",
+   "priority": "recommended",
+   "pages": "26 a 28",
+   "from": [],
+   "checks": [
+    "strategy.perception.n",
+    "strategy.perception.sample_note",
+    "strategy.perception.traits_today>=3",
+    "strategy.perception.traits_future>=3",
+    "strategy.perception.reading"
+   ],
+   "proposed_field": "strategy.perception {n, sample_note, purpose_answers[], traits_today[], traits_future[], reading}"
+  },
+  {
+   "id": "P24",
+   "layer": "S2",
+   "need": "Viradas de chave numeradas",
+   "answers": "Que leituras surgem de cruzar o que o dono disse com as evidências?",
+   "pattern": "Uma página por virada, no formato 'N de 7': número grande à esquerda, título em duas pesagens e um parágrafo. As páginas alternam fundo escuro e claro.",
+   "kind": "narrative",
+   "priority": "essential",
+   "pages": "30 a 36",
+   "from": [],
+   "checks": [
+    "strategy.turns>=3",
+    "strategy.turns[].title",
+    "strategy.turns[].text"
+   ],
+   "proposed_field": "strategy.turns[] {title, text}"
+  },
+  {
+   "id": "P25",
+   "layer": "S2",
    "need": "Síntese estratégica",
    "answers": "Qual é a conclusão do diagnóstico?",
-   "pattern": "Quatro blocos em linha: cenário, problema, oportunidade, território (o último em destaque). Abaixo, a percepção desejada em uma frase na voz do cliente.",
+   "pattern": "Quatro blocos em linha: cenário, problema, oportunidade e território (em preto). Abaixo, a percepção desejada em uma frase na voz do cliente.",
    "kind": "narrative",
-   "priority": "recommended",
-   "pages": "1",
+   "priority": "essential",
+   "pages": "37",
    "from": [],
    "checks": [
     "strategy.synthesis.scenario",
@@ -140,46 +632,151 @@
    "proposed_field": "strategy.synthesis {scenario, problem, opportunity, territory, desired_perception}"
   },
   {
-   "id": "S08",
-   "layer": "S",
+   "id": "P26",
+   "layer": "S3",
+   "need": "Posicionamento com categoria e espectro",
+   "answers": "Qual lugar a marca escolhe ocupar?",
+   "pattern": "Declaração em uma frase (para quem, dor, categoria, diferença, limite), a categoria dita com o que ela não é e um espectro com um ponto entre popular e exclusivo.",
+   "kind": "narrative",
+   "priority": "essential",
+   "pages": "39",
+   "from": [],
+   "checks": [
+    "purpose.positioning",
+    "strategy.category",
+    "strategy.not_category>=1",
+    "strategy.spectrum"
+   ],
+   "proposed_field": "purpose.positioning, strategy.category, strategy.not_category[], strategy.spectrum {from, to, position}"
+  },
+  {
+   "id": "P27",
+   "layer": "S3",
+   "need": "Proposta de valor e promessa",
+   "answers": "O que o cliente leva para casa e o que a marca garante?",
+   "pattern": "Página escura com a proposta (chega com um problema, sai com o quê) e a promessa em uma linha, seguida de três garantias do tipo 'nunca'.",
+   "kind": "narrative",
+   "priority": "essential",
+   "pages": "40",
+   "from": [],
+   "checks": [
+    "strategy.value_proposition",
+    "purpose.promise",
+    "strategy.promise_guarantees>=3"
+   ],
+   "proposed_field": "strategy.value_proposition, purpose.promise, strategy.promise_guarantees[]"
+  },
+  {
+   "id": "P28",
+   "layer": "S3",
+   "need": "Diferenciais com teste de cópia",
+   "answers": "Quais motivos concretos justificam a escolha e quais dá para copiar?",
+   "pattern": "Tabela de três colunas: diferencial, prova e 'dá para copiar?'. A coluna responde 'não, é conduta' ou 'só com esforço'. Conduta depende de caráter e ninguém copia.",
+   "kind": "matrix",
+   "priority": "recommended",
+   "pages": "41",
+   "from": [],
+   "checks": [
+    "strategy.differentials>=4",
+    "strategy.differentials[].proof",
+    "strategy.differentials[].copyability"
+   ],
+   "proposed_field": "strategy.differentials[] {name, proof, copyability: conduct|effort}"
+  },
+  {
+   "id": "P29",
+   "layer": "S3",
+   "need": "Essência, propósito, missão e visão",
+   "answers": "Por que a marca existe, o que faz todo dia e aonde quer chegar?",
+   "pattern": "Quatro quadros: essência (em preto, em corpo grande), propósito (por que existe), missão (o que faz todo dia) e visão (aonde quer chegar).",
+   "kind": "matrix",
+   "priority": "essential",
+   "pages": "42",
+   "from": [],
+   "checks": [
+    "purpose.essence",
+    "purpose.reason_to_exist",
+    "purpose.mission",
+    "purpose.vision"
+   ],
+   "proposed_field": "purpose.essence, purpose.reason_to_exist, purpose.mission, purpose.vision"
+  },
+  {
+   "id": "P30",
+   "layer": "S3",
+   "need": "Valores com definição e comportamento",
+   "answers": "Que crenças guiam a decisão difícil e como aparecem no dia a dia?",
+   "pattern": "Três colunas, cada uma com o nome do valor, uma frase de origem e a descrição de comportamento. Os valores foram escolhidos pelo dono dentro de um grupo de 20 palavras. Rodapé: só vale como valor o que aparece no comportamento.",
+   "kind": "matrix",
+   "priority": "essential",
+   "pages": "43",
+   "from": [],
+   "checks": [
+    "strategy.values>=3",
+    "strategy.values[].definition",
+    "strategy.values[].behavior"
+   ],
+   "proposed_field": "strategy.values[] {name, definition, behavior}"
+  },
+  {
+   "id": "P31",
+   "layer": "S3",
    "need": "Princípios inegociáveis",
    "answers": "O que a marca nunca negocia?",
-   "pattern": "Lista numerada de 3 a 7 frases curtas e imperativas. Uma nota explica por que palavras fora dos valores viraram princípios.",
+   "pattern": "Lista numerada de 3 a 7 frases curtas e imperativas. Uma nota explica por que palavras fora dos valores viraram princípios: o dono as repetiu e a pesquisa as devolveu.",
    "kind": "rule",
    "priority": "recommended",
-   "pages": "1",
+   "pages": "44",
    "from": [],
    "checks": [
     "strategy.principles>=3"
    ],
-   "proposed_field": "strategy.principles[] (frase imperativa)"
+   "proposed_field": "strategy.principles[]"
   },
   {
-   "id": "S09",
-   "layer": "S",
+   "id": "P32",
+   "layer": "S3",
    "need": "Big idea com razões",
-   "answers": "Qual é a ideia central e por que ela se sustenta?",
-   "pattern": "A ideia em uma frase, cinco razões em colunas (alcance, origem, emoção, limite honesto, relação com o slogan) e a distinção entre ideia (afirma) e slogan (mostra o caminho).",
+   "answers": "Qual é a ideia central e por que ela sustenta a marca?",
+   "pattern": "A ideia em página escura, em corpo máximo, com um parágrafo. Em outra página, cinco razões em colunas (alcance, origem, emoção, limite honesto, relação com o slogan). Rodapé: dela saem slogan, conteúdo, jeito de falar e atendimento.",
    "kind": "narrative",
-   "priority": "recommended",
-   "pages": "1",
+   "priority": "essential",
+   "pages": "45 e 46",
    "from": [],
    "checks": [
     "concept.big_idea",
-    "concept.reasons>=3",
-    "identity.tagline"
+    "concept.reasons>=3"
    ],
-   "proposed_field": "concept.reasons[] {title, text}"
+   "proposed_field": "concept.big_idea, concept.reasons[] {title, text}"
   },
   {
-   "id": "S10",
-   "layer": "S",
-   "need": "Narrativa em arco",
-   "answers": "Que história a marca conta sobre si, sempre do mesmo jeito?",
-   "pattern": "Seis etapas numeradas (origem, chegada, ajuda, virada, crescimento, agora). A última, em destaque, aponta a ação de hoje.",
-   "kind": "narrative",
+   "id": "P33",
+   "layer": "S3",
+   "need": "Sistema de slogans em dois tempos",
+   "answers": "Como as frases da marca se complementam e onde cada uma vai?",
+   "pattern": "Dois quadros ligados por seta: o que a marca faz e o que isso gera (o segundo em preto). Outra página dá o uso: as duas juntas, só a primeira, só a segunda, e frases de apoio em etiquetas.",
+   "kind": "matrix",
    "priority": "recommended",
-   "pages": "1",
+   "pages": "47 e 48",
+   "from": [],
+   "checks": [
+    "identity.slogan",
+    "strategy.slogan_system.first_beat",
+    "strategy.slogan_system.second_beat",
+    "strategy.slogan_system.usage>=3",
+    "strategy.slogan_system.support_lines>=3"
+   ],
+   "proposed_field": "strategy.slogan_system {first_beat, second_beat, usage[] {context, line}, support_lines[]}"
+  },
+  {
+   "id": "P34",
+   "layer": "S3",
+   "need": "Narrativa em seis etapas",
+   "answers": "Que história a marca conta sobre si, sempre do mesmo jeito?",
+   "pattern": "Seis etapas numeradas (origem, chegada, ajuda, virada, crescimento, agora). A última, em preto, aponta a ação de hoje.",
+   "kind": "narrative",
+   "priority": "essential",
+   "pages": "49",
    "from": [],
    "checks": [
     "history.arc>=5",
@@ -189,14 +786,47 @@
    "proposed_field": "history.arc[] {stage, text}"
   },
   {
-   "id": "S11",
-   "layer": "S",
-   "need": "Personalidade em réguas",
-   "answers": "Onde a marca fica em cada par de opostos?",
-   "pattern": "Dez réguas com cinco posições (ponta, 75%, equilíbrio). O rótulo sob o ponto diz o lado e a força. Uma nota ensina a ler a escala.",
+   "id": "P35",
+   "layer": "S3",
+   "need": "Diretrizes de narrativa e tom por situação",
+   "answers": "Como contar a história e que tom usar em cada situação?",
+   "pattern": "Seis diretrizes (o herói é o cliente, histórias reais, mostrar o bastidor, nunca vender pelo medo, orgulho, sempre um caminho) e uma tabela de situação e tom, com etiquetas de temas.",
    "kind": "matrix",
    "priority": "recommended",
-   "pages": "1",
+   "pages": "50 e 60",
+   "from": [],
+   "checks": [
+    "strategy.narrative_rules>=4",
+    "strategy.tone_by_situation>=4",
+    "strategy.themes>=4"
+   ],
+   "proposed_field": "strategy.narrative_rules[] {title, text}, strategy.tone_by_situation[] {situation, tone}, strategy.themes[]"
+  },
+  {
+   "id": "P36",
+   "layer": "S3",
+   "need": "Manifesto",
+   "answers": "Qual texto curto diz a marca em voz alta?",
+   "pattern": "Página escura com título em duas pesagens, três colunas de texto e a frase final alinhada à direita. A assinatura da marca fecha a página.",
+   "kind": "narrative",
+   "priority": "recommended",
+   "pages": "51",
+   "from": [],
+   "checks": [
+    "concept.manifesto>=3",
+    "strategy.manifesto_close"
+   ],
+   "proposed_field": "concept.manifesto[], strategy.manifesto_close"
+  },
+  {
+   "id": "P37",
+   "layer": "S3",
+   "need": "Personalidade em réguas",
+   "answers": "Onde a marca fica em cada par de opostos?",
+   "pattern": "Dez réguas com cinco posições. O rótulo sob o ponto diz o lado e a força. Regra de leitura: meio é equilíbrio, uma casa é 75% e a ponta é 100%. Uma nota diz como as réguas foram preenchidas.",
+   "kind": "matrix",
+   "priority": "essential",
+   "pages": "52",
    "from": [],
    "checks": [
     "personality.scales>=8",
@@ -207,31 +837,65 @@
    "proposed_field": "personality.scales[] {left, right, position 0..4}"
   },
   {
-   "id": "S12",
-   "layer": "S",
-   "need": "Voz antes e depois",
-   "answers": "Como a marca soa e como não soa?",
-   "pattern": "Três quadros: o mesmo recado antes e depois (setas), sempre e nunca fazer (marcadores + e x), e o dicionário de termos técnicos traduzidos para a equipe.",
+   "id": "P38",
+   "layer": "S3",
+   "need": "É e não é",
+   "answers": "Onde a qualidade vira defeito?",
+   "pattern": "Tabela de duas colunas com sete pares: a qualidade da marca e o exagero que ela evita.",
    "kind": "matrix",
    "priority": "recommended",
-   "pages": "3",
+   "pages": "53",
+   "from": [],
+   "checks": [
+    "voice.traits>=3",
+    "voice.traits[].is",
+    "voice.traits[].is_not"
+   ],
+   "proposed_field": "voice.traits[] {name, is, is_not}"
+  },
+  {
+   "id": "P39",
+   "layer": "S3",
+   "need": "Princípios de tom de voz com aplicação",
+   "answers": "Como a marca fala?",
+   "pattern": "Cinco princípios numerados, cada um com a regra em negrito e a aplicação em uma linha.",
+   "kind": "rule",
+   "priority": "essential",
+   "pages": "54",
+   "from": [],
+   "checks": [
+    "voice.principles>=4",
+    "voice.principles[].rule",
+    "voice.principles[].application"
+   ],
+   "proposed_field": "voice.principles[] {rule, application}"
+  },
+  {
+   "id": "P40",
+   "layer": "S3",
+   "need": "Antes e depois na voz da marca",
+   "answers": "Como o mesmo recado soa em texto burocrático e na voz da marca?",
+   "pattern": "Duas colunas ligadas por setas, quatro recados: burocrático, técnico sem tradução, alarmista e recusa seca, cada um reescrito na voz da marca.",
+   "kind": "matrix",
+   "priority": "essential",
+   "pages": "55",
    "from": [],
    "checks": [
     "voice.before_after>=3",
-    "voice.always>=3",
-    "voice.never>=3"
+    "voice.before_after[].before",
+    "voice.before_after[].after"
    ],
-   "proposed_field": "voice.before_after[] {before, after}, voice.always[], voice.never[]"
+   "proposed_field": "voice.before_after[] {before, after}"
   },
   {
-   "id": "S13",
-   "layer": "S",
+   "id": "P41",
+   "layer": "S3",
    "need": "Dicionário de termos",
-   "answers": "Que termo técnico a equipe traduz e como?",
-   "pattern": "Tabela de duas colunas: termo e tradução em linguagem do cliente. Uma nota manda validar cada tradução com o especialista.",
+   "answers": "Como a equipe traduz cada termo técnico?",
+   "pattern": "Tabela de duas colunas por pares: termo e tradução em linguagem do cliente. Nota: validar com a equipe e com o especialista.",
    "kind": "spec",
    "priority": "conditional",
-   "pages": "1",
+   "pages": "56",
    "from": [],
    "checks": [
     "voice.dictionary>=3"
@@ -240,49 +904,177 @@
    "condition": "só em setor com jargão técnico, jurídico ou regulatório"
   },
   {
-   "id": "S14",
-   "layer": "S",
-   "need": "Direção de comunicação",
-   "answers": "Que regras guiam qualquer peça de comunicação?",
-   "pattern": "Sete a oito regras numeradas em grade, mais um cartão escuro com a bio sugerida.",
-   "kind": "rule",
-   "priority": "conditional",
-   "pages": "1",
-   "from": [],
-   "checks": [
-    "strategy.communication_rules>=5"
-   ],
-   "proposed_field": "strategy.communication_rules[] {title, text}"
-  },
-  {
-   "id": "S15",
-   "layer": "S",
-   "need": "Manifesto",
-   "answers": "Qual texto curto diz a marca em voz alta?",
-   "pattern": "Fundo escuro, título em duas pesagens, três colunas de texto e a frase final alinhada à direita. A assinatura da marca fecha a página.",
-   "kind": "narrative",
+   "id": "P42",
+   "layer": "S3",
+   "need": "Pilares de conteúdo com peso",
+   "answers": "Que assuntos a marca cobre e em que proporção?",
+   "pattern": "Anel com cinco fatias em tons de cinza ao lado da lista de pilares, cada um com um percentual e uma linha de conteúdo. Os percentuais somam 100%. Outra página dá exemplos de pauta por pilar.",
+   "kind": "diagram",
    "priority": "recommended",
-   "pages": "1",
+   "pages": "57 e 58",
    "from": [],
    "checks": [
-    "concept.manifesto>=3"
+    "strategy.content_pillars>=3",
+    "strategy.content_pillars[].share",
+    "strategy.content_pillars[].examples"
    ],
-   "proposed_field": "concept.manifesto[]"
+   "proposed_field": "strategy.content_pillars[] {name, share, topics, examples[]} (soma das fatias igual a 100)"
   },
   {
-   "id": "S16",
-   "layer": "S",
-   "need": "Plataforma em uma página",
-   "answers": "Como um designer ou parceiro lê a marca em dois minutos?",
-   "pattern": "Grade de 12 células com rótulo e valor: ideia, slogan, essência, propósito, promessa, categoria, posicionamento, valores, arquétipo, tom de voz, para quem e percepção desejada. Nenhuma célula é texto novo.",
+   "id": "P43",
+   "layer": "S3",
+   "need": "Sempre e nunca no conteúdo",
+   "answers": "Que regras mínimas protegem a marca em toda publicação?",
+   "pattern": "Duas colunas, sempre (com +) e nunca (com x), cinco linhas cada.",
+   "kind": "rule",
+   "priority": "recommended",
+   "pages": "59",
+   "from": [],
+   "checks": [
+    "strategy.content_always>=3",
+    "strategy.content_never>=3"
+   ],
+   "proposed_field": "strategy.content_always[], strategy.content_never[]"
+  },
+  {
+   "id": "P44",
+   "layer": "S3",
+   "need": "Direção de comunicação e bio",
+   "answers": "Que regras guiam qualquer peça de comunicação?",
+   "pattern": "Sete regras numeradas em grade e um cartão escuro com a bio sugerida.",
+   "kind": "rule",
+   "priority": "recommended",
+   "pages": "61",
+   "from": [],
+   "checks": [
+    "strategy.communication_rules>=5",
+    "strategy.bio"
+   ],
+   "proposed_field": "strategy.communication_rules[] {title, text}, strategy.bio"
+  },
+  {
+   "id": "P45",
+   "layer": "S3",
+   "need": "Pontos de contato",
+   "answers": "O que muda em cada lugar onde alguém encontra a marca?",
+   "pattern": "Tabela de duas colunas: ponto de contato e o que muda nele.",
    "kind": "matrix",
    "priority": "recommended",
-   "pages": "1",
+   "pages": "62",
+   "from": [],
+   "checks": [
+    "strategy.touchpoints>=4",
+    "strategy.touchpoints[].change"
+   ],
+   "proposed_field": "strategy.touchpoints[] {name, change}"
+  },
+  {
+   "id": "P46",
+   "layer": "S3",
+   "need": "Arquitetura de marca",
+   "answers": "Como a marca se organiza quando tem várias frentes?",
+   "pattern": "Diagrama de árvore: a marca mãe em preto no alto e as marcas filhas em linha. Texto diz que esta marca é a mãe e dá a base de valores, voz e posicionamento a todas.",
+   "kind": "diagram",
+   "priority": "conditional",
+   "pages": "63",
+   "from": [],
+   "checks": [
+    "strategy.brand_architecture.model",
+    "strategy.brand_architecture.parent",
+    "strategy.brand_architecture.children>=2"
+   ],
+   "proposed_field": "strategy.brand_architecture {model, parent, children[], rule}",
+   "condition": "só quando há ou haverá mais de uma frente ou submarca"
+  },
+  {
+   "id": "P47",
+   "layer": "S3",
+   "need": "Plataforma da marca em uma página",
+   "answers": "Como alguém lê a marca em dois minutos?",
+   "pattern": "Grade de 12 células com rótulo e valor: ideia, slogan, essência, propósito, promessa, categoria, posicionamento, valores, arquétipo, tom de voz, para quem e percepção desejada. Nenhuma célula é texto novo.",
+   "kind": "matrix",
+   "priority": "essential",
+   "pages": "64",
    "from": [],
    "checks": [
     "strategy.platform_summary>=10"
    ],
    "proposed_field": "strategy.platform_summary[] {label, value} (derivada, nunca escrita à mão)"
+  },
+  {
+   "id": "P48",
+   "layer": "S4",
+   "need": "Fecho com próximo passo",
+   "answers": "O que o documento conclui e qual é o próximo passo?",
+   "pattern": "Página escura com a conclusão em duas frases, um parágrafo sobre o método e uma etiqueta 'próximo passo' que aponta a identidade visual.",
+   "kind": "narrative",
+   "priority": "recommended",
+   "pages": "65",
+   "from": [],
+   "checks": [
+    "strategy.closing.reframe",
+    "strategy.closing.next_step"
+   ],
+   "proposed_field": "strategy.closing {reframe, next_step}"
+  },
+  {
+   "id": "P49",
+   "layer": "S4",
+   "need": "Fontes e base primária",
+   "answers": "De onde vieram os dados?",
+   "pattern": "Tabela de duas colunas: veículo e o que ele sustenta. Rodapé lista as datas dos encontros e a pesquisa anônima.",
+   "kind": "spec",
+   "priority": "essential",
+   "pages": "66",
+   "from": [],
+   "checks": [
+    "strategy.sources>=3",
+    "strategy.sources[].supports",
+    "strategy.primary_research_note"
+   ],
+   "proposed_field": "strategy.sources[] {outlet, supports}, strategy.primary_research_note"
+  }
+ ],
+ "qa_rules": [
+  {
+   "id": "Q1",
+   "rule": "O número de cada página é único e segue a ordem. O sumário aponta a página real.",
+   "observed": "No original, dois pares de páginas repetem o mesmo número e o sumário aponta uma página que não bate."
+  },
+  {
+   "id": "Q2",
+   "rule": "O cabeçalho corrente repete o número e o nome do capítulo do sumário em toda página do capítulo.",
+   "observed": "No original, o capítulo de direção aparece com um número no sumário e outro no cabeçalho."
+  },
+  {
+   "id": "Q3",
+   "rule": "O ano do rodapé é o mesmo em todo o documento e igual ao da capa.",
+   "observed": "No original, o rodapé mostra dois anos diferentes."
+  },
+  {
+   "id": "Q4",
+   "rule": "As fatias de percentual de um gráfico somam 100.",
+   "observed": "Os pilares de conteúdo do original somam 100."
+  },
+  {
+   "id": "Q5",
+   "rule": "Toda amostra pequena traz n e a frase 'sinal qualitativo, não estatística'.",
+   "observed": "A pesquisa de percepção do original declara n e natureza qualitativa."
+  },
+  {
+   "id": "Q6",
+   "rule": "Todo dado de mercado traz fonte no rodapé e a fonte consta na página de fontes.",
+   "observed": "Os dados do original têm fonte na página e lista final."
+  },
+  {
+   "id": "Q7",
+   "rule": "Toda tensão do diagnóstico fecha com uma decisão escrita.",
+   "observed": "As sete tensões do original têm decisão em coluna própria."
+  },
+  {
+   "id": "Q8",
+   "rule": "Toda célula da plataforma em uma página repete um texto de página anterior.",
+   "observed": "As doze células do original repetem posicionamento, slogan, essência e demais textos."
   }
  ]
 }

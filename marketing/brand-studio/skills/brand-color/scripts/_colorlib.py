@@ -161,7 +161,32 @@ def lerp_srgb(h1, h2, t):
     return rgb_hex([a[i] + (b[i] - a[i]) * t for i in range(3)])
 
 
+def lrv(h):
+    """Light reflectance value 0..100 from the sRGB colour. A paint chip must be measured; this is a planning figure."""
+    return round(luminance(h) * 100, 1)
+
+
+# Machado, Oliveira and Fernandes (2009), severity 1.0, applied in linear RGB. An approximation for planning.
+_CVD = {
+    "deuteranopia": ((0.367322, 0.860646, -0.227968), (0.280085, 0.672501, 0.047413), (-0.011820, 0.042940, 0.968881)),
+    "protanopia": ((0.152286, 1.052583, -0.204868), (0.114503, 0.786281, 0.099216), (-0.003882, -0.048116, 1.051998)),
+    "tritanopia": ((1.255528, -0.076749, -0.178779), (-0.078411, 0.930809, 0.147602), (0.004733, 0.691367, 0.303900)),
+}
+
+
+def simulate_cvd(h, kind):
+    lin = [_lin(c / 255.0) for c in hex_rgb(h)]
+    m = _CVD[kind]
+    out = [max(0.0, min(1.0, sum(m[i][j] * lin[j] for j in range(3)))) for i in range(3)]
+    return rgb_hex([_delin(c) * 255 for c in out])
+
+
+def oklab_dist(a, b):
+    return sum((x - y) ** 2 for x, y in zip(oklab(a), oklab(b))) ** 0.5
+
+
 def describe(h):
     L, C, hh = oklch(h)
     return {"hex": norm_hex(h), "rgb": list(hex_rgb(h)), "hsl": list(hsl(h)),
-            "oklch": [round(L, 3), round(C, 3), round(hh, 1)], "cmyk_approx": cmyk_approx(h)}
+            "oklch": [round(L, 3), round(C, 3), round(hh, 1)], "cmyk_approx": cmyk_approx(h),
+            "pms": {"status": "pending_match", "code": ""}}

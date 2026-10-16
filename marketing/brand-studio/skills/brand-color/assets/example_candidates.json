@@ -1,0 +1,14 @@
+{
+  "_note": "Fictional example. Serra Fina, altitude chocolate. Candidates are what the briefing, kick-off and research actually pointed to.",
+  "brand": {"sigla": "SFI", "name": "Serra Fina"},
+  "candidates": [
+    {"name": "Cume", "hex": "#2B3A67", "weight": 0.9, "evidence": ["briefing: a calma da altura", "kick-off: o azul do céu visto da serra", "referência: embalagem azul-noite"]},
+    {"name": "Vale", "hex": "#2F7F86", "weight": 0.7, "evidence": ["pesquisa: verde-azulado lido como origem e frescor"]},
+    {"name": "Cacau", "hex": "#6B3F2A", "weight": 0.5, "evidence": ["kick-off: o produto é chocolate"]},
+    {"name": "Brasa", "hex": "#C8452D", "weight": 0.45, "evidence": ["referência de embalagem premium"]},
+    {"name": "Aurora", "hex": "#E3A857", "weight": 0.35, "evidence": ["moodboard: luz da manhã"]},
+    {"name": "Ouro velho", "hex": "#C9A227", "weight": 0.6, "evidence": ["referência dos concorrentes"]}
+  ],
+  "competitors": ["#5A3A22", "#C9A227", "#8B1E2D", "#3B2A20"],
+  "vetoed_hexes": ["#C9A227", "#5A3A22"]
+}

@@ -294,8 +294,26 @@ def check_strategy(b, add):
     tm = s.get("territory_map")
     if tm and tm.get("own") not in [q.get("name") for q in tm.get("quadrants", [])]:
         add("BLOCK", "BAD_REFERENCE", "territory_map.own must be the name of one quadrant")
-    if "slogan_system" in s and b.get("identity", {}).get("slogan", {}).get("decision") == "exclude":
-        add("WARN", "CONTRADICTION", "a slogan system is written but identity.slogan is excluded for this version")
+    ss = s.get("slogan_system")
+    if ss:
+        if ss.get("status") not in ("proposed", "approved"):
+            add("BLOCK", "BAD_REFERENCE", "slogan_system.status is proposed or approved")
+        elif ss["status"] == "approved" and b.get("identity", {}).get("slogan", {}).get("decision") == "exclude":
+            add("BLOCK", "CONTRADICTION", "the slogan system is approved but identity.slogan is excluded for this version")
+        if not ss.get("first_beat") or not ss.get("second_beat") or len(ss.get("usage", [])) < 3 or len(ss.get("support_lines", [])) < 3:
+            add("BLOCK", "STRATEGY_INCOMPLETE", "slogan_system needs two beats, 3 uses and 3 support lines")
+    ve = s.get("value_equation")
+    if ve:
+        if len(ve.get("gains", [])) < 3 or len(ve.get("costs", [])) < 3 or any(r.get("score") not in (1, 2, 3, 4, 5) or not r.get("action") for r in ve.get("reading", [])) or not ve.get("reading"):
+            add("BLOCK", "BAD_SCALE", "value_equation needs 3 gains, 3 costs and a reading with a score from 1 to 5 and an action for each factor")
+    ba = s.get("brand_architecture")
+    if ba and (len(ba.get("children", [])) < 2 or not ba.get("parent") or not ba.get("model")):
+        add("BLOCK", "STRATEGY_INCOMPLETE", "brand_architecture needs a model, a parent and 2 or more children")
+    for sh in s.get("market_shifts", []):
+        if not sh.get("source") or sh["source"] not in outlets:
+            add("BLOCK", "DATA_NO_SOURCE", f"market shift {sh.get('date')} needs a source listed in strategy.sources")
+    if s.get("market_shifts") and len(s["market_shifts"]) < 3:
+        add("BLOCK", "STRATEGY_INCOMPLETE", "market_shifts needs 3 or more dated milestones")
 
 
 def check(b, state_path=None):

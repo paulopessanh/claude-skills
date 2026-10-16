@@ -56,7 +56,7 @@ body.dk-open{overflow:hidden}
 .sl .tn{margin:1.2cqw 0 0;padding-top:.8cqw;border-top:.15cqw solid currentColor;font-size:1.4cqw;opacity:.85}
 .sl .m2{display:grid;grid-template-columns:1fr 1fr;gap:1cqw}.sl .m2>div{border:.15cqw solid currentColor;border-radius:.6cqw;padding:1cqw 1.2cqw}
 .sl .m2>div.own{background:var(--hero);color:var(--hero-fg)}
-.sl .pb{display:grid;grid-template-columns:20cqw 1fr 4cqw;gap:1cqw;align-items:center;margin:.5cqw 0}
+.sl .pb b{white-space:nowrap}.sl .pb{display:grid;grid-template-columns:20cqw 1fr 8cqw;gap:1cqw;align-items:center;margin:.5cqw 0}
 .sl .pb .tr{height:1.2cqw;background:var(--soft);border-radius:.6cqw;overflow:hidden}.sl .pb .tr i{display:block;height:100%;background:var(--accent)}
 .sl.dkl .pb .tr{background:var(--hero-line)}
 .sl .rl{display:grid;grid-template-columns:11cqw 1fr 11cqw;gap:1cqw;align-items:center;margin:.2cqw 0;font-size:1.5cqw}
@@ -214,6 +214,12 @@ def slide_list(b, c, svgs, uniq):
     add(1, "Leitura por lente", _two("O que achamos e", "o que significa."), _cols([(r["pillar"], r["found"] + " " + r["meaning"]) for r in s["reading"]], 2), toc="Leitura por lente")
     if s.get("premises"):
         add(1, "Premissas do negócio", _two("As verdades que a marca", "não pode contrariar."), _cols([(x["title"], x["text"]) for x in s["premises"][:6]], 3), toc="Premissas")
+    if s.get("market_data"):
+        add(1, "Dados de mercado", _two("O mercado", "em três números."), _cols([(x["figure"], x["label"] + ". Fonte: " + x["source"]) for x in s["market_data"]], min(4, len(s["market_data"]))), toc="Dados de mercado")
+    if s.get("market_shifts"):
+        add(1, "O mercado mudou", _two("Quatro marcos que", "mudaram o jogo."), _tbl(("Quando", "O que mudou", "O efeito na marca", "Fonte"), [(x["date"], x["fact"], x["effect"], x["source"]) for x in s["market_shifts"]]), toc="O mercado mudou de lugar")
+    if s.get("market_implications"):
+        add(1, "O que significa para a marca", _two("O cenário vira", "consequência."), _cols([(x["title"], x["text"]) for x in s["market_implications"]], 3))
     g = s["goals"]
     add(1, "Metas e papel da marca", _two("O que o negócio quer e", "o papel da marca."), _cols([(f'{x["horizon"]}: {x["business_goal"]}', "Papel da marca: " + x["brand_role"]) for x in g], min(4, len(g)))
         + f'<div class="dm"><span class="lb">Nosso olhar crítico</span><p>{_t(s["critical_view"])}</p></div>', toc="Metas e papel da marca")
@@ -226,6 +232,10 @@ def slide_list(b, c, svgs, uniq):
     add(1, "Personas", _two(f"{len(pe)} rostos,", "uma mesma jornada."), f'<div class="cols c{min(4, len(pe))}">{pc}</div>', toc="Personas")
     if s.get("non_clients"):
         add(1, "Quem não é cliente", _two("O filtro é de comportamento,", "nunca de origem."), '<div class="cols c3">' + "".join(f"<div><p><b>Não: {_t(x)}</b></p></div>" for x in s["non_clients"][:3]) + f'</div><p>{_t(s.get("non_client_rule", ""))}</p>')
+    ve = s.get("value_equation")
+    if ve:
+        add(1, "Equação de valor percebido", _two("O cliente soma e", "o cliente subtrai."), f'<p><b>Soma:</b> {_t(", ".join(ve["gains"]))}.</p><p><b>Subtrai:</b> {_t(", ".join(ve["costs"]))}.</p>' + _bars([(x["factor"], x["score"]) for x in ve["reading"]], " de 5"), toc="Equação de valor")
+        add(1, "Leitura de cada fator", _two("Onde o valor", "se perde hoje."), _tbl(("Fator", "Leitura", "Ação"), [(x["factor"], x["reading"], x["action"]) for x in ve["reading"]]))
     add(1, "Concorrência", _two("Ninguém ocupa o lugar de", "quem faz e explica."), _tbl(("Tipo", "Faz bem", "Falha em", "A marca faz diferente"), [(x["type"], x["does_well"], x["fails_at"], x["we_differ"]) for x in s["competition"]]), toc="Concorrência e território")
     tm = s.get("territory_map")
     if tm:
@@ -268,6 +278,10 @@ def slide_list(b, c, svgs, uniq):
         add(3, "Princípios inegociáveis", _two("O que a marca", "nunca negocia."), "<ol>" + "".join(f"<li><b>{_t(x)}</b></li>" for x in s["principles"]) + "</ol>")
     add(3, "Big idea", _two("", cn["big_idea"]), f'<p class="lead">{_t(pu["reason_to_exist"])}</p>', dark=True, toc="Big idea", note=_note(b, "Big idea"), kind="big")
     add(3, "Por que a ideia sustenta a marca", _two("Uma ideia,", "várias razões."), _cols([(x["title"], x["text"]) for x in cn["reasons"]], min(5, len(cn["reasons"]))))
+    ss = s.get("slogan_system")
+    if ss:
+        add(3, "Slogan em dois tempos", _two("Uma história", "em dois tempos."), _cols([("Primeiro tempo", ss["first_beat"]), ("Segundo tempo", ss["second_beat"])], 2) + _tbl(("Uso", "Frase"), [(x["context"], x["line"]) for x in ss["usage"]])
+            + f'<p>Frases de apoio: {_t(" ".join(ss["support_lines"]))}</p>' + (f'<p><b>{_t("Proposta." if ss["status"] == "proposed" else "Aprovado.")}</b> {_t(ss.get("note", ""))}</p>'))
     add(3, "Narrativa", _two("A história que ninguém", "mais pode contar."), '<div class="cols c' + str(min(6, len(b["history"]["arc"]))) + '">' + "".join(f'<div><h3>{i} {_t(x["stage"])}</h3><p>{_t(x["text"])}</p></div>' for i, x in enumerate(b["history"]["arc"], 1)) + "</div>", toc="Narrativa e manifesto")
     if s.get("narrative_rules"):
         add(3, "Diretrizes de narrativa", _two("Como contar", "essa história."), _cols([(x["title"], x["text"]) for x in s["narrative_rules"]], 2) + ("" if not s.get("tone_by_situation") else _tbl(("Situação", "Tom"), [(x["situation"], x["tone"]) for x in s["tone_by_situation"]])))
@@ -288,6 +302,9 @@ def slide_list(b, c, svgs, uniq):
         add(3, "Direção de comunicação", _two("Em 5 segundos,", "entender e confiar."), _cols([(x["title"], x["text"]) for x in s["communication_rules"]], min(4, len(s["communication_rules"]))) + f'<div class="dm"><span class="lb">Bio sugerida</span><p>{_t(s["bio"])}</p></div>', toc="Comunicação")
     if s.get("touchpoints"):
         add(3, "Pontos de contato", _two("Em cada lugar,", "a mesma marca."), _tbl(("Ponto de contato", "O que muda"), [(x["name"], x["change"]) for x in s["touchpoints"]]))
+    ba = s.get("brand_architecture")
+    if ba:
+        add(3, "Arquitetura de marca", _two("Uma marca mãe", "forte na frente."), f'<div class="dm"><span class="lb">Marca mãe</span><h3>{_t(ba["parent"])}</h3></div>' + _cols([("Linha", x) for x in ba["children"]], min(4, len(ba["children"]))) + f'<p>{_t(ba["rule"])}</p>')
     cells = ST.platform_cells(b)
     add(3, "Plataforma da marca", _two("A marca", "em uma página."), '<dl class="plat">' + "".join(f"<div><dt>{_t(k)}</dt><dd>{_t(v)}</dd></div>" for k, v in cells) + "</dl>", lock=True, toc="Plataforma da marca",
         note='<p class="tn"><b>Por trás do termo.</b> A plataforma é o resumo de tudo e é derivada dos outros slides. Nenhuma célula é texto novo.</p>')

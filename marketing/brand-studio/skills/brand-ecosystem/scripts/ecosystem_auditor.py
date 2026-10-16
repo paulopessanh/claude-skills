@@ -204,7 +204,7 @@ def audit_v2(root, listed, src, flat, add, text, notes):
 
 
 STRAT_IDS = ["metodo", "diagnostico", "viradas", "direcao", "tom", "plataforma"]
-SKIP_KEYS = {"copyability", "kind", "letter", "position", "count", "n", "share", "highest_value"}
+SKIP_KEYS = {"status", "copyability", "kind", "letter", "position", "count", "n", "share", "highest_value"}
 
 
 def leaf_strings(o):
@@ -347,6 +347,27 @@ def audit_deck(src, html_src, text, add, where):
     pc = st.get("perception")
     if pc and f"Respostas v\u00e1lidas: {pc['n']}" not in text:
         add("BLOCK", "SAMPLE_UNLABELLED", f"{where}: the deck shows the research without its sample size")
+    extra = []
+    for x in st.get("market_data", []):
+        extra += [x["label"], x["figure"], x["source"]]
+    for x in st.get("market_shifts", []):
+        extra += [x["date"], x["fact"], x["effect"]]
+    for x in st.get("market_implications", []):
+        extra += [x["title"], x["text"]]
+    for x in st.get("value_equation", {}).get("reading", []):
+        extra += [x["factor"], x["reading"], x["action"]]
+    ss_ = st.get("slogan_system")
+    if ss_:
+        extra += [ss_["first_beat"], ss_["second_beat"]] + [u["line"] for u in ss_["usage"]] + list(ss_["support_lines"])
+    ba_ = st.get("brand_architecture")
+    if ba_:
+        extra += [ba_["parent"], ba_["rule"]] + list(ba_["children"])
+    for n in extra:
+        if n not in text:
+            add("BLOCK", "MISSING_IN_BOOK", f"{where}: {n[:50]}")
+    for x in st.get("value_equation", {}).get("reading", []):
+        if not re.search(re.escape(html.escape(x["factor"])) + r"</span><span class=\"(?:tr|pb)[^>]*>.*?</span><b>" + str(x["score"]) + r" de 5</b>", html_src, re.S) and not re.search(re.escape(html.escape(x["factor"])) + r"</span><span class=\"tr\"><i style=\"width:\d+%\"></i></span><b>" + str(x["score"]) + r" de 5</b>", html_src):
+            add("BLOCK", "MISSING_IN_BOOK", f"{where}: score {x['score']} of {x['factor']}")
     for n in [st["guiding_question"], st["synthesis"]["territory"], src["purpose"]["positioning"], src["concept"]["big_idea"]] + [v["name"] for v in st["values"]]:
         if n not in text:
             add("BLOCK", "MISSING_IN_BOOK", f"{where}: {n[:50]}")

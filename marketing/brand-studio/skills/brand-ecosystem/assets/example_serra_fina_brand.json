@@ -1930,8 +1930,148 @@
       {
         "outlet": "Histórico de vendas",
         "supports": "Canais e crescimento por indicação"
+      },
+      {
+        "outlet": "Estudo de mercado de chocolate fino (fictício)",
+        "supports": "Dados e mudanças de mercado"
       }
     ],
-    "primary_research_note": "Imersões de 22 e 29 de setembro e de 6 de outubro de 2026, e pesquisa anônima com nove respostas válidas. Todos os dados deste exemplo são fictícios."
+    "primary_research_note": "Imersões de 22 e 29 de setembro e de 6 de outubro de 2026, e pesquisa anônima com nove respostas válidas. Todos os dados deste exemplo são fictícios.",
+    "market_data": [
+      {
+        "label": "Crescimento anual do chocolate com origem declarada",
+        "figure": "12% ao ano",
+        "source": "Estudo de mercado de chocolate fino (fictício)"
+      },
+      {
+        "label": "Compradores que dizem olhar o lote ou a origem antes do preço",
+        "figure": "6 em cada 10",
+        "source": "Estudo de mercado de chocolate fino (fictício)"
+      },
+      {
+        "label": "Venda de presente no fim do ano, parte do faturamento da categoria",
+        "figure": "35%",
+        "source": "Estudo de mercado de chocolate fino (fictício)"
+      }
+    ],
+    "market_shifts": [
+      {
+        "date": "2022",
+        "fact": "Redes de varejo abrem prateleira para chocolate de origem",
+        "effect": "A barra artesanal passa a disputar espaço ao lado das industriais.",
+        "source": "Estudo de mercado de chocolate fino (fictício)"
+      },
+      {
+        "date": "2023",
+        "fact": "Assinaturas de alimentos ganham público",
+        "effect": "O lote do mês vira um produto e não só uma entrega.",
+        "source": "Histórico de vendas"
+      },
+      {
+        "date": "2025",
+        "fact": "Rótulo com origem e data passa a ser pedido por compradores de varejo",
+        "effect": "Mostrar o lote deixa de ser diferencial e vira exigência.",
+        "source": "Estudo de mercado de chocolate fino (fictício)"
+      },
+      {
+        "date": "2026",
+        "fact": "A Serra Fina decide mostrar lote, data e altitude em toda barra",
+        "effect": "A marca chega primeiro ao padrão que o mercado vai pedir.",
+        "source": "Histórico de vendas"
+      }
+    ],
+    "market_implications": [
+      {
+        "title": "A prateleira ficou parecida",
+        "text": "Com mais marcas artesanais, a embalagem sozinha não explica a diferença."
+      },
+      {
+        "title": "Origem virou pergunta",
+        "text": "O comprador quer saber de onde vem antes de provar. A resposta tem de estar na embalagem."
+      },
+      {
+        "title": "Quem explica primeiro ganha",
+        "text": "O padrão de rótulo está mudando. A marca que já mostra o lote chega com vantagem."
+      }
+    ],
+    "value_equation": {
+      "gains": [
+        "Origem clara",
+        "Sabor com ponto certo",
+        "Presente que se explica"
+      ],
+      "costs": [
+        "Preço acima do industrial",
+        "Espera pelo próximo lote",
+        "Risco de comprar algo que não conhece"
+      ],
+      "reading": [
+        {
+          "factor": "Origem clara",
+          "score": 4,
+          "reading": "O lote e a data já estão na barra, mas o site ainda não mostra.",
+          "action": "Levar lote e data para a primeira tela do site."
+        },
+        {
+          "factor": "Sabor com ponto certo",
+          "score": 5,
+          "reading": "É o ponto forte e a pesquisa confirma.",
+          "action": "Manter a receita e registrar o ponto em cada lote."
+        },
+        {
+          "factor": "Presente que se explica",
+          "score": 3,
+          "reading": "A caixa diz de onde veio, mas falta o cartão de apresentação.",
+          "action": "Criar um cartão com a história do lote."
+        },
+        {
+          "factor": "Preço",
+          "score": 3,
+          "reading": "O preço sobe com o descanso, mas poucos sabem disso.",
+          "action": "Explicar o tempo de descanso ao lado do preço."
+        },
+        {
+          "factor": "Espera pelo lote",
+          "score": 2,
+          "reading": "Quem quer repetir a compra fica sem aviso.",
+          "action": "Avisar a data do próximo lote na caixa."
+        }
+      ]
+    },
+    "slogan_system": {
+      "status": "proposed",
+      "first_beat": "Fazemos devagar.",
+      "second_beat": "Para você sentir rápido.",
+      "usage": [
+        {
+          "context": "As duas juntas",
+          "line": "Fazemos devagar. Para você sentir rápido."
+        },
+        {
+          "context": "Só a primeira",
+          "line": "Fazemos devagar."
+        },
+        {
+          "context": "Só a segunda",
+          "line": "Para você sentir rápido."
+        }
+      ],
+      "support_lines": [
+        "Cada barra diz de onde veio.",
+        "O tempo é o ingrediente.",
+        "Um lote novo, todo mês."
+      ],
+      "note": "Proposta para a próxima fase de campanha. Fora desta versão da marca."
+    },
+    "brand_architecture": {
+      "model": "Marca mãe",
+      "parent": "Serra Fina",
+      "children": [
+        "Serra Fina Assinatura",
+        "Serra Fina Cozinha",
+        "Serra Fina Presente"
+      ],
+      "rule": "A marca mãe dá valores, voz e posicionamento às linhas. Cada linha ganha só um nome de uso."
+    }
   }
 }

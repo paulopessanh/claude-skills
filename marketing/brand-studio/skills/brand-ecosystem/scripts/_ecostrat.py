@@ -104,6 +104,12 @@ def chapters(b):
     out.append(("metodo", "Método e evidências", body + _gloss(b, "Posicionamento", "Território"), "Como a investigação foi feita e quanto material a sustenta."))
     # ---- diagnóstico
     d = ""
+    if s.get("market_data"):
+        d += "<h3>Dados de mercado</h3>" + _tbl(("Dado", "Número", "Fonte"), [(x["label"], x["figure"], x["source"]) for x in s["market_data"]])
+    if s.get("market_shifts"):
+        d += "<h3>O mercado mudou de lugar</h3>" + _tbl(("Quando", "O que mudou", "O efeito na marca", "Fonte"), [(x["date"], x["fact"], x["effect"], x["source"]) for x in s["market_shifts"]])
+    if s.get("market_implications"):
+        d += "<h3>O que isso significa para a marca</h3>" + _cards([(x["title"], x["text"]) for x in s["market_implications"]])
     if s.get("premises"):
         d += "<h3>Premissas do negócio</h3>" + _cards([(x["title"], x["text"]) for x in s["premises"]])
     d += "<h3>Metas por horizonte e papel da marca</h3>" + _tbl(("Prazo", "Meta do negócio", "Papel da marca"), [(g["horizon"], g["business_goal"], g["brand_role"]) for g in s["goals"]])
@@ -117,6 +123,10 @@ def chapters(b):
     d += "<h3>Quem não é cliente</h3><ul>" + "".join(f"<li>{_t(x)}</li>" for x in s["non_clients"]) + "</ul>" + _p(s.get("non_client_rule", "")) if s.get("non_clients") else ""
     if s.get("value_premises"):
         d += "<h3>Premissas de valor</h3>" + _cards([(x["title"], x["text"]) for x in s["value_premises"]], "g2")
+    ve = s.get("value_equation")
+    if ve:
+        d += ("<h3>Equação de valor percebido</h3>" + _p("O cliente soma: " + ", ".join(ve["gains"]) + ". O cliente subtrai: " + ", ".join(ve["costs"]) + ".")
+              + _bars([(x["factor"], x["score"]) for x in ve["reading"]], " de 5") + _tbl(("Fator", "Leitura", "Ação"), [(x["factor"], x["reading"], x["action"]) for x in ve["reading"]]))
     d += "<h3>Concorrência por tipo</h3>" + _tbl(("Tipo", "Faz bem", "Falha em", "A marca faz diferente"), [(x["type"], x["does_well"], x["fails_at"], x["we_differ"]) for x in s["competition"]])
     tm = s.get("territory_map")
     if tm:
@@ -156,6 +166,10 @@ def chapters(b):
     if s.get("principles"):
         r += "<h3>O que a marca nunca negocia</h3><ol>" + "".join(f"<li>{_t(x)}</li>" for x in s["principles"]) + "</ol>"
     cn = b["concept"]
+    ss = s.get("slogan_system")
+    if ss:
+        r += (f'<h3>Slogan em dois tempos ({_t("proposta" if ss["status"] == "proposed" else "aprovado")})</h3>' + _cards([("Primeiro tempo", ss["first_beat"]), ("Segundo tempo", ss["second_beat"])], "g2")
+              + _tbl(("Uso", "Frase"), [(x["context"], x["line"]) for x in ss["usage"]]) + _p("Frases de apoio: " + " ".join(ss["support_lines"])) + (_p(ss["note"]) if ss.get("note") else ""))
     r += f'<h3>Big idea</h3><p class="quote">{_t(cn["big_idea"])}</p>' + _cards([(x["title"], x["text"]) for x in cn["reasons"]], "g2")
     r += "<h3>Narrativa em etapas</h3>" + _tbl(("Etapa", "O que conta"), [(x["stage"], x["text"]) for x in b["history"]["arc"]])
     if s.get("narrative_rules"):
@@ -181,6 +195,10 @@ def chapters(b):
         t += "<h3>Direção de comunicação</h3>" + _cards([(x["title"], x["text"]) for x in s["communication_rules"]], "g3") + f'<div class="dk"><p class="eyebrow">Bio sugerida</p>{_p(s["bio"])}</div>'
     if s.get("touchpoints"):
         t += "<h3>Pontos de contato</h3>" + _tbl(("Ponto de contato", "O que muda"), [(x["name"], x["change"]) for x in s["touchpoints"]])
+    ba = s.get("brand_architecture")
+    if ba:
+        t += (f'<h3>Arquitetura de marca: {_t(ba["model"].lower())}</h3><div class="dk"><p class="eyebrow">Marca mãe</p><h3>{_t(ba["parent"])}</h3></div>'
+              + _cards([("Linha", x) for x in ba["children"]], "g3") + _p(ba["rule"]))
     out.append(("tom", "Personalidade, voz e conteúdo", t + _gloss(b, "Pilares de conteúdo"), "Como a marca soa, o que publica e onde aparece."))
     # ---- plataforma
     cells = platform_cells(b)

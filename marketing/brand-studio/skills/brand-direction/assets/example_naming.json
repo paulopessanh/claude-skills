@@ -1,0 +1,67 @@
+{
+  "_note": "FICTIONAL naming round for the fictional client Serra Fina. Shape read by naming_screener.py. Registry results are recorded by a person; this tool only ages them.",
+  "as_of": "2026-10-15",
+  "candidates": [
+    "Serra Fina",
+    "Pico Doce",
+    "Cacau Real Altitude",
+    "Xerxes Cacao",
+    "Doce Serra"
+  ],
+  "competitors": [
+    "Cacau Real",
+    "Doce Nobre",
+    "Terra Boa",
+    "Folha Verde",
+    "Bean Lab",
+    "Nibs and Co",
+    "Mata Atlantica"
+  ],
+  "vetoed_terms": [
+    "ouro",
+    "gold"
+  ],
+  "markets": [
+    "pt-BR",
+    "en",
+    "es"
+  ],
+  "registry": {
+    "Serra Fina": {
+      "inpi": {
+        "classes": [
+          30
+        ],
+        "status": "clear",
+        "date": "2026-10-10"
+      },
+      "domain": {
+        "status": "available",
+        "date": "2026-10-10"
+      },
+      "handles": {
+        "status": "available",
+        "date": "2026-10-10"
+      }
+    },
+    "Pico Doce": {
+      "inpi": {
+        "classes": [
+          30
+        ],
+        "status": "conflict",
+        "date": "2026-10-10"
+      },
+      "domain": {
+        "status": "taken",
+        "date": "2026-10-10"
+      }
+    }
+  },
+  "category_words": [
+    "cacau",
+    "cacao",
+    "chocolate",
+    "doce"
+  ]
+}

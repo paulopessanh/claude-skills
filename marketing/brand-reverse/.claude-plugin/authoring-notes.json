@@ -1,0 +1,7 @@
+{
+  "source": {
+    "spec": "User request: a skill that reverse engineers the creative process behind brand creation and visual identity.",
+    "build_pattern": "Single-skill plugin. Four stdlib tools sharing one case-file schema (artifacts, claims, reference); a claim gate before a reconstruction before a transfer guard, each with a real refusal and typed exit codes. Fictional example brand so no fact is asserted about a real company.",
+    "distinct_from": "marketing-skill/brand-guidelines (applies and documents a brand you own); marketing-skill/marketing-context (positioning for your own product); c-level-advisor CMO skills (strategy, not teardown); engineering/book-to-skill (compiles a document, not a brand)."
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "_note": "FICTIONAL new-brand brief, shape read by method_transfer_guard.py. Replace with the real project.",
+  "name": "Vale Brasa",
+  "sector": "specialty coffee",
+  "naming_candidates": ["Vale Brasa", "Torra Alta"],
+  "palette": [
+    {"hex": "#2E5E8C"},
+    {"hex": "#F6F1E7"},
+    {"hex": "#E8A33D"}
+  ],
+  "typefaces": [
+    {"name": "Another Display", "class": "serif", "role": "headline"},
+    {"name": "Another Sans", "class": "sans", "role": "body"}
+  ],
+  "asset_ideas": ["woven basket texture on the bag", "a lantern mark"]
+}

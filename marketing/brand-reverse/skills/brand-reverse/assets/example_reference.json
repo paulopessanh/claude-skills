@@ -1,0 +1,35 @@
+{
+  "_note": "FICTIONAL brand, illustrative only. Shape of the case file read by evidence_ledger.py, palette_logic_analyzer.py, process_reconstructor.py and method_transfer_guard.py.",
+  "reference": {
+    "name": "Cafe Maru",
+    "sector": "specialty coffee",
+    "palette": [
+      {"hex": "#C8553D", "share": 0.55},
+      {"hex": "#F4EBDD", "share": 0.30},
+      {"hex": "#1F3D36", "share": 0.10},
+      {"hex": "#1A1A1A", "share": 0.05}
+    ],
+    "typefaces": [
+      {"name": "Example Serif", "class": "serif", "role": "headline"},
+      {"name": "Example Grotesk", "class": "sans", "role": "body"}
+    ],
+    "distinctive_assets": ["terracotta packaging band", "hand-cut leaf mark", "the phrase slow morning"]
+  },
+  "artifacts": [
+    {"id": "A1", "kind": "logo", "source_type": "primary", "source": "logo lockup on bag front, photographed", "note": "Wordmark in serif, lowercase, leaf glyph replaces the u counter."},
+    {"id": "A2", "kind": "packaging", "source_type": "primary", "source": "250 g bag, front and back", "note": "Terracotta field covers about 55 percent of the front. Cream label. Green only in the origin stamp."},
+    {"id": "A3", "kind": "website", "source_type": "primary", "source": "home page, desktop", "note": "Cream background, terracotta headings, generous margins, one photo per section."},
+    {"id": "A4", "kind": "case_study", "source_type": "self_report", "source": "studio portfolio page", "note": "Studio says the identity 'celebrates the ritual of a slow morning'."},
+    {"id": "A5", "kind": "social", "source_type": "primary", "source": "last 12 posts, grid view", "note": "Warm food photography on cream, no stock imagery, no faces."},
+    {"id": "A6", "kind": "naming", "source_type": "secondary", "source": "about page text", "note": "Name given as a family nickname."}
+  ],
+  "claims": [
+    {"id": "C1", "stage": "visual_direction", "decision": "logo_concept", "statement": "The leaf glyph inside the wordmark ties the mark to the product origin.", "class": "inferred", "evidence": ["A1", "A6"], "alternatives": ["The leaf is a generic nature cue chosen from a template", "The studio added it for legibility at small sizes"], "confidence": "medium", "pattern": "Fuse one origin cue into a letter counter instead of adding a separate symbol.", "implies": [{"stage": "strategy", "requirement": "The brand promise leans on origin and craft, not on price or speed."}]},
+    {"id": "C2", "stage": "visual_direction", "decision": "color_logic", "statement": "One warm field colour dominates the pack, with a cool dark green used only for proof stamps.", "class": "observed", "evidence": ["A2", "A3"], "confidence": "high", "pattern": "Give one warm hue more than half of the surface and reserve one cool hue for proof elements.", "implies": [{"stage": "strategy", "requirement": "Recognition from distance on a shelf mattered more than range of colour."}]},
+    {"id": "C3", "stage": "visual_direction", "decision": "imagery_style", "statement": "Photography is warm, food-led and faceless.", "class": "observed", "evidence": ["A5"], "confidence": "high", "pattern": "Photograph the product in use with no faces, on the brand's ground colour."},
+    {"id": "C4", "stage": "concept", "decision": "big_idea", "statement": "The idea is a slow, unhurried start to the day.", "class": "observed", "evidence": ["A4"], "confidence": "medium", "pattern": "State the idea as a daily moment the product owns."},
+    {"id": "C5", "stage": "system", "decision": "tokens", "statement": "Margins and one-image-per-section rhythm suggest a strict spacing scale.", "class": "inferred", "evidence": ["A3", "A5"], "alternatives": ["The site uses a theme with these defaults"], "confidence": "low"},
+    {"id": "C6", "stage": "strategy", "decision": "positioning", "statement": "The brand was positioned against capsule and supermarket coffee.", "class": "hypothesis", "evidence": [], "confidence": "low"},
+    {"id": "C7", "stage": "briefing", "decision": "constraints", "statement": "The budget probably allowed one print run of packaging before launch.", "class": "hypothesis", "evidence": [], "confidence": "low"}
+  ]
+}

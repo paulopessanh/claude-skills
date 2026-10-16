@@ -1,0 +1,10 @@
+{
+  "_note": "FICTIONAL anatomy for Serra Fina, final stage. Shape read by anatomy_validator.py. For --stage candidates, use descriptor_candidates (3-5) and taglines (3-5).",
+  "type": "mixed",
+  "name": "Serra Fina",
+  "symbol": true,
+  "descriptor": "Chocolate de altitude",
+  "taglines": ["Feito devagar, no alto da serra"],
+  "slogan": {"decision": "exclude", "reason": "No campaign planned in the contract scope."},
+  "hookline": {"decision": "exclude", "reason": "No marketing strategy for a repeatable phrase yet."}
+}

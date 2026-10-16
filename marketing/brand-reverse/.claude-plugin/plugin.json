@@ -1,0 +1,15 @@
+{
+  "name": "brand-reverse",
+  "description": "Reverse engineer how a brand and its visual identity were made, then turn the finding into a creative process for a new brand. Four stdlib-only tools with typed exit codes: an evidence ledger that separates observed, inferred and hypothesised claims and blocks intent written as fact, inference with no rival explanation, and citations that do not exist; a palette and type logic analyzer (roles, hue relation, temperature, WCAG contrast, proportion pattern, pairing) that returns every design-intent reading as an inference with its rival; a process reconstructor that rebuilds the eight-stage chain from briefing to guidelines, marks stages LOST rather than inventing them, back-propagates the requirements the visible outputs force upstream, asks one question per stage for someone who was there, and with --plan emits the process for your own brand; and a method transfer guard that blocks hex codes, names, typefaces and assets leaking into transferable patterns and refuses a new brand that sits too close to the reference. 3 references citing 6-7 sources each with per-claim confidence levels. No network calls, no scraping, not legal advice.",
+  "version": "2.12.0",
+  "author": {
+    "name": "Alireza Rezvani",
+    "url": "https://alirezarezvani.com"
+  },
+  "homepage": "https://github.com/alirezarezvani/claude-skills/tree/main/marketing/brand-reverse",
+  "repository": "https://github.com/alirezarezvani/claude-skills",
+  "license": "MIT",
+  "skills": [
+    "./skills/brand-reverse"
+  ]
+}

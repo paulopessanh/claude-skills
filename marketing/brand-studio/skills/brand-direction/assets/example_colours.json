@@ -1,0 +1,11 @@
+{
+  "_note": "FICTIONAL colour system for Serra Fina. Shape read by color_system_builder.py. Step 50 is the base colour itself.",
+  "sigla": "SFI",
+  "steps": [10, 20, 30, 40, 50, 60, 70],
+  "vetoed_hexes": ["#C9A227"],
+  "families": [
+    {"pt_name": "Azul", "universe_name": "Cume", "hex": "#2B3A67"},
+    {"pt_name": "Terracota", "universe_name": "Encosta", "hex": "#B24A2F"},
+    {"pt_name": "Verde", "universe_name": "Mata", "hex": "#3E7A5A"}
+  ]
+}

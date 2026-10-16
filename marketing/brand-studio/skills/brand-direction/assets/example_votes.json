@@ -1,0 +1,15 @@
+{
+  "_note": "FICTIONAL shapes dynamic for Serra Fina. Shape read by vote_tally.py. Every item has a visible type; a reference is never a proposal.",
+  "items": [
+    {"id": "F01", "type": "rough", "path": "ridge line", "meaning": ["altitude", "calm", "handmade"]},
+    {"id": "F02", "type": "draft", "path": "ridge line", "meaning": ["altitude", "precision", "quiet"]},
+    {"id": "F03", "type": "rough", "path": "cacao pod", "meaning": ["origin", "nature"]},
+    {"id": "F04", "type": "draft", "path": "monogram", "meaning": ["modern", "firm"]},
+    {"id": "F05", "type": "market_ref", "path": "single stroke", "meaning": ["craft", "hand drawn"]},
+    {"id": "F06", "type": "inspiration", "path": "terraces", "meaning": ["patience", "labour"]}
+  ],
+  "voters": [
+    {"name": "Ana", "weight": 1, "votes": {"F01": "yes", "F02": "favorite", "F03": "maybe", "F04": "no", "F05": "yes", "F06": "yes"}},
+    {"name": "Beto", "weight": 1, "votes": {"F01": "yes", "F02": "yes", "F03": "maybe", "F04": "favorite", "F05": "maybe", "F06": "yes"}}
+  ]
+}

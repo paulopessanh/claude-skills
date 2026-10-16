@@ -1,0 +1,30 @@
+{
+  "_note": "FICTIONAL guidelines spec for Serra Fina, deliberately incomplete and with one contradiction, so the checker has something to say. Shape read by guidelines_completeness.py.",
+  "brand": "Serra Fina",
+  "logo": {
+    "versions": ["horizontal", "vertical", "symbol", "wordmark"],
+    "polarities": ["positive", "negative"],
+    "protection_area": {"rule": "height of the ridge peak on every side", "relative_to": "symbol"},
+    "min_size": {"print_mm": 18},
+    "misuse": ["stretch", "rotate", "recolour", "outline", "shadow"]
+  },
+  "colour": {
+    "tokens": [
+      {"token": "SFI_Cume_50", "hex": "#2B3A67", "rgb": [43, 58, 103], "cmyk": [58, 44, 0, 60], "cmyk_status": "approx"},
+      {"token": "SFI_Encosta_50", "hex": "#B24A2F", "rgb": [178, 74, 40], "cmyk": [0, 58, 74, 30], "cmyk_status": "approx"},
+      {"token": "SFI_Cume_10", "hex": "#F2F5FE", "rgb": [242, 245, 254], "cmyk": [5, 4, 0, 0]}
+    ],
+    "pairs": [
+      {"fg": "#F2F5FE", "bg": "#2B3A67", "declared": "AA"},
+      {"fg": "#B24A2F", "bg": "#2B3A67", "declared": "AA"}
+    ]
+  },
+  "typography": {
+    "fonts": [
+      {"role": "primary", "name": "Example Serif", "license": "OFL", "fallback": "Georgia, serif"},
+      {"role": "support", "name": "Example Sans", "license": "", "fallback": "Arial, sans-serif"}
+    ]
+  },
+  "voice": {"traits": [{"name": "Calm", "is": "unhurried, precise", "is_not": "slow or vague"}]},
+  "applications": ["bag", "gift box", "site"]
+}

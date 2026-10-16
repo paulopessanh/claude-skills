@@ -7,6 +7,43 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added — marketing/brand-studio step 9: brand-ecosystem
+
+- Schema v2 closes the 13 essential gaps found by `manual_coverage_check.py` against a reference manual: 18 of 18 essential needs covered, 3 new chapters, new refusals and audit checks.
+- brand-ecosystem: optional `strategy` block closes the strategic gaps (22 of 22 essentials on the Serra Fina example), adds 6 strategic chapters and an editable 16:9 deck in the grammar of the studied manual, with a Deck button in the Artifact manual, save to `deck.json`, single-file HTML download and print to PDF. Auditor gains deck and platform checks. Second pass closes the last 6 needs (49 of 49 on the example): market data, dated shifts, implications, value equation, slogan system (proposed or approved, never approved while the slogan is excluded) and brand architecture. 62 slides, 50 of 50 mutations caught.
+- brand-system: second reverse engineered blueprint, `assets/strategic_blueprint.v1.json` (49 needs in layers S0 to S4, document spine, 8 QA rules), from 66 page images of a strategic branding manual. Two references: method and content patterns, page grammar and presentation rhythm. Same checker, `--blueprint` flag. Counters: refs 860.
+- Sixth skill and tenth step: builds the complete brand (story, concept, symbol, colour, type, voice, applications, tokens, HTML manual) from one `brand-source.v1` file, then audits the package against its own source. Agent `cs-brand-ecosystem-architect`, command `/cs:brand-ecosystem`, 2 references. Counters: skills 395, tools 748, refs 858, agents 124, commands 156.
+
+### Added — marketing/brand-studio: the forward creative cycle, interlinked with brand-reverse
+
+Five skills (orchestrator, discovery, direction, system, review), four agents, four commands and eleven stdlib scripts that run a
+brand and visual identity project from briefing to manual.
+
+- `brand_state.py`: nine steps as a dependency graph with evidence-backed gates, review verdicts tied to the deliverable linter,
+  approval, and change propagation that marks downstream steps stale.
+- Discovery, direction, review and system scripts: brief gaps and impossible timelines, OKLCH competitor map, name screening,
+  anatomy validation, gamut-safe colour families that block vetoed hues, vote tally with quorum and double count, deliverable lint,
+  guidelines completeness and consistency, file names.
+- Skills depend on each other by data contract, never by importing code. Connects to `brand-reverse` through its value-free patterns.
+- Counters: skills 389 → 394; tools 731 → 742; refs 845 → 855; agents 119 → 123; commands 151 → 155; plugins 100 → 101.
+
+### Added — marketing/brand-reverse: reverse-engineer a brand back to its creative process
+
+Single-skill plugin that works backwards from a finished brand and visual identity to the
+process that could have produced it, then plans a process for a new brand.
+
+- `evidence_ledger.py` separates observed, inferred and hypothesised claims and blocks intent
+  written as fact, inference with no rival explanation, and citations to artifacts that do not exist.
+- `process_reconstructor.py` rebuilds an eight-stage chain (briefing to guidelines), marks
+  unobservable stages LOST, back-propagates requirements from visible outputs, asks one question
+  per stage for someone who was there, and with `--plan` emits the process for the new brand.
+- `method_transfer_guard.py` blocks hex codes, names, typefaces and assets leaking into
+  transferable patterns and refuses a new brand too close to the reference. Not trademark clearance.
+- `palette_logic_analyzer.py` reads colour and type logic and attaches a rival explanation to every reading.
+- 3 references with per-claim confidence levels, fictional example brand, `cs-brand-reverse-analyst`
+  agent, `/cs:brand-reverse` command. Counters: skills 388 → 389; tools 727 → 731; refs 842 → 845;
+  agents 118 → 119; commands 150 → 151; plugins 99 → 100.
+
 ### Added — engineering/spinning-up-deep-rl: the first book compiled by book-to-skill
 
 Knowledge-base plugin compiled end-to-end by `engineering/book-to-skill` from OpenAI's

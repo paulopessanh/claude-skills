@@ -1,0 +1,43 @@
+{
+ "name": "Serra Fina",
+ "sector": "craft chocolate",
+ "naming_candidates": [
+  "Serra Fina",
+  "Pico Doce"
+ ],
+ "palette": [
+  {
+   "hex": "#2B3A67",
+   "share": 0.45
+  },
+  {
+   "hex": "#F4EFE6",
+   "share": 0.3
+  },
+  {
+   "hex": "#B24A2F",
+   "share": 0.18
+  },
+  {
+   "hex": "#C9A227",
+   "share": 0.07
+  }
+ ],
+ "typefaces": [
+  {
+   "name": "Another Serif",
+   "class": "serif",
+   "role": "headline"
+  },
+  {
+   "name": "Another Grotesk",
+   "class": "sans",
+   "role": "body"
+  }
+ ],
+ "asset_ideas": [
+  "contour-line topography pattern on the wrapper",
+  "mountain ridge drawn in one stroke"
+ ],
+ "_note": "FICTIONAL new brand Serra Fina, third iteration, DISTANT from Casa Jabuti. First two drafts were blocked."
+}

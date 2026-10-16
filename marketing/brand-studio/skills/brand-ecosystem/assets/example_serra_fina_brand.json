@@ -1,0 +1,2077 @@
+{
+  "schema": "brand-source.v2",
+  "_note": "FICTIONAL brand Serra Fina, written for the brand-studio test cycle. Every text and number here is invented for illustration. Shape read by ecosystem_source_check.py, ecosystem_builder.py and ecosystem_auditor.py.",
+  "fictional": true,
+  "identity": {
+    "name": "Serra Fina",
+    "sigla": "SFI",
+    "sector": "chocolate artesanal",
+    "language": "pt-BR",
+    "descriptor": "Chocolate de altitude",
+    "tagline": "Feito devagar, no alto da serra",
+    "version": "1.0.0",
+    "date": "2026-10-15",
+    "owner": "Ana, fundadora",
+    "slogan": {
+      "decision": "exclude",
+      "reason": "Não há campanha no escopo do contrato."
+    },
+    "hookline": {
+      "decision": "exclude",
+      "reason": "Ainda não há estratégia de marketing para uma frase de repetição."
+    },
+    "type": "mixed"
+  },
+  "provenance": {
+    "state_file": "brand-state.json",
+    "steps_approved": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "6.5",
+      "7",
+      "8"
+    ],
+    "documents": [
+      "passo1_v2.md",
+      "kickoff.md",
+      "passo3.md",
+      "passo4.md",
+      "passo5.md",
+      "passo6.md",
+      "spec.json"
+    ]
+  },
+  "history": {
+    "title": "Um chocolate que pede tempo",
+    "paragraphs": [
+      "A Serra Fina começou em 2019, numa propriedade de quatro hectares na Mantiqueira. Ana, a fundadora, queria provar uma ideia simples: chocolate bom não tem pressa.",
+      "O primeiro lote saiu em 2021. Cada barra nasce de lotes pequenos, com o tempo que a receita pede, no alto da serra. Beto cuida da marca e do contato com quem compra, e a equipe cresceu em volta dessa mesma regra de ritmo.",
+      "Hoje a Serra Fina chega a redes de varejo e a assinantes que recebem o lote do mês em casa. O tamanho mudou. O ritmo não mudou."
+    ],
+    "milestones": [
+      {
+        "year": 2019,
+        "text": "Início da produção na propriedade de quatro hectares na Mantiqueira."
+      },
+      {
+        "year": 2021,
+        "text": "Primeiro lote vendido."
+      },
+      {
+        "year": 2026,
+        "text": "Nasce a identidade visual e o nome vira sistema."
+      }
+    ],
+    "name_origin": "O nome vem da serra onde tudo começou. Serra é o lugar. Fina é a linha de cume vista de longe e é também a mão que o chocolate pede.",
+    "sources": [
+      "apresentação da empresa",
+      "ligação com a fundadora de 22/09",
+      "kickoff.md"
+    ],
+    "arc": [
+      {
+        "stage": "Origem",
+        "text": "Em 2019, Ana começa a produção numa propriedade de quatro hectares na Mantiqueira."
+      },
+      {
+        "stage": "Descoberta",
+        "text": "Ela percebe que o tempo de descanso muda o sabor do lote."
+      },
+      {
+        "stage": "Prova",
+        "text": "Amigos pedem mais barras e perguntam de que lote vieram."
+      },
+      {
+        "stage": "Virada",
+        "text": "Em 2021 sai o primeiro lote vendido."
+      },
+      {
+        "stage": "Crescimento",
+        "text": "A produção cresce por lotes e chega ao varejo e à assinatura."
+      },
+      {
+        "stage": "Agora",
+        "text": "A marca passa a mostrar o lote em cada barra e a contar a história do mês."
+      }
+    ]
+  },
+  "purpose": {
+    "mission": "Fazer chocolate de altitude com o tempo que ele pede e mostrar de onde ele vem.",
+    "vision": "Ser a referência em chocolate de altitude no Brasil.",
+    "positioning": "Para quem presenteia e para quem cozinha em casa, a Serra Fina é o chocolate que mostra a origem no sabor e no desenho, ao contrário do chocolate de prateleira que esconde o lote.",
+    "promise": "Cada barra diz de que lote veio e quanto tempo levou.",
+    "essence": "Fazer devagar.",
+    "reason_to_exist": "Provar que chocolate bom não tem pressa e que a origem merece aparecer na barra."
+  },
+  "petreos": [
+    {
+      "text": "O tempo é ingrediente",
+      "origin": "kickoff.md, propósito definido pelos sócios",
+      "visual_translation": "Uma linha desenhada de uma vez só, sem pressa e sem retoque."
+    },
+    {
+      "text": "A serra é o selo",
+      "origin": "brief.json, origem do nome, e ligação de 22/09",
+      "visual_translation": "O cume aparece como prova de origem, nunca como enfeite."
+    },
+    {
+      "text": "Precisão sem frieza",
+      "origin": "kickoff.md, atributos precisão e calma",
+      "visual_translation": "Ângulos exatos e cor calma, com tipografia de leitura acolhedora."
+    }
+  ],
+  "vetados": [
+    {
+      "text": "Nada de cacau literal",
+      "reason": "O símbolo pictórico é o clichê da categoria, usado por 3 de 7 concorrentes (fonte: mapa de concorrentes)."
+    },
+    {
+      "text": "Nada de marrom",
+      "reason": "Decisão da fundadora no kickoff de 30/09."
+    },
+    {
+      "text": "Nada de dourado ou folha metálica",
+      "reason": "Decisão dos dois sócios no kickoff de 30/09."
+    }
+  ],
+  "personality": {
+    "attributes": [
+      "paciente",
+      "preciso",
+      "enraizado",
+      "calmo"
+    ],
+    "is_not": [
+      "luxuoso por vitrine",
+      "rústico por pose",
+      "frio como laboratório"
+    ],
+    "archetype_hypothesis": "Sábio com traço de Criador. É uma hipótese de conversa e não um veredito.",
+    "archetype": {
+      "primary": "Sábio",
+      "secondary": "Criador",
+      "intersection_name": "O mestre de lote",
+      "origin": "O conhecimento do ritmo veio do estudo da própria receita. O ofício veio de fazer com as mãos.",
+      "brings": "Autoridade calma, precisão e prazer de fazer bem.",
+      "shadow": "Pode virar professoral e distante, ou perfeccionista e lento.",
+      "balanced_by": "O Criador traz calor e gosto de fazer. O Sábio traz medida e prazo.",
+      "seasoning": "O Cuidador aparece como tempero na hora do presente, mas não comanda."
+    },
+    "scales": [
+      {
+        "left": "Popular",
+        "right": "Exclusiva",
+        "position": 3
+      },
+      {
+        "left": "Acessível",
+        "right": "Aspiracional",
+        "position": 2
+      },
+      {
+        "left": "Institucional",
+        "right": "Próxima",
+        "position": 3
+      },
+      {
+        "left": "Funcional",
+        "right": "Experiencial",
+        "position": 3
+      },
+      {
+        "left": "Clássica",
+        "right": "Contemporânea",
+        "position": 2
+      },
+      {
+        "left": "Tradicional",
+        "right": "Inovadora",
+        "position": 1
+      },
+      {
+        "left": "Discreta",
+        "right": "Ousada",
+        "position": 1
+      },
+      {
+        "left": "Generalista",
+        "right": "Especialista",
+        "position": 4
+      },
+      {
+        "left": "Racional",
+        "right": "Emocional",
+        "position": 2
+      },
+      {
+        "left": "Massiva",
+        "right": "Personalizada",
+        "position": 3
+      }
+    ]
+  },
+  "audience": {
+    "summary": "Quem presenteia e quem cozinha em casa, com atenção à origem e disposição de pagar por ela. Segue como hipótese até as entrevistas do próximo ciclo.",
+    "personas": [
+      {
+        "name": "Quem presenteia",
+        "who": "Compra para datas e quer entregar algo com história.",
+        "thinks": "Quero que quem recebe saiba de onde isso veio.",
+        "needs": "Um presente que se explica sozinho, na caixa e na etiqueta.",
+        "blocker": "Medo de dar um presente genérico",
+        "needs_to_hear": "Esta caixa diz de onde veio."
+      },
+      {
+        "name": "Quem cozinha em casa",
+        "who": "Faz bolo, brigadeiro e sobremesa e escolhe o chocolate pelo comportamento na receita.",
+        "thinks": "Preciso saber como esse chocolate derrete e que sabor ele deixa.",
+        "needs": "Informação técnica clara, sem jargão, no verso da embalagem.",
+        "blocker": "Não sabe como o chocolate se comporta na receita",
+        "needs_to_hear": "Aqui o ponto de derreter vem escrito."
+      },
+      {
+        "name": "Quem assina o lote do mês",
+        "who": "Recebe uma caixa por mês e gosta de saber a história de cada lote.",
+        "thinks": "Quero um motivo para esperar a próxima caixa.",
+        "needs": "Um lote novo, com a história de como foi feito, sem pressa.",
+        "blocker": "Medo de enjoar do mesmo sabor",
+        "needs_to_hear": "Todo mês um lote diferente.",
+        "highest_value": true
+      }
+    ],
+    "emotional_promises": [
+      "Calma ao abrir a caixa.",
+      "Confiança na origem.",
+      "Orgulho de ter escolhido bem."
+    ]
+  },
+  "concept": {
+    "big_idea": "O tempo é o ingrediente.",
+    "formula": {
+      "icon": "A linha de cume lembra a serra de longe.",
+      "index": "O ângulo e a altura apontam para a altitude em que o chocolate é feito.",
+      "symbol": "Um traço contínuo significa paciência, por convenção de ofício."
+    },
+    "manifesto": [
+      "Chocolate não se apressa.",
+      "Se apressa, perde o que a serra deu.",
+      "Por isso cada lote leva o tempo que leva. Cada barra diz de onde veio.",
+      "Fazemos devagar para você sentir rápido."
+    ],
+    "reasons": [
+      {
+        "title": "Vale para toda a linha",
+        "text": "Barra, caixa e assinatura nascem do mesmo ritmo."
+      },
+      {
+        "title": "Nasce da fundadora",
+        "text": "Veio da ideia de Ana: chocolate bom não tem pressa."
+      },
+      {
+        "title": "Enfrenta a pressa do mercado",
+        "text": "Quem acredita que o tempo conta volta a esperar pelo bom."
+      },
+      {
+        "title": "Tem um limite honesto",
+        "text": "O que a marca mostra é sempre o que o lote entrega."
+      }
+    ]
+  },
+  "symbol": {
+    "name": "Linha de cume",
+    "rationale": "Uma linha só, desenhada de uma vez, sobe e desce como o cume visto de longe. Os ângulos são constantes e as alturas diferem, como numa serra de verdade.",
+    "slope_deg": 48,
+    "vertices": [
+      0,
+      1.0,
+      0.42,
+      0.7,
+      0.3,
+      0.46,
+      0
+    ],
+    "stroke_ratio": 0.075,
+    "protection_rule": "Altura do pico mais alto do símbolo, em todos os lados.",
+    "min_size": {
+      "print_mm": 18,
+      "screen_px": 96
+    },
+    "misuse": [
+      "Esticar ou comprimir o símbolo.",
+      "Girar o símbolo.",
+      "Trocar a cor fora da paleta.",
+      "Contornar a linha.",
+      "Aplicar sombra ou brilho.",
+      "Colocar sobre fotografia movimentada.",
+      "Fechar a linha em forma de montanha cheia."
+    ],
+    "geometric_study_note": "Os arquivos de símbolo deste pacote são um estudo geométrico gerado por parâmetros, para o time de criação refinar e finalizar em vetor. O texto das assinaturas usa fonte viva e precisa ser convertido em curvas antes da gráfica."
+  },
+  "colour": {
+    "families": [
+      {
+        "pt_name": "Azul",
+        "universe_name": "Cume",
+        "hex": "#2B3A67",
+        "role": "Base da marca. Fundos, títulos e a assinatura.",
+        "meaning": "A altura e a calma do céu visto da serra."
+      },
+      {
+        "pt_name": "Verde-azulado",
+        "universe_name": "Vale",
+        "hex": "#2F7F86",
+        "role": "Origem e ação. Selos, links e botões.",
+        "meaning": "O vale que fica abaixo do cume."
+      }
+    ],
+    "neutrals": [
+      {
+        "token": "SFI_Neblina",
+        "name": "Neblina",
+        "hex": "#EDF0F2",
+        "role": "Fundo claro da marca."
+      },
+      {
+        "token": "SFI_Tinta",
+        "name": "Tinta",
+        "hex": "#12161C",
+        "role": "Texto corrido sobre fundo claro."
+      },
+      {
+        "token": "SFI_Branco",
+        "name": "Branco",
+        "hex": "#FFFFFF",
+        "role": "Texto sobre os passos escuros e áreas de respiro."
+      }
+    ],
+    "steps": [
+      10,
+      20,
+      30,
+      40,
+      50,
+      60,
+      70
+    ],
+    "ratio": {
+      "light_bg": [
+        [
+          "SFI_Neblina",
+          45
+        ],
+        [
+          "SFI_Cume_50",
+          30
+        ],
+        [
+          "SFI_Vale_50",
+          15
+        ],
+        [
+          "SFI_Branco",
+          10
+        ]
+      ],
+      "dark_bg": [
+        [
+          "SFI_Cume_70",
+          55
+        ],
+        [
+          "SFI_Cume_10",
+          30
+        ],
+        [
+          "SFI_Vale_50",
+          15
+        ]
+      ]
+    },
+    "pairs": [
+      {
+        "fg": "SFI_Tinta",
+        "bg": "SFI_Neblina",
+        "declared": "AA"
+      },
+      {
+        "fg": "SFI_Neblina",
+        "bg": "SFI_Cume_50",
+        "declared": "AA"
+      },
+      {
+        "fg": "SFI_Cume_10",
+        "bg": "SFI_Cume_70",
+        "declared": "AA"
+      },
+      {
+        "fg": "SFI_Branco",
+        "bg": "SFI_Vale_50",
+        "declared": "AA"
+      },
+      {
+        "fg": "SFI_Cume_50",
+        "bg": "SFI_Neblina",
+        "declared": "AA"
+      }
+    ],
+    "gradient": {
+      "from": "SFI_Cume_50",
+      "to": "SFI_Vale_50",
+      "angle": 135,
+      "rule": "Sempre da cor principal para uma única outra família, neste ângulo."
+    },
+    "vetoed_hexes": [
+      "#C9A227",
+      "#5A3A22"
+    ],
+    "print_note": "O CMYK deste pacote é aproximado. Os valores de impressão saem de um perfil ICC e de uma prova impressa na gráfica.",
+    "spot_refs": [
+      {
+        "family": "Cume",
+        "system": "cor especial",
+        "code": "",
+        "status": "pending_match"
+      },
+      {
+        "family": "Vale",
+        "system": "cor especial",
+        "code": "",
+        "status": "pending_match"
+      }
+    ],
+    "large_area_rule": "Em grandes áreas chapadas, Tinta imprime em quatro cores com preto e uma parte de Cume. Preto puro em offset sai lavado."
+  },
+  "typography": {
+    "fonts": [
+      {
+        "role": "headline",
+        "name": "Newsreader",
+        "google_family": "Newsreader:opsz,wght@6..72,300..700",
+        "license": "SIL Open Font License 1.1",
+        "fallback": "Georgia, serif",
+        "usage": "Títulos, citações e o nome da marca."
+      },
+      {
+        "role": "body",
+        "name": "Instrument Sans",
+        "google_family": "Instrument+Sans:wght@400..700",
+        "license": "SIL Open Font License 1.1",
+        "fallback": "Arial, sans-serif",
+        "usage": "Texto corrido, interface e legendas."
+      },
+      {
+        "role": "mono",
+        "name": "JetBrains Mono",
+        "google_family": "JetBrains+Mono:wght@400..600",
+        "license": "SIL Open Font License 1.1",
+        "fallback": "Courier New, monospace",
+        "usage": "Códigos de cor, lotes e dados técnicos."
+      }
+    ],
+    "scale": [
+      {
+        "level": "Display",
+        "size_px": 72,
+        "line_height": 1.05,
+        "weight": 300,
+        "font_role": "headline",
+        "tracking": "-0.01em"
+      },
+      {
+        "level": "H1",
+        "size_px": 56,
+        "line_height": 1.1,
+        "weight": 400,
+        "font_role": "headline",
+        "tracking": "-0.005em"
+      },
+      {
+        "level": "H2",
+        "size_px": 40,
+        "line_height": 1.15,
+        "weight": 400,
+        "font_role": "headline",
+        "tracking": "0"
+      },
+      {
+        "level": "H3",
+        "size_px": 28,
+        "line_height": 1.2,
+        "weight": 500,
+        "font_role": "headline",
+        "tracking": "0"
+      },
+      {
+        "level": "Corpo",
+        "size_px": 18,
+        "line_height": 1.55,
+        "weight": 400,
+        "font_role": "body",
+        "tracking": "0"
+      },
+      {
+        "level": "Legenda",
+        "size_px": 14,
+        "line_height": 1.4,
+        "weight": 400,
+        "font_role": "body",
+        "tracking": "0"
+      },
+      {
+        "level": "Etiqueta",
+        "size_px": 12,
+        "line_height": 1.3,
+        "weight": 600,
+        "font_role": "body",
+        "tracking": "0.08em"
+      }
+    ],
+    "specimen_text": "Feito devagar, no alto da serra",
+    "note": "Confirme a licença e o arquivo de cada fonte antes de entregar ao cliente.",
+    "restrictions": [
+      {
+        "font_role": "headline",
+        "rule": "Newsreader serve a títulos, citações e ao nome da marca. Nunca em texto corrido abaixo de 20 px."
+      },
+      {
+        "font_role": "body",
+        "rule": "Instrument Sans serve ao texto e à interface. Nunca no desenho do nome da marca."
+      },
+      {
+        "font_role": "mono",
+        "rule": "JetBrains Mono serve a códigos, lotes e dados técnicos. Nunca em título."
+      }
+    ]
+  },
+  "elements": {
+    "origin_rule": "Todo elemento nasce do ângulo e das alturas do símbolo. As linhas de nível repetem a mesma polilinha, em escala menor, uma abaixo da outra.",
+    "pattern": {
+      "lines": 9,
+      "gap_ratio": 0.34
+    },
+    "pictograms": [
+      {
+        "id": "ridge",
+        "name": "Cume",
+        "use": "Origem e lote."
+      },
+      {
+        "id": "lot",
+        "name": "Lote",
+        "use": "Número do lote e peso."
+      },
+      {
+        "id": "altitude",
+        "name": "Altitude",
+        "use": "Dados de origem."
+      },
+      {
+        "id": "time",
+        "name": "Tempo",
+        "use": "Tempo de descanso e preparo."
+      },
+      {
+        "id": "gift",
+        "name": "Presente",
+        "use": "Caixas e assinatura."
+      },
+      {
+        "id": "origin",
+        "name": "Origem",
+        "use": "Mapa e procedência."
+      }
+    ],
+    "support_rules": {
+      "colours_allowed": [
+        "Cume_50",
+        "Vale_50",
+        "Neblina",
+        "Cume_70"
+      ],
+      "as_mask": "As linhas de nível podem recortar foto em duotone. Sem contorno.",
+      "as_cut_template": "A polilinha do símbolo serve de gabarito de corte para etiqueta e tampa de caixa.",
+      "protection_exception": "Quando o padrão integra a malha e fica nitidamente visível, a assinatura pode tocar as linhas. Não abuse."
+    },
+    "symbol_as_graphic": {
+      "positions": [
+        "inteiro a 0 grau",
+        "inteiro espelhado",
+        "metade a 0 grau",
+        "metade espelhada"
+      ],
+      "colour_options": [
+        "Cume_50 sobre Neblina",
+        "Neblina sobre Cume_50",
+        "Vale_50 sobre Neblina",
+        "Neblina sobre Vale_50"
+      ],
+      "where": "Só em peças de comunicação, em grande área e como fundo de outros elementos."
+    }
+  },
+  "photography": {
+    "principles": [
+      "Luz da manhã, lateral e baixa.",
+      "Mãos e processo, sem rostos.",
+      "Superfícies neutras em Neblina ou Cume.",
+      "O produto ocupa pouco do quadro e o ar fala."
+    ],
+    "treatment": "Duotone entre Cume_70 e Neblina para fundos e fotos de apoio. Fotos de produto mantêm a cor real.",
+    "do": [
+      "Mostrar o lote, o tempo e a serra.",
+      "Deixar espaço vazio dentro do quadro.",
+      "Usar uma só fonte de luz."
+    ],
+    "dont": [
+      "Usar banco de imagens com sorrisos posados.",
+      "Usar tons de marrom ou dourado como cenário.",
+      "Colocar o símbolo sobre área movimentada."
+    ]
+  },
+  "motion": {
+    "principles": [
+      "Movimento tem a velocidade da escrita à mão.",
+      "A linha se desenha de uma vez, da esquerda para a direita.",
+      "Nada pula, nada pisca, nada gira.",
+      "Quem prefere menos movimento recebe a marca parada."
+    ],
+    "logo_animation": {
+      "duration_ms": 1800,
+      "easing": "cubic-bezier(0.4, 0, 0.2, 1)",
+      "note": "A animação respeita a preferência do sistema por menos movimento."
+    }
+  },
+  "voice": {
+    "traits": [
+      {
+        "name": "Calma",
+        "is": "fala sem pressa e sem exclamação",
+        "is_not": "lenta ou vaga",
+        "example_do": "O lote de outubro descansou por três semanas.",
+        "example_dont": "Corra! Últimas barras do lote!"
+      },
+      {
+        "name": "Enraizada",
+        "is": "nomeia o lugar e o lote",
+        "is_not": "romântica sobre o campo",
+        "example_do": "Feito na Mantiqueira, lote 12.",
+        "example_dont": "O sabor autêntico da natureza."
+      },
+      {
+        "name": "Exata",
+        "is": "dá números e datas",
+        "is_not": "fria ou técnica por vaidade",
+        "example_do": "Derrete a 34 graus e deixa final de amêndoa.",
+        "example_dont": "Textura aveludada e inesquecível."
+      }
+    ],
+    "messaging": [
+      {
+        "territory": "Presente",
+        "message": "Um presente que diz de onde veio.",
+        "proof": "Cada caixa traz o lote e a data de fabricação."
+      },
+      {
+        "territory": "Cozinha em casa",
+        "message": "Chocolate que se comporta na receita.",
+        "proof": "O verso da barra traz ponto de derretimento e sugestão de uso."
+      },
+      {
+        "territory": "Assinatura",
+        "message": "Um lote novo, todo mês, sem pressa.",
+        "proof": "O lote do mês chega com a história de como foi feito."
+      }
+    ],
+    "vocabulary": {
+      "use": [
+        "lote",
+        "serra",
+        "descansar",
+        "devagar",
+        "origem",
+        "ponto"
+      ],
+      "avoid": [
+        "premium",
+        "gourmet",
+        "experiência única",
+        "irresistível",
+        "pecado"
+      ]
+    },
+    "tone_by_channel": [
+      {
+        "channel": "Embalagem",
+        "tone": "Curto, factual, com número."
+      },
+      {
+        "channel": "Site",
+        "tone": "Claro e acolhedor, frases curtas."
+      },
+      {
+        "channel": "Redes",
+        "tone": "Observador, sem apelo de urgência."
+      },
+      {
+        "channel": "Atendimento",
+        "tone": "Direto e gentil, com prazo certo."
+      }
+    ],
+    "name_in_text": {
+      "class": "nome próprio",
+      "case": "Escreva Serra Fina com as duas iniciais maiúsculas.",
+      "never": [
+        "Todo em caixa alta em texto corrido.",
+        "Abreviado ou como sigla.",
+        "Separado em duas linhas sem necessidade."
+      ]
+    },
+    "principles": [
+      {
+        "rule": "Diz o lote.",
+        "application": "Todo texto sobre a barra traz lote ou data."
+      },
+      {
+        "rule": "Vai direto.",
+        "application": "Se cabe em uma frase, não usa duas."
+      },
+      {
+        "rule": "Honesta até no não.",
+        "application": "Diz o que a barra não é e por quê."
+      },
+      {
+        "rule": "Calma, sem pressa.",
+        "application": "Sem exclamação, sem contagem regressiva."
+      },
+      {
+        "rule": "De gente para gente.",
+        "application": "Usa você e frases curtas."
+      }
+    ],
+    "before_after": [
+      {
+        "before": "Produto de qualidade superior, feito com ingredientes selecionados.",
+        "after": "Feito com cacau da Mantiqueira. Lote 12, descansou três semanas."
+      },
+      {
+        "before": "Experiência única de sabor.",
+        "after": "Derrete a 34 graus e deixa final de amêndoa."
+      },
+      {
+        "before": "ÚLTIMAS UNIDADES! Compre agora!",
+        "after": "O lote de outubro tem 400 barras. Quando acabar, o próximo sai em novembro."
+      },
+      {
+        "before": "Não temos esse produto.",
+        "after": "Esse a gente não faz. Para presente, a caixa de três lotes resolve."
+      }
+    ],
+    "dictionary": [
+      {
+        "term": "Lote",
+        "plain": "Um grupo pequeno de barras feito junto, no mesmo dia e com a mesma receita."
+      },
+      {
+        "term": "Descanso",
+        "plain": "O tempo que o chocolate fica parado antes de virar barra, para o sabor se assentar."
+      },
+      {
+        "term": "Ponto de derretimento",
+        "plain": "A temperatura em que a barra derrete. Ajuda a escolher para a receita."
+      },
+      {
+        "term": "Altitude",
+        "plain": "A altura da propriedade. Muda o clima e o sabor do cacau."
+      }
+    ]
+  },
+  "applications": [
+    {
+      "id": "bag",
+      "name": "Embalagem de 250 g",
+      "spec": "Etiqueta frontal 100 x 150 mm, fundo Cume_50, selo e nome em Neblina.",
+      "rules": [
+        "O lote vai sempre na faixa Vale.",
+        "O símbolo nunca fica sob dobra.",
+        "Sem verniz dourado ou metálico."
+      ],
+      "production": {
+        "format": "Etiqueta frontal 100 x 150 mm",
+        "colour_mode": "CMYK, 4 cores",
+        "process": "Offset ou digital em rolo",
+        "material": "Papel fosco 90 g, colado no saco",
+        "finishing": "Sem verniz dourado ou metálico",
+        "scale": "1:2"
+      }
+    },
+    {
+      "id": "card",
+      "name": "Cartão de visita",
+      "spec": "90 x 50 mm, frente Neblina com assinatura horizontal, verso Cume_50.",
+      "rules": [
+        "Papel fosco sem brilho.",
+        "Nome da pessoa em Newsreader.",
+        "Contatos em Instrument Sans."
+      ],
+      "production": {
+        "format": "90 x 50 mm",
+        "colour_mode": "CMYK, 4 cores na frente e 1 no verso",
+        "process": "Offset",
+        "material": "Papel fosco 300 g",
+        "finishing": "Corte reto e laminação fosca",
+        "scale": "1:1"
+      }
+    },
+    {
+      "id": "social",
+      "name": "Post quadrado",
+      "spec": "1080 x 1080 px, fundo Cume_70 com linhas de nível.",
+      "rules": [
+        "Uma frase por peça.",
+        "Assinatura pequena no canto.",
+        "Nenhum texto sobre área clara sem contraste de 4,5 para 1."
+      ],
+      "production": {
+        "format": "1080 x 1080 px",
+        "colour_mode": "RGB",
+        "process": "Digital",
+        "material": "Tela",
+        "finishing": "Exporte em PNG sem compressão excessiva",
+        "scale": "1:1"
+      }
+    },
+    {
+      "id": "site",
+      "name": "Página inicial",
+      "spec": "1440 px de largura, cabeçalho com assinatura e uma chamada principal.",
+      "rules": [
+        "Um botão principal por tela, em Vale_50.",
+        "Fotos com a regra de duotone.",
+        "Texto corrido em 18 px."
+      ],
+      "production": {
+        "format": "1440 px de largura",
+        "colour_mode": "RGB, tokens da marca",
+        "process": "Digital",
+        "material": "Tela",
+        "finishing": "Fontes pela família com substituto declarado",
+        "scale": "Fluida"
+      }
+    },
+    {
+      "id": "box",
+      "name": "Caixa de presente",
+      "spec": "Tampa quadrada de 200 mm com selo central e linhas de nível.",
+      "rules": [
+        "Sem fita dourada.",
+        "O selo traz o número do lote.",
+        "Papel Neblina com impressão em uma cor."
+      ],
+      "production": {
+        "format": "Tampa quadrada de 200 mm",
+        "colour_mode": "Uma cor",
+        "process": "Impressão offset ou serigrafia",
+        "material": "Papel Neblina rígido",
+        "finishing": "Corte especial, sem fita dourada",
+        "scale": "1:3"
+      }
+    },
+    {
+      "id": "letterhead",
+      "name": "Papel timbrado",
+      "spec": "A4, assinatura no topo, rodapé com a linha de cume fina.",
+      "rules": [
+        "Margem de 20 mm.",
+        "Texto em Tinta sobre Neblina ou branco.",
+        "Sem marca d'água."
+      ],
+      "production": {
+        "format": "A4, 210 x 297 mm",
+        "colour_mode": "CMYK, 2 cores",
+        "process": "Offset",
+        "material": "Papel off-set 90 g",
+        "finishing": "Corte reto",
+        "scale": "1:2"
+      }
+    }
+  ],
+  "governance": {
+    "owner": "Ana, fundadora, aprova qualquer mudança no símbolo, nas cores e na tipografia.",
+    "approval_flow": "Pedido por escrito, parecer do estúdio, decisão da fundadora, registro no histórico de versões.",
+    "review_cycle": "Revisão anual do manual e a cada nova linha de produto.",
+    "contact": "marca@serrafina.example",
+    "scope": "Este manual vale para as peças institucionais e comerciais da Serra Fina: embalagem, papelaria, site, redes e caixa de presente. Peças de parceiros e de campanha ficam fora e passam por Ana antes de sair.",
+    "ip_notice": "A marca, o símbolo e os textos deste manual pertencem à Serra Fina. Não reproduza sem autorização escrita da fundadora. Esta é uma marca fictícia criada para o teste do processo."
+  },
+  "faq": [
+    {
+      "q": "Posso usar o símbolo em outra cor?",
+      "a": "Só nas versões da paleta: Cume, Neblina ou Tinta em uma cor. Outras cores não passam pela aprovação."
+    },
+    {
+      "q": "Posso colocar o símbolo sobre uma foto?",
+      "a": "Sim, sobre fotos calmas e de fundo limpo. Sobre fotos movimentadas, use a versão com fundo sólido."
+    },
+    {
+      "q": "Qual fonte uso se não tiver a Newsreader?",
+      "a": "Use Georgia nos títulos e Arial no texto, que são os substitutos definidos. Prefira instalar as fontes oficiais."
+    },
+    {
+      "q": "Posso usar dourado em datas especiais?",
+      "a": "Não. Dourado e metálico estão vetados em todos os usos da marca."
+    },
+    {
+      "q": "Onde peço os arquivos?",
+      "a": "Escreva para o contato de governança e informe a aplicação e o prazo."
+    }
+  ],
+  "changelog": [
+    {
+      "version": "1.0.0",
+      "date": "2026-10-15",
+      "change": "Primeira versão do ecossistema da marca.",
+      "approved_by": "Ana, fundadora"
+    }
+  ],
+  "wordmark": {
+    "lettering": "Newsreader peso 500, em caixa alta e baixa, com o espaçamento ajustado para o nome caber na largura da assinatura.",
+    "cap_height_ratio": 0.66,
+    "x_height_ratio": 0.45,
+    "construction_note": "As alturas são estimativas da família. Confirme no arquivo da fonte e em curvas antes de imprimir."
+  },
+  "lockups": {
+    "horizontal": {
+      "when": "Em peças com texto corrido, etiqueta, site e papelaria. A horizontalidade acompanha a leitura."
+    },
+    "vertical": {
+      "when": "Quando a marca precisa de mais visibilidade: embalagem, cartaz e pendão. O eixo vertical destaca o símbolo."
+    }
+  },
+  "versions": {
+    "matrix": [
+      {
+        "lockup": "symbol",
+        "polarity": "positive",
+        "use_when": "Fundo claro e reprodução em cores."
+      },
+      {
+        "lockup": "symbol",
+        "polarity": "negative",
+        "use_when": "Fundo escuro e reprodução em cores."
+      },
+      {
+        "lockup": "symbol",
+        "polarity": "mono",
+        "use_when": "Uma só tinta, relevo seco, carimbo ou bordado."
+      },
+      {
+        "lockup": "horizontal",
+        "polarity": "positive",
+        "use_when": "Fundo claro e reprodução em cores."
+      },
+      {
+        "lockup": "horizontal",
+        "polarity": "negative",
+        "use_when": "Fundo escuro e reprodução em cores."
+      },
+      {
+        "lockup": "horizontal",
+        "polarity": "mono",
+        "use_when": "Uma só tinta, relevo seco, carimbo ou bordado."
+      },
+      {
+        "lockup": "vertical",
+        "polarity": "positive",
+        "use_when": "Fundo claro e reprodução em cores."
+      },
+      {
+        "lockup": "vertical",
+        "polarity": "negative",
+        "use_when": "Fundo escuro e reprodução em cores."
+      },
+      {
+        "lockup": "vertical",
+        "polarity": "mono",
+        "use_when": "Uma só tinta, relevo seco, carimbo ou bordado."
+      }
+    ]
+  },
+  "usage": {
+    "min_size_by_version": [
+      {
+        "lockup": "symbol",
+        "print_mm": 18,
+        "screen_px": 96
+      },
+      {
+        "lockup": "horizontal",
+        "print_mm": 52,
+        "screen_px": 276
+      },
+      {
+        "lockup": "vertical",
+        "print_mm": 32,
+        "screen_px": 168
+      }
+    ],
+    "protection_by_version": [
+      {
+        "lockup": "symbol",
+        "peak_heights": 1.0
+      },
+      {
+        "lockup": "horizontal",
+        "peak_heights": 1.0
+      },
+      {
+        "lockup": "vertical",
+        "peak_heights": 1.0
+      }
+    ],
+    "conflicting_background_rule": "Se o fundo atrapalha a leitura, preencha a área de proteção com Neblina ou Tinta. Use só em último caso e prefira um fundo que dispense o recurso.",
+    "text_alignment": "O texto fica a uma altura de pico de distância da assinatura e alinha com a borda esquerda do nome. Ao lado de texto, use a assinatura horizontal.",
+    "background_matrix": [
+      {
+        "version": "symbol.positive",
+        "background": "Neblina",
+        "status": "preferred"
+      },
+      {
+        "version": "symbol.positive",
+        "background": "Branco",
+        "status": "preferred"
+      },
+      {
+        "version": "symbol.positive",
+        "background": "Cume_70",
+        "status": "forbidden"
+      },
+      {
+        "version": "symbol.positive",
+        "background": "Cume_50",
+        "status": "forbidden"
+      },
+      {
+        "version": "symbol.positive",
+        "background": "Vale_50",
+        "status": "forbidden"
+      },
+      {
+        "version": "symbol.positive",
+        "background": "Tinta",
+        "status": "forbidden"
+      },
+      {
+        "version": "symbol.negative",
+        "background": "Neblina",
+        "status": "forbidden"
+      },
+      {
+        "version": "symbol.negative",
+        "background": "Branco",
+        "status": "forbidden"
+      },
+      {
+        "version": "symbol.negative",
+        "background": "Cume_70",
+        "status": "preferred"
+      },
+      {
+        "version": "symbol.negative",
+        "background": "Cume_50",
+        "status": "preferred"
+      },
+      {
+        "version": "symbol.negative",
+        "background": "Vale_50",
+        "status": "allowed"
+      },
+      {
+        "version": "symbol.negative",
+        "background": "Tinta",
+        "status": "preferred"
+      },
+      {
+        "version": "symbol.mono",
+        "background": "Neblina",
+        "status": "preferred"
+      },
+      {
+        "version": "symbol.mono",
+        "background": "Branco",
+        "status": "preferred"
+      },
+      {
+        "version": "symbol.mono",
+        "background": "Cume_70",
+        "status": "forbidden"
+      },
+      {
+        "version": "symbol.mono",
+        "background": "Cume_50",
+        "status": "forbidden"
+      },
+      {
+        "version": "symbol.mono",
+        "background": "Vale_50",
+        "status": "allowed"
+      },
+      {
+        "version": "symbol.mono",
+        "background": "Tinta",
+        "status": "forbidden"
+      },
+      {
+        "version": "horizontal.positive",
+        "background": "Neblina",
+        "status": "preferred"
+      },
+      {
+        "version": "horizontal.positive",
+        "background": "Branco",
+        "status": "preferred"
+      },
+      {
+        "version": "horizontal.positive",
+        "background": "Cume_70",
+        "status": "forbidden"
+      },
+      {
+        "version": "horizontal.positive",
+        "background": "Cume_50",
+        "status": "forbidden"
+      },
+      {
+        "version": "horizontal.positive",
+        "background": "Vale_50",
+        "status": "forbidden"
+      },
+      {
+        "version": "horizontal.positive",
+        "background": "Tinta",
+        "status": "forbidden"
+      },
+      {
+        "version": "horizontal.negative",
+        "background": "Neblina",
+        "status": "forbidden"
+      },
+      {
+        "version": "horizontal.negative",
+        "background": "Branco",
+        "status": "forbidden"
+      },
+      {
+        "version": "horizontal.negative",
+        "background": "Cume_70",
+        "status": "preferred"
+      },
+      {
+        "version": "horizontal.negative",
+        "background": "Cume_50",
+        "status": "preferred"
+      },
+      {
+        "version": "horizontal.negative",
+        "background": "Vale_50",
+        "status": "allowed"
+      },
+      {
+        "version": "horizontal.negative",
+        "background": "Tinta",
+        "status": "preferred"
+      },
+      {
+        "version": "horizontal.mono",
+        "background": "Neblina",
+        "status": "preferred"
+      },
+      {
+        "version": "horizontal.mono",
+        "background": "Branco",
+        "status": "preferred"
+      },
+      {
+        "version": "horizontal.mono",
+        "background": "Cume_70",
+        "status": "forbidden"
+      },
+      {
+        "version": "horizontal.mono",
+        "background": "Cume_50",
+        "status": "forbidden"
+      },
+      {
+        "version": "horizontal.mono",
+        "background": "Vale_50",
+        "status": "allowed"
+      },
+      {
+        "version": "horizontal.mono",
+        "background": "Tinta",
+        "status": "forbidden"
+      },
+      {
+        "version": "vertical.positive",
+        "background": "Neblina",
+        "status": "preferred"
+      },
+      {
+        "version": "vertical.positive",
+        "background": "Branco",
+        "status": "preferred"
+      },
+      {
+        "version": "vertical.positive",
+        "background": "Cume_70",
+        "status": "forbidden"
+      },
+      {
+        "version": "vertical.positive",
+        "background": "Cume_50",
+        "status": "forbidden"
+      },
+      {
+        "version": "vertical.positive",
+        "background": "Vale_50",
+        "status": "forbidden"
+      },
+      {
+        "version": "vertical.positive",
+        "background": "Tinta",
+        "status": "forbidden"
+      },
+      {
+        "version": "vertical.negative",
+        "background": "Neblina",
+        "status": "forbidden"
+      },
+      {
+        "version": "vertical.negative",
+        "background": "Branco",
+        "status": "forbidden"
+      },
+      {
+        "version": "vertical.negative",
+        "background": "Cume_70",
+        "status": "preferred"
+      },
+      {
+        "version": "vertical.negative",
+        "background": "Cume_50",
+        "status": "preferred"
+      },
+      {
+        "version": "vertical.negative",
+        "background": "Vale_50",
+        "status": "allowed"
+      },
+      {
+        "version": "vertical.negative",
+        "background": "Tinta",
+        "status": "preferred"
+      },
+      {
+        "version": "vertical.mono",
+        "background": "Neblina",
+        "status": "preferred"
+      },
+      {
+        "version": "vertical.mono",
+        "background": "Branco",
+        "status": "preferred"
+      },
+      {
+        "version": "vertical.mono",
+        "background": "Cume_70",
+        "status": "forbidden"
+      },
+      {
+        "version": "vertical.mono",
+        "background": "Cume_50",
+        "status": "forbidden"
+      },
+      {
+        "version": "vertical.mono",
+        "background": "Vale_50",
+        "status": "allowed"
+      },
+      {
+        "version": "vertical.mono",
+        "background": "Tinta",
+        "status": "forbidden"
+      },
+      {
+        "version": "symbol.negative",
+        "background": "foto",
+        "status": "allowed",
+        "note": "Sobre foto escura e uniforme. Fora disso, preencha a área de proteção."
+      },
+      {
+        "version": "symbol.positive",
+        "background": "foto",
+        "status": "allowed",
+        "note": "Sobre foto clara e uniforme. Fora disso, preencha a área de proteção."
+      },
+      {
+        "version": "horizontal.negative",
+        "background": "foto",
+        "status": "allowed",
+        "note": "Sobre foto escura e uniforme. Fora disso, preencha a área de proteção."
+      },
+      {
+        "version": "horizontal.positive",
+        "background": "foto",
+        "status": "allowed",
+        "note": "Sobre foto clara e uniforme. Fora disso, preencha a área de proteção."
+      },
+      {
+        "version": "vertical.negative",
+        "background": "foto",
+        "status": "allowed",
+        "note": "Sobre foto escura e uniforme. Fora disso, preencha a área de proteção."
+      },
+      {
+        "version": "vertical.positive",
+        "background": "foto",
+        "status": "allowed",
+        "note": "Sobre foto clara e uniforme. Fora disso, preencha a área de proteção."
+      }
+    ]
+  },
+  "delivery": {
+    "formats": [
+      "svg",
+      "json",
+      "css",
+      "html",
+      "md"
+    ],
+    "colour_systems": [
+      "HEX",
+      "RGB",
+      "CMYK aproximado"
+    ],
+    "outlined_and_editable": "Os SVG saem com texto editável em fonte viva. A versão em curvas fica para o time de criação antes da gráfica.",
+    "protection_marker": "Cada arquivo de assinatura traz a área de proteção no manual. O arquivo de produção do time deve marcá-la com um retângulo que não imprime."
+  },
+  "strategy": {
+    "welcome": {
+      "addressee": "Ana e Beto",
+      "text": "Este documento reúne o que descobrimos sobre a Serra Fina e o que a marca decide ser daqui para frente. Serve a vocês, à equipe e a quem um dia falar em nome da marca. É um guia para decidir e não um material para ler de uma vez.",
+      "signed_by": "Equipe do projeto de marca"
+    },
+    "guiding_question": "Por que um chocolate feito com tanto cuidado ainda parece, na prateleira, só mais uma barra artesanal?",
+    "method": {
+      "name": "Quatro lentes",
+      "pillars": [
+        {
+          "letter": "N",
+          "name": "Negócio",
+          "question": "Como a Serra Fina ganha dinheiro e onde trava?"
+        },
+        {
+          "letter": "P",
+          "name": "Público",
+          "question": "Quem compra e o que sente ao escolher?"
+        },
+        {
+          "letter": "V",
+          "name": "Valor",
+          "question": "O que a marca entrega que ninguém copia?"
+        },
+        {
+          "letter": "H",
+          "name": "História",
+          "question": "Que história a marca carrega e como a conta?"
+        }
+      ],
+      "rule": "Separar o que a marca acredita sobre si do que as evidências mostram. Onde as duas coisas não batem está a estratégia."
+    },
+    "evidence_base": [
+      {
+        "kind": "imersões",
+        "count": 3,
+        "note": "encontros de uma hora e meia com a fundadora e o sócio"
+      },
+      {
+        "kind": "respostas válidas",
+        "count": 9,
+        "note": "na pesquisa anônima com clientes e equipe"
+      },
+      {
+        "kind": "anos de histórico",
+        "count": 5,
+        "note": "de operação analisados"
+      },
+      {
+        "kind": "leituras de mercado",
+        "count": 4,
+        "note": "todas fictícias neste exemplo"
+      }
+    ],
+    "term_notes": [
+      {
+        "term": "Posicionamento",
+        "plain": "É o que você quer que alguém responda quando perguntarem o que é a Serra Fina."
+      },
+      {
+        "term": "Arquétipo",
+        "plain": "É um personagem que todo mundo reconhece. Com um arquétipo claro, as pessoas entendem quem a marca é antes de ler o que ela faz."
+      },
+      {
+        "term": "Sombra",
+        "plain": "É o risco de cada personagem quando exagera."
+      },
+      {
+        "term": "Big idea",
+        "plain": "É o conceito central que amarra tudo. Dele saem o jeito de falar, o conteúdo e o atendimento."
+      },
+      {
+        "term": "Território",
+        "plain": "É o assunto e o espaço na cabeça das pessoas que a marca quer ocupar."
+      },
+      {
+        "term": "Pilares de conteúdo",
+        "plain": "São os grandes assuntos da marca. Garantem que tudo o que ela publica reforça o mesmo posicionamento."
+      }
+    ],
+    "reading": [
+      {
+        "pillar": "Negócio",
+        "found": "A produção é pequena e vende bem para quem já conhece a origem. Fora desse círculo, a barra é só mais uma na prateleira.",
+        "meaning": "O boca a boca provou o chocolate. Para crescer além dele, a marca precisa mostrar a origem antes da prova."
+      },
+      {
+        "pillar": "Público",
+        "found": "Quem presenteia e quem cozinha em casa escolhem por motivos diferentes, mas os dois querem saber de onde o chocolate vem.",
+        "meaning": "A origem é o argumento comum. O que muda é onde ela aparece: na caixa para um, no verso da barra para o outro."
+      },
+      {
+        "pillar": "Valor",
+        "found": "O diferencial está no ritmo de trabalho. O lote descansa o tempo que precisa e cada barra diz isso.",
+        "meaning": "Essa conduta é difícil de copiar. Hoje quase ninguém fica sabendo dela antes de provar."
+      },
+      {
+        "pillar": "História",
+        "found": "A marca nasceu de uma ideia simples de Ana: chocolate bom não tem pressa. A serra deu o lugar.",
+        "meaning": "É uma história verdadeira e curta. Ainda não está contada em lugar nenhum de forma igual."
+      }
+    ],
+    "premises": [
+      {
+        "title": "Produção em lotes",
+        "text": "Cada lote é pequeno e tem número. A marca nunca promete volume que o lote não sustenta."
+      },
+      {
+        "title": "A origem vende",
+        "text": "Quem compra pela primeira vez pergunta de onde veio. A resposta precisa estar na embalagem."
+      },
+      {
+        "title": "Cresceu pelo contato direto",
+        "text": "Quase todo cliente chegou por indicação ou por assinatura. A marca investiu pouco em anúncio."
+      },
+      {
+        "title": "Preço coerente com o tempo",
+        "text": "O preço sobe com o tempo de descanso do lote e não com o enfeite da caixa."
+      },
+      {
+        "title": "Duas frentes de venda",
+        "text": "O varejo e a assinatura sustentam a operação. As duas usam o mesmo nome."
+      }
+    ],
+    "goals": [
+      {
+        "horizon": "Agora",
+        "business_goal": "Deixar claro, na prateleira e no site, que cada barra tem lote e origem.",
+        "brand_role": "Dar à embalagem uma regra única para dizer lote, data e origem."
+      },
+      {
+        "horizon": "12 meses",
+        "business_goal": "Dobrar a base de assinantes sem baixar o preço.",
+        "brand_role": "Contar a história do lote do mês de um jeito que se repita em toda caixa."
+      },
+      {
+        "horizon": "1 a 2 anos",
+        "business_goal": "Entrar em mais redes de varejo sem perder o controle do lote.",
+        "brand_role": "Manter a mesma marca, com o mesmo cuidado, em qualquer prateleira."
+      },
+      {
+        "horizon": "3 anos",
+        "business_goal": "Ser a referência em chocolate de altitude no Brasil.",
+        "brand_role": "Construir uma marca forte o bastante para sustentar novas linhas."
+      }
+    ],
+    "critical_view": "A visão de três anos é grande para uma equipe pequena que cuida de tudo. A marca pode apontar para esse futuro, mas o que promete em público precisa ser o que a produção entrega hoje.",
+    "tensions": [
+      {
+        "side_a": "Fazemos devagar",
+        "side_b": "Queremos crescer no varejo",
+        "decision": "O crescimento acompanha o lote. A Serra Fina só entra onde consegue entregar o mesmo cuidado."
+      },
+      {
+        "side_a": "Artesanal de verdade",
+        "side_b": "Embalagem que parece industrial",
+        "decision": "A embalagem mostra o lote e a data antes de qualquer enfeite. Quem vê entende que alguém fez."
+      },
+      {
+        "side_a": "Origem como orgulho",
+        "side_b": "Origem como clichê do campo",
+        "decision": "A origem aparece como dado: lugar, altitude e lote. Nunca como cenário romântico."
+      },
+      {
+        "side_a": "Preço justo",
+        "side_b": "Percepção de chocolate caro",
+        "decision": "O preço se explica pelo tempo de descanso. A marca nunca se apresenta como barata, nem como luxo."
+      }
+    ],
+    "owner_corrections": [
+      {
+        "belief": "O cliente compra pelo sabor.",
+        "evidence": "As respostas da pesquisa citam a origem e o lote antes do sabor.",
+        "decision": "A origem passa a abrir a comunicação e o sabor vem em seguida."
+      }
+    ],
+    "icp": "Adulto que gosta de cozinhar ou de presentear, valoriza saber quem fez e paga mais quando entende o motivo.",
+    "icp_insight": "Muitos assinantes começaram comprando um presente. A marca não precisa só buscar novos compradores. Ela já forma assinantes dentro da própria base de presenteadores.",
+    "non_clients": [
+      "Quem escolhe só pelo menor preço por quilo",
+      "Quem pede para esconder o lote da embalagem",
+      "Quem quer entrega no mesmo dia em qualquer lugar"
+    ],
+    "non_client_rule": "O filtro é de comportamento e nunca de origem ou de perfil.",
+    "value_premises": [
+      {
+        "title": "Entender vale mais",
+        "text": "Saber o que se está comprando vale mais para o cliente do que um desconto."
+      },
+      {
+        "title": "O tempo se explica",
+        "text": "O preço só faz sentido quando o cliente sabe quanto o lote descansou."
+      },
+      {
+        "title": "Origem é prova",
+        "text": "Lote, data e altitude valem mais do que um adjetivo."
+      },
+      {
+        "title": "Pouco, bem dito",
+        "text": "Uma informação exata convence mais do que cinco promessas."
+      }
+    ],
+    "competition": [
+      {
+        "type": "Chocolate industrial de prateleira",
+        "does_well": "Está em todo lugar e custa pouco",
+        "fails_at": "Esconde a origem e o lote",
+        "we_differ": "Mostra o lote e a data em cada barra"
+      },
+      {
+        "type": "Chocolate premium de vitrine",
+        "does_well": "Tem embalagem cuidada e boa imagem",
+        "fails_at": "Vende o luxo e fala pouco do chocolate",
+        "we_differ": "Vende o tempo e a origem, com dado e sem pose"
+      },
+      {
+        "type": "Outras marcas artesanais",
+        "does_well": "Têm história e produção pequena",
+        "fails_at": "Contam a origem de jeitos diferentes em cada peça",
+        "we_differ": "Conta a origem sempre do mesmo jeito, com número"
+      },
+      {
+        "type": "Importados de origem única",
+        "does_well": "Têm prestígio e ficha técnica",
+        "fails_at": "Custam caro e vêm de longe",
+        "we_differ": "Entrega a mesma clareza de origem, feita no Brasil"
+      }
+    ],
+    "territory_map": {
+      "x_axis": "Clareza sobre a origem",
+      "y_axis": "Cuidado de produção",
+      "quadrants": [
+        {
+          "name": "Cuidado, mas não explica",
+          "brands": [
+            "Marcas premium de vitrine"
+          ]
+        },
+        {
+          "name": "Cuidado e explica",
+          "brands": [
+            "Serra Fina"
+          ]
+        },
+        {
+          "name": "Não cuida e não explica",
+          "brands": [
+            "Chocolate industrial"
+          ]
+        },
+        {
+          "name": "Explica, mas sem cuidado",
+          "brands": [
+            "Marcas de rótulo detalhado e produção em escala"
+          ]
+        }
+      ],
+      "own": "Cuidado e explica"
+    },
+    "universe": {
+      "atmosphere": "Calma e clareza. Um lugar alto e organizado, longe do barulho da prateleira.",
+      "language": "Fala como quem conhece o lote. Palavras da marca: lote, serra, descansar, origem.",
+      "posture": "Segura sem ser arrogante. Diz o que sabe e o que ainda não sabe.",
+      "aesthetics": "Limpa e exata, com ângulos precisos e cores calmas. Pessoas e lugares reais no lugar de imagens de banco.",
+      "digital": "Um perfil só, com o lote do mês e a história de como foi feito.",
+      "not_fit": "Urgência falsa, adjetivo de vitrine, cenário romântico do campo e humor às custas de quem compra."
+    },
+    "perception": {
+      "n": 9,
+      "sample_note": "Amostra pequena e qualitativa. É um sinal e não uma estatística.",
+      "purpose_answers": [
+        {
+          "label": "Fazer chocolate com cuidado",
+          "count": 4
+        },
+        {
+          "label": "Mostrar de onde vem",
+          "count": 3
+        },
+        {
+          "label": "Dar um bom presente",
+          "count": 2
+        }
+      ],
+      "traits_today": [
+        {
+          "trait": "Cuidadosa",
+          "count": 7
+        },
+        {
+          "trait": "Honesta",
+          "count": 5
+        },
+        {
+          "trait": "Calma",
+          "count": 4
+        },
+        {
+          "trait": "Rara",
+          "count": 3
+        }
+      ],
+      "traits_future": [
+        {
+          "trait": "Reconhecida",
+          "count": 5
+        },
+        {
+          "trait": "Próxima",
+          "count": 4
+        },
+        {
+          "trait": "Acessível",
+          "count": 3
+        },
+        {
+          "trait": "Presente",
+          "count": 3
+        }
+      ],
+      "reading": "O cuidado já é percebido. O que as pessoas pedem é mais presença e mais clareza sobre o lote. Ou seja: mostrar o que a Serra Fina faz e colocar rosto nisso."
+    },
+    "turns": [
+      {
+        "title": "A Serra Fina não vende chocolate. Vende clareza de origem.",
+        "text": "Quem escolhe uma barra quer saber de onde ela veio. Tudo que mostra a origem vale mais do que qualquer lista de sabores."
+      },
+      {
+        "title": "O tempo é o produto mais valioso.",
+        "text": "Descansar o lote é o que ninguém faz com pressa. É a conduta que o concorrente não copia."
+      },
+      {
+        "title": "Explicar virou luxo.",
+        "text": "Num mercado que usa adjetivos, dizer lote, data e altitude é o que dá luxo sem preço de vitrine."
+      },
+      {
+        "title": "A origem é o herói. A pose é o vilão.",
+        "text": "A serra aparece como prova e nunca como enfeite. O vilão é o cenário romântico que esconde o lote."
+      },
+      {
+        "title": "O primeiro presente já forma assinante.",
+        "text": "Quem recebe um lote de presente tende a voltar. A jornada começa na caixa e acompanha o ano inteiro."
+      }
+    ],
+    "synthesis": {
+      "scenario": "Cinco anos de lotes pequenos, crescimento por indicação e um mercado cheio de barras artesanais parecidas.",
+      "problem": "Fora do círculo de quem conhece, a Serra Fina parece só mais uma barra e mostra menos do que faz.",
+      "opportunity": "O lugar de quem faz com cuidado e explica a origem com dado está vazio.",
+      "territory": "O chocolate de altitude que mostra o lote, a data e a origem em cada barra.",
+      "desired_perception": "Eles fazem devagar, dizem de onde vem e me entregam o lote certo. Se é Serra Fina, eu sei o que estou comendo."
+    },
+    "category": "Chocolate artesanal de altitude",
+    "not_category": [
+      "Não é chocolate de vitrine",
+      "Não é chocolate industrial de prateleira"
+    ],
+    "spectrum": {
+      "from": "Popular",
+      "to": "Exclusiva",
+      "position": 3,
+      "note": "Equilíbrio: cuidado de ateliê, preço explicado."
+    },
+    "value_proposition": "Você chega querendo um bom chocolate ou um bom presente. Sai sabendo de onde veio, quanto tempo levou e como usar.",
+    "promise_guarantees": [
+      "Você nunca fica sem saber o lote.",
+      "Você nunca paga por enfeite.",
+      "Você nunca recebe uma barra que passou da data."
+    ],
+    "differentials": [
+      {
+        "name": "Lote e data em cada barra",
+        "proof": "Toda embalagem traz o número do lote e a data de fabricação",
+        "copyability": "conduct"
+      },
+      {
+        "name": "Descanso do lote",
+        "proof": "O lote descansa o tempo que a receita pede, mesmo quando o pedido aperta",
+        "copyability": "conduct"
+      },
+      {
+        "name": "Dado no lugar de adjetivo",
+        "proof": "O verso traz ponto de derretimento e sugestão de uso",
+        "copyability": "effort"
+      },
+      {
+        "name": "Origem de altitude",
+        "proof": "Produção na propriedade da Mantiqueira, em quatro hectares",
+        "copyability": "effort"
+      },
+      {
+        "name": "Assinatura com história",
+        "proof": "Cada lote do mês chega com a história de como foi feito",
+        "copyability": "effort"
+      }
+    ],
+    "values": [
+      {
+        "name": "Paciência",
+        "definition": "Foi o que fez a Serra Fina nascer.",
+        "behavior": "Deixa o lote descansar o tempo certo. Prefere atrasar uma entrega a vender uma barra que ainda não está pronta."
+      },
+      {
+        "name": "Exatidão",
+        "definition": "Nada vago na barra nem no texto.",
+        "behavior": "Diz o número, a data e o lote. Corrige na hora quando erra."
+      },
+      {
+        "name": "Origem",
+        "definition": "O lugar faz parte do produto.",
+        "behavior": "Nomeia a serra e o lote. Mostra de onde vem antes de dizer que é bom."
+      }
+    ],
+    "principles": [
+      "Mostramos o lote, não o enfeite.",
+      "Não apressamos o lote para atender a um pedido.",
+      "Dizemos o que sabemos e o que não sabemos.",
+      "Preço explicado. A Serra Fina não entra em disputa de preço."
+    ],
+    "narrative_rules": [
+      {
+        "title": "O herói é quem escolhe",
+        "text": "A Serra Fina é o guia. Quem compra aparece como quem escolheu bem."
+      },
+      {
+        "title": "Histórias reais",
+        "text": "Cada lote tem uma história concreta de como foi feito."
+      },
+      {
+        "title": "Mostrar o bastidor",
+        "text": "Para cada barra pronta, há semanas de descanso. Mostrar isso é mostrar valor."
+      },
+      {
+        "title": "Nunca vender pela pressa",
+        "text": "A marca explica com calma e não cria urgência."
+      }
+    ],
+    "tone_by_situation": [
+      {
+        "situation": "Explicar um lote",
+        "tone": "Didático e calmo, com número"
+      },
+      {
+        "situation": "Anunciar o lote do mês",
+        "tone": "Caloroso e exato"
+      },
+      {
+        "situation": "Recusar um pedido urgente",
+        "tone": "Firme e gentil, com prazo certo"
+      },
+      {
+        "situation": "Errar uma entrega",
+        "tone": "Responsável: assume, corrige e não se justifica demais"
+      }
+    ],
+    "themes": [
+      "Descanso",
+      "Origem",
+      "Lote",
+      "Mão",
+      "Presente",
+      "Receita"
+    ],
+    "manifesto_close": "Devagar é o jeito de chegar bem.",
+    "content_pillars": [
+      {
+        "name": "Lote do mês",
+        "share": 40,
+        "topics": "O lote, a data e como foi feito",
+        "examples": [
+          "Lote 12 em três fotos",
+          "O que descansou por três semanas"
+        ]
+      },
+      {
+        "name": "Na receita",
+        "share": 25,
+        "topics": "Uso do chocolate na cozinha",
+        "examples": [
+          "Brigadeiro que não talha",
+          "Ponto de derreter em casa"
+        ]
+      },
+      {
+        "name": "Origem",
+        "share": 20,
+        "topics": "A serra, a altitude e a propriedade",
+        "examples": [
+          "A manhã no cume",
+          "De onde vem o cacau do lote"
+        ]
+      },
+      {
+        "name": "Presente",
+        "share": 15,
+        "topics": "Caixas e datas",
+        "examples": [
+          "Uma caixa que diz de onde veio"
+        ]
+      }
+    ],
+    "content_always": [
+      "Falar do lote com número e data",
+      "Um termo técnico por vez, sempre explicado",
+      "Rosto ou mão em metade dos conteúdos"
+    ],
+    "content_never": [
+      "Urgência falsa ou contagem regressiva",
+      "Cenário romântico do campo",
+      "Adjetivo de vitrine"
+    ],
+    "communication_rules": [
+      {
+        "title": "Clareza no primeiro contato",
+        "text": "Quem vê a embalagem entende o lote na hora."
+      },
+      {
+        "title": "Origem antes do sabor",
+        "text": "A origem abre a conversa. O sabor confirma."
+      },
+      {
+        "title": "Prova antes de promessa",
+        "text": "Lote, data e altitude antes de qualquer elogio."
+      },
+      {
+        "title": "Valor antes do preço",
+        "text": "Explicar o tempo antes de falar o valor."
+      },
+      {
+        "title": "A embalagem fala",
+        "text": "A caixa e o verso da barra são os primeiros textos da marca."
+      }
+    ],
+    "bio": "Chocolate de altitude. Feito devagar, no alto da serra. Um lote novo todo mês.",
+    "touchpoints": [
+      {
+        "name": "Embalagem",
+        "change": "Lote, data e origem em lugar fixo, sempre no mesmo tamanho"
+      },
+      {
+        "name": "Site",
+        "change": "A origem na primeira frase e a assinatura pela jornada de quem compra"
+      },
+      {
+        "name": "Atendimento",
+        "change": "Tom de voz e prazo certo antes do preço"
+      },
+      {
+        "name": "Redes",
+        "change": "Perfil único, com o lote do mês em destaque"
+      }
+    ],
+    "closing": {
+      "reframe": "A Serra Fina não precisa virar outra marca. Precisa ser vista pelo que já faz.",
+      "next_step": "Identidade visual"
+    },
+    "sources": [
+      {
+        "outlet": "Entrevistas de imersão",
+        "supports": "Origem, ritmo de trabalho e metas"
+      },
+      {
+        "outlet": "Pesquisa anônima",
+        "supports": "Percepção atual e futura"
+      },
+      {
+        "outlet": "Mapa de concorrentes",
+        "supports": "Concorrência e território"
+      },
+      {
+        "outlet": "Histórico de vendas",
+        "supports": "Canais e crescimento por indicação"
+      },
+      {
+        "outlet": "Estudo de mercado de chocolate fino (fictício)",
+        "supports": "Dados e mudanças de mercado"
+      }
+    ],
+    "primary_research_note": "Imersões de 22 e 29 de setembro e de 6 de outubro de 2026, e pesquisa anônima com nove respostas válidas. Todos os dados deste exemplo são fictícios.",
+    "market_data": [
+      {
+        "label": "Crescimento anual do chocolate com origem declarada",
+        "figure": "12% ao ano",
+        "source": "Estudo de mercado de chocolate fino (fictício)"
+      },
+      {
+        "label": "Compradores que dizem olhar o lote ou a origem antes do preço",
+        "figure": "6 em cada 10",
+        "source": "Estudo de mercado de chocolate fino (fictício)"
+      },
+      {
+        "label": "Venda de presente no fim do ano, parte do faturamento da categoria",
+        "figure": "35%",
+        "source": "Estudo de mercado de chocolate fino (fictício)"
+      }
+    ],
+    "market_shifts": [
+      {
+        "date": "2022",
+        "fact": "Redes de varejo abrem prateleira para chocolate de origem",
+        "effect": "A barra artesanal passa a disputar espaço ao lado das industriais.",
+        "source": "Estudo de mercado de chocolate fino (fictício)"
+      },
+      {
+        "date": "2023",
+        "fact": "Assinaturas de alimentos ganham público",
+        "effect": "O lote do mês vira um produto e não só uma entrega.",
+        "source": "Histórico de vendas"
+      },
+      {
+        "date": "2025",
+        "fact": "Rótulo com origem e data passa a ser pedido por compradores de varejo",
+        "effect": "Mostrar o lote deixa de ser diferencial e vira exigência.",
+        "source": "Estudo de mercado de chocolate fino (fictício)"
+      },
+      {
+        "date": "2026",
+        "fact": "A Serra Fina decide mostrar lote, data e altitude em toda barra",
+        "effect": "A marca chega primeiro ao padrão que o mercado vai pedir.",
+        "source": "Histórico de vendas"
+      }
+    ],
+    "market_implications": [
+      {
+        "title": "A prateleira ficou parecida",
+        "text": "Com mais marcas artesanais, a embalagem sozinha não explica a diferença."
+      },
+      {
+        "title": "Origem virou pergunta",
+        "text": "O comprador quer saber de onde vem antes de provar. A resposta tem de estar na embalagem."
+      },
+      {
+        "title": "Quem explica primeiro ganha",
+        "text": "O padrão de rótulo está mudando. A marca que já mostra o lote chega com vantagem."
+      }
+    ],
+    "value_equation": {
+      "gains": [
+        "Origem clara",
+        "Sabor com ponto certo",
+        "Presente que se explica"
+      ],
+      "costs": [
+        "Preço acima do industrial",
+        "Espera pelo próximo lote",
+        "Risco de comprar algo que não conhece"
+      ],
+      "reading": [
+        {
+          "factor": "Origem clara",
+          "score": 4,
+          "reading": "O lote e a data já estão na barra, mas o site ainda não mostra.",
+          "action": "Levar lote e data para a primeira tela do site."
+        },
+        {
+          "factor": "Sabor com ponto certo",
+          "score": 5,
+          "reading": "É o ponto forte e a pesquisa confirma.",
+          "action": "Manter a receita e registrar o ponto em cada lote."
+        },
+        {
+          "factor": "Presente que se explica",
+          "score": 3,
+          "reading": "A caixa diz de onde veio, mas falta o cartão de apresentação.",
+          "action": "Criar um cartão com a história do lote."
+        },
+        {
+          "factor": "Preço",
+          "score": 3,
+          "reading": "O preço sobe com o descanso, mas poucos sabem disso.",
+          "action": "Explicar o tempo de descanso ao lado do preço."
+        },
+        {
+          "factor": "Espera pelo lote",
+          "score": 2,
+          "reading": "Quem quer repetir a compra fica sem aviso.",
+          "action": "Avisar a data do próximo lote na caixa."
+        }
+      ]
+    },
+    "slogan_system": {
+      "status": "proposed",
+      "first_beat": "Fazemos devagar.",
+      "second_beat": "Para você sentir rápido.",
+      "usage": [
+        {
+          "context": "As duas juntas",
+          "line": "Fazemos devagar. Para você sentir rápido."
+        },
+        {
+          "context": "Só a primeira",
+          "line": "Fazemos devagar."
+        },
+        {
+          "context": "Só a segunda",
+          "line": "Para você sentir rápido."
+        }
+      ],
+      "support_lines": [
+        "Cada barra diz de onde veio.",
+        "O tempo é o ingrediente.",
+        "Um lote novo, todo mês."
+      ],
+      "note": "Proposta para a próxima fase de campanha. Fora desta versão da marca."
+    },
+    "brand_architecture": {
+      "model": "Marca mãe",
+      "parent": "Serra Fina",
+      "children": [
+        "Serra Fina Assinatura",
+        "Serra Fina Cozinha",
+        "Serra Fina Presente"
+      ],
+      "rule": "A marca mãe dá valores, voz e posicionamento às linhas. Cada linha ganha só um nome de uso."
+    }
+  }
+}

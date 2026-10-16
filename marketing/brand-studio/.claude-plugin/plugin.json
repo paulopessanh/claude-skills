@@ -1,7 +1,7 @@
 {
   "name": "brand-studio",
-  "description": "The full creative cycle of brand creation and visual identity, from briefing to manual, as six interlinked skills sharing one project state. brand-studio is the orchestrator (context: fork): a ten-step state machine with gates that need evidence, review verdicts, approval, and change propagation that marks every downstream step stale when an earlier one reopens, plus a pt/en router that reads the state. brand-discovery finds gaps, contradictions and impossible timelines in a brief and maps the competitive category in OKLCH. brand-direction screens names, validates anatomy, builds accessible colour families that block vetoed hues, and tallies the client's vote with quorum and a double count. brand-review lints deliverables and reads them through the client's eyes. brand-system checks guidelines for gaps and numbers that contradict each other and file names. brand-ecosystem (step 9) builds from one source file the story, concept, symbol, colour, type, voice, applications, tokens and an HTML manual, and audits the package against its own source. Connects to brand-reverse by data. 19 stdlib scripts with typed exit codes, 10 references with per-claim confidence levels, 5 agents, 5 commands.",
-  "version": "2.12.0",
+  "description": "The full creative cycle of brand creation and visual identity, from briefing to manual, as seven interlinked skills sharing one project state. brand-studio is the orchestrator (context: fork): a ten-step state machine with gates that need evidence, review verdicts, approval, and change propagation that marks every downstream step stale when an earlier one reopens, plus a pt/en router that reads the state. brand-discovery finds gaps, contradictions and impossible timelines in a brief and maps the competitive category in OKLCH. brand-direction screens names, validates anatomy, builds accessible colour families that block vetoed hues, and tallies the client's vote with quorum and a double count. brand-color builds the complete colour system (three paths and a vote, tints, tones and shades, roles, tinted neutrals, dashboard status colours, gradients without grey limbo, light and dark rules, prohibitions), with approximate CMYK and PMS always pending a printed match. brand-review lints deliverables and reads them through the client's eyes. brand-system checks guidelines for gaps and numbers that contradict each other and file names. brand-ecosystem (step 9) builds from one source file the story, concept, symbol, colour, type, voice, applications, tokens and an HTML manual, and audits the package against its own source. Connects to brand-reverse by data. 26 stdlib scripts with typed exit codes, 16 references with per-claim confidence levels, 5 agents, 5 commands.",
+  "version": "2.13.0",
   "author": {
     "name": "Alireza Rezvani",
     "url": "https://alirezarezvani.com"
@@ -15,6 +15,7 @@
     "./skills/brand-direction",
     "./skills/brand-system",
     "./skills/brand-review",
+    "./skills/brand-color",
     "./skills/brand-ecosystem"
   ]
 }

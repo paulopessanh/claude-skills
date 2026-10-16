@@ -30,6 +30,12 @@ Warnings (exit 2):
   NOT_LABELLED     the source is marked fictional but has no _note, or is real but carries a _note
   NO_PROOF         a messaging territory has no proof; a pétreo has no visual translation
 
+With --color-system system.json (written by brand-color/scripts/color_system.py) the colour block is also compared with that file,
+read as plain JSON, never imported:
+  COLOUR_MISMATCH  the system is for another brand sigla, a source family hex is not the base of a family of the chosen path, a
+                   source family is missing from the chosen path, or a stage of the system was BLOCKED
+  NEUTRAL_OFF_SCALE (warning) a source neutral is not on the system's tinted neutral scale or in its light and dark roles
+
 Exit codes: 0 READY | 1 input error | 2 READY_WITH_CAVEATS | 3 INSUFFICIENT (under half the sections) | 4 BLOCKED
 Stdlib only. No network. Deterministic.
 """
@@ -316,7 +322,41 @@ def check_strategy(b, add):
         add("BLOCK", "STRATEGY_INCOMPLETE", "market_shifts needs 3 or more dated milestones")
 
 
-def check(b, state_path=None):
+def check_color_system(b, system, add):
+    """Compare the colour block with brand-color's system.json. Pure data: no code from brand-color is imported."""
+    sigla = b.get("identity", {}).get("sigla", "")
+    if not isinstance(system, dict) or not all(k in system for k in ("brand", "chosen", "scales", "neutral")):
+        add("BLOCK", "COLOUR_MISMATCH", "colour system file is not a brand-color system.json (brand, chosen, scales and neutral are required)")
+        return
+    if system["brand"].get("sigla") != sigla:
+        add("BLOCK", "COLOUR_MISMATCH", f"colour system is for sigla {system['brand'].get('sigla')!r}, the source is {sigla!r}")
+    bases = {f["family"]: f["base"]["hex"].upper() for f in system["scales"].get("families", [])}
+    required = {system["chosen"].get(k) for k in ("primary", "secondary")}
+    chosen = required | {system["chosen"].get("accent")}
+    src = {f.get("universe_name"): str(f.get("hex", "")).upper() for f in b.get("colour", {}).get("families", [])}
+    for name in sorted(n for n in chosen if n):
+        if name not in src:
+            if name in required:
+                add("BLOCK", "COLOUR_MISMATCH", f"family {name} is in the chosen path of the colour system but not in colour.families")
+        elif src[name] != bases.get(name):
+            add("BLOCK", "COLOUR_MISMATCH", f"family {name}: source {src[name]} differs from the colour system base {bases.get(name)}")
+    for name in sorted(n for n in src if n not in chosen):
+        add("BLOCK", "COLOUR_MISMATCH", f"family {name} is not in the chosen path of the colour system")
+    on_scale = {x["hex"].upper() for x in system["neutral"].get("steps", [])}
+    for mode in system["neutral"].get("roles", {}).values():
+        on_scale |= {r["hex"].upper() for r in mode.values() if isinstance(r, dict) and "hex" in r}
+    for n in b.get("colour", {}).get("neutrals", []):
+        if HEX.match(n.get("hex", "")) and n["hex"].upper() not in on_scale:
+            add("WARN", "NEUTRAL_OFF_SCALE", f"neutral {n.get('name')} {n['hex']} is not on the colour system neutral scale")
+    for stage in ("neutral", "roles", "status", "spaces", "usage", "prohib"):
+        if isinstance(system.get(stage), dict) and system[stage].get("verdict") == "BLOCKED":
+            add("BLOCK", "COLOUR_MISMATCH", f"colour system stage {stage} is BLOCKED")
+    for g in system.get("gradients", []):
+        if g.get("verdict") == "BLOCKED":
+            add("BLOCK", "COLOUR_MISMATCH", f"colour system gradient {g.get('name')} is BLOCKED")
+
+
+def check(b, state_path=None, color_system=None):
     out = []
     add = lambda lvl, code, msg: out.append((lvl, code, msg))
     present = [s for s in SECTIONS if s in b and b[s]]
@@ -453,6 +493,8 @@ def check(b, state_path=None):
         add("BLOCK", "SOURCE_V1", "brand-source.v1 has no scope, wordmark, lockups, version and background matrices, per-version sizes, production sheets or delivery: upgrade to brand-source.v2")
     if b.get("strategy"):
         check_strategy(b, add)
+    if color_system is not None:
+        check_color_system(b, color_system, add)
     if b.get("fictional") and not b.get("_note"):
         add("WARN", "NOT_LABELLED", "marked fictional but carries no _note saying so")
     if not b.get("fictional") and b.get("_note"):
@@ -466,6 +508,7 @@ def main():
     ap = argparse.ArgumentParser(description="Decide whether a brand-source.v1 file may be built into an ecosystem.")
     ap.add_argument("--input", help="brand-source.v1 JSON (see assets/example_serra_fina_brand.json)")
     ap.add_argument("--state", help="brand-state.json: verify steps 1-8 are approved there")
+    ap.add_argument("--color-system", help="system.json from brand-color: the colour block must match its chosen path (JSON only, no import)")
     ap.add_argument("--sample", action="store_true")
     ap.add_argument("--output", choices=["human", "json"], default="human")
     a = ap.parse_args()
@@ -481,7 +524,15 @@ def main():
     if b.get("schema") not in ("brand-source.v1", "brand-source.v2"):
         print("error: schema must be brand-source.v1 or brand-source.v2", file=sys.stderr)
         sys.exit(1)
-    f, present = check(b, a.state)
+    system = None
+    if a.color_system:
+        try:
+            with open(a.color_system, encoding="utf-8") as fh:
+                system = json.load(fh)
+        except (OSError, ValueError) as exc:
+            print(f"error: {exc}", file=sys.stderr)
+            sys.exit(1)
+    f, present = check(b, a.state, system)
     if len(present) < len(SECTIONS) / 2:
         verdict, code = "INSUFFICIENT", 3
     elif any(x[0] == "BLOCK" for x in f):

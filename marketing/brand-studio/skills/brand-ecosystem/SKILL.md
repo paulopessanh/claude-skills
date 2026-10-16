@@ -27,6 +27,10 @@ python3 scripts/ecosystem_source_check.py --input brand.json --state brand-state
 
    Exit 0 ready, 2 thin, 3 sections missing, 4 refused (a vetoed hue, a placeholder, a step not approved).
 
+   When the colour came from `brand-color`, add `--color-system system.json` (the file `color_system.py` writes). The check reads it as
+   plain JSON, never imports brand-color, and refuses with `COLOUR_MISMATCH` when the sigla differs, a family hex is not the base of the
+   chosen path, the primary or secondary of the path is missing, or a stage of the system was blocked. A neutral off the system's scale is a warning.
+
 2. **Build.**
 
 ```bash

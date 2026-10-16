@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added — marketing/brand-studio: brand-color, the complete colour system
+
+- Seventh skill: three palette paths with a vote, tints/tones/shades, roles, tinted neutrals, physical spaces, dashboard status colours, gradients without grey limbo (Light Source, Hold, Falloff, Anchor), light and dark rules and a prohibitions palette, one command to `system.json` and an HTML sheet. CMYK is approximate and PMS stays `pending_match`. Stdlib only, no network.
+- Linked by data: `ecosystem_source_check.py --color-system system.json` compares the source colour block with the chosen path (`COLOUR_MISMATCH`, `NEUTRAL_OFF_SCALE`) without importing brand-color. Referenced in the brand-studio and brand-ecosystem SKILL.md files. Counters: skills 395 → 396; tools 752 → 764; refs 860 → 861.
+
 ### Added — marketing/brand-studio step 9: brand-ecosystem
 
 - Schema v2 closes the 13 essential gaps found by `manual_coverage_check.py` against a reference manual: 18 of 18 essential needs covered, 3 new chapters, new refusals and audit checks.

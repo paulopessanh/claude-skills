@@ -3,13 +3,14 @@
 The full creative cycle of brand creation and visual identity, from briefing to manual. Português: processo criativo de marca e
 identidade visual, de ponta a ponta.
 
-Six skills, one project state, five agents. Step 9 (brand-ecosystem) turns the approved brand into the full package: story, concept, symbol, colour, type, voice, applications, tokens and an HTML manual, audited against its own source.
+Seven skills, one project state, five agents. Step 9 (brand-ecosystem) turns the approved brand into the full package: story, concept, symbol, colour, type, voice, applications, tokens and an HTML manual, audited against its own source.
 
 | Skill | Steps | Answers |
 |---|---|---|
 | `brand-studio` (orchestrator) | all | where are we, what is next, what did this change break |
 | `brand-discovery` | 1 to 3 | what do we know, what is missing, what does the category look like |
 | `brand-direction` | 4 and 5 | what do we draw, what do we not draw, what did the client choose |
+| `brand-color` | 4 | which colours, for which job, on which background, and what is never allowed |
 | `brand-system` | 6 to 8 | is the identity complete, do the numbers agree, is the manual in sync |
 | `brand-review` | every step | what is wrong, how will the client read it, what does this request touch |
 

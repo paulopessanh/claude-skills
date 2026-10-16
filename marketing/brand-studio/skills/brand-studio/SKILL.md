@@ -22,6 +22,7 @@ when a late change lands on an approved palette and nobody re-checks the manual.
 |---|---|---|
 | 1 Briefing, 2 Kick-off, 3 Research | discovery: `brand-discovery` | gaps listed, extraction validated, white space found |
 | 4 Direction, 5 Shapes dynamic | direction: `brand-direction` | pétreos, anatomy, colour, verdict and finalisation brief |
+| 4 Direction, the full colour system | colour: `brand-color` | path chosen by the client, `system.json` with no BLOCKED stage, PMS `pending_match` stated |
 | 6 Brand and identity, 6.5 Team guidelines, 7 Pieces, 8 Manual | system: `brand-system` | complete, consistent, one source of numbers |
 | any deliverable, any client feedback | review: `brand-review` | verdict released or released with caveats |
 | a reference brand to learn from | reverse: `brand-reverse` | claims gated, method transferred, never marks |
